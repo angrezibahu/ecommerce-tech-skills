@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Fluency for Ecommerce Pilled Legends | 30-Day Programme</title>
+    <title>Tech Fluency for Ecommerce Legends | 30-Day Programme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -130,7 +130,7 @@
     <div class="container">
         <div id="dashboardView">
             <header class="hero">
-                <h1>Technical Fluency for Ecommerce Directors</h1>
+                <h1>Technical Fluency for Ecommerce Legends</h1>
                 <p>Deep technical knowledge, hands-on exercises, and real understanding. 1000+ words per lesson, 5 quiz questions + essay per day.</p>
             </header>
             <section class="week-section"><div class="week-header"><div class="week-number">W1</div><div class="week-info"><h2>Infrastructure & Architecture</h2><p class="week-desc">Deep dive into how web systems work at scale</p></div></div><div class="day-grid" id="week1Grid"></div></section>
@@ -912,13 +912,1570 @@ Retry-After: 60
         }
     ],
     week2: [
-        { day: 8, title: "HTML5 Semantics & Accessibility", desc: "Semantic markup, ARIA, and inclusive design", duration: "45 min", content: `<p>Full content for Day 8 covering semantic HTML, WCAG, ARIA, and accessibility testing. To be expanded with 1500+ words.</p>`, questions: [{ q: "Placeholder question", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay question", guidance: "Guidance" } },
-        { day: 9, title: "CSS Architecture & Methodologies", desc: "BEM, CSS Modules, and managing stylesheets", duration: "45 min", content: `<p>Full content for Day 9 covering CSS organization, BEM naming, specificity, and CSS variables.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 10, title: "Core Web Vitals & Performance", desc: "LCP, INP, CLS and optimization strategies", duration: "50 min", content: `<p>Full content for Day 10 covering performance metrics, image optimization, and measurement tools.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 11, title: "JavaScript Fundamentals", desc: "JS for non-developers: reading and debugging", duration: "50 min", content: `<p>Full content for Day 11 covering variables, functions, DOM, events, and debugging.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 12, title: "DOM & Event Handling", desc: "How JavaScript interacts with pages", duration: "45 min", content: `<p>Full content for Day 12 covering DOM manipulation, event delegation, and common patterns.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 13, title: "Frontend Build Tools", desc: "Webpack, Vite, npm, and the build pipeline", duration: "45 min", content: `<p>Full content for Day 13 covering module bundling, transpilation, and development workflows.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 14, title: "Frontend Frameworks Overview", desc: "React, Vue, and when to use frameworks", duration: "45 min", content: `<p>Full content for Day 14 covering component models, state management, and SSR vs SPA.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
+        { 
+            day: 8, 
+            title: "HTML5 Semantics & Accessibility", 
+            desc: "Semantic markup, ARIA, and inclusive design", 
+            duration: "45 min", 
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>HTML isn't just about making things appear on screen—it's about communicating meaning. Today you'll understand semantic HTML, accessibility requirements, and why this matters for SEO, legal compliance, and reaching all customers including the 20% with disabilities.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Why Semantics Matter</li>
+        <li>2. Semantic HTML Elements</li>
+        <li>3. Heading Hierarchy</li>
+        <li>4. Accessibility Fundamentals</li>
+        <li>5. ARIA: When HTML Isn't Enough</li>
+        <li>6. Testing Accessibility</li>
+    </ul>
+</div>
+
+<h2>1. Why Semantics Matter</h2>
+
+<p>Consider two ways to mark up a navigation menu:</p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Non-semantic: Works visually but meaningless to machines --&gt;
+&lt;div class="nav"&gt;
+    &lt;div class="nav-item"&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/div&gt;
+    &lt;div class="nav-item"&gt;&lt;a href="/products"&gt;Products&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Semantic: Communicates purpose --&gt;
+&lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/products"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code>
+</div>
+
+<p>The semantic version tells browsers, screen readers, and search engines: "This is navigation." Benefits:</p>
+<ul>
+    <li><strong>Accessibility:</strong> Screen readers announce "Navigation" and let users skip to it</li>
+    <li><strong>SEO:</strong> Search engines understand page structure better</li>
+    <li><strong>Maintainability:</strong> Code intent is clearer to developers</li>
+</ul>
+
+<h2>2. Semantic HTML Elements</h2>
+
+<div class="code-block" data-lang="HTML Elements">
+<code>&lt;header&gt;     Page or section header
+&lt;nav&gt;        Navigation links
+&lt;main&gt;       Primary content (one per page)
+&lt;article&gt;    Self-contained content (blog post, product card)
+&lt;section&gt;    Thematic grouping with heading
+&lt;aside&gt;      Tangentially related (sidebar, related products)
+&lt;footer&gt;     Page or section footer
+
+&lt;figure&gt;     Self-contained media with caption
+&lt;figcaption&gt; Caption for figure
+&lt;time&gt;       Date/time (machine-readable)
+&lt;address&gt;    Contact information
+&lt;mark&gt;       Highlighted/relevant text</code>
+</div>
+
+<p><strong>Page structure example:</strong></p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav aria-label="Main"&gt;...&lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h1&gt;Luna Silver Ring&lt;/h1&gt;
+            &lt;section&gt;
+                &lt;h2&gt;Product Details&lt;/h2&gt;
+                ...
+            &lt;/section&gt;
+            &lt;section&gt;
+                &lt;h2&gt;Reviews&lt;/h2&gt;
+                ...
+            &lt;/section&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h2&gt;Related Products&lt;/h2&gt;
+            ...
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code>
+</div>
+
+<h2>3. Heading Hierarchy</h2>
+
+<p>Headings create a document outline. Must be hierarchical—never skip levels:</p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Correct hierarchy --&gt;
+&lt;h1&gt;Luna Silver Ring&lt;/h1&gt;
+    &lt;h2&gt;Product Details&lt;/h2&gt;
+        &lt;h3&gt;Materials&lt;/h3&gt;
+        &lt;h3&gt;Sizing Guide&lt;/h3&gt;
+    &lt;h2&gt;Customer Reviews&lt;/h2&gt;
+        &lt;h3&gt;5-Star Reviews&lt;/h3&gt;
+
+&lt;!-- WRONG: Skipping levels --&gt;
+&lt;h1&gt;Product&lt;/h1&gt;
+&lt;h4&gt;Details&lt;/h4&gt;  &lt;!-- Jumped from h1 to h4! --&gt;</code>
+</div>
+
+<p><strong>Rules:</strong> One h1 per page (the main topic). Don't skip levels. Headings aren't for styling—use CSS for size.</p>
+
+<h2>4. Accessibility Fundamentals</h2>
+
+<h3>Alternative Text for Images</h3>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Informative image: Describe content --&gt;
+&lt;img src="luna-ring.jpg" alt="Luna silver ring with twisted band design"&gt;
+
+&lt;!-- Decorative image: Empty alt --&gt;
+&lt;img src="decorative-swirl.png" alt=""&gt;
+
+&lt;!-- Complex image: Longer description --&gt;
+&lt;img src="size-chart.png" alt="Ring size chart" 
+     aria-describedby="size-desc"&gt;
+&lt;p id="size-desc"&gt;Sizes range from K (15.7mm) to S (19.0mm)...&lt;/p&gt;
+
+&lt;!-- NEVER do this --&gt;
+&lt;img src="ring.jpg"&gt;  &lt;!-- Missing alt --&gt;
+&lt;img src="ring.jpg" alt="image"&gt;  &lt;!-- Useless alt --&gt;</code>
+</div>
+
+<h3>Form Labels</h3>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Explicit label association --&gt;
+&lt;label for="email"&gt;Email Address&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required&gt;
+
+&lt;!-- Implicit (wrapping) --&gt;
+&lt;label&gt;
+    Email Address
+    &lt;input type="email" name="email" required&gt;
+&lt;/label&gt;
+
+&lt;!-- NEVER: Placeholder as only label --&gt;
+&lt;input type="email" placeholder="Email"&gt;  &lt;!-- Disappears on focus! --&gt;</code>
+</div>
+
+<h3>Focus Management</h3>
+
+<div class="code-block" data-lang="CSS">
+<code>/* NEVER remove focus outline without replacement */
+:focus { outline: none; }  /* BAD */
+
+/* Provide visible focus indicator */
+:focus { 
+    outline: 2px solid #00d4aa; 
+    outline-offset: 2px; 
+}
+
+/* Or use focus-visible for keyboard-only */
+:focus-visible {
+    outline: 2px solid #00d4aa;
+}</code>
+</div>
+
+<h2>5. ARIA: When HTML Isn't Enough</h2>
+
+<p>ARIA (Accessible Rich Internet Applications) adds accessibility information when native HTML semantics are insufficient:</p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Roles: What is this element? --&gt;
+&lt;div role="alert"&gt;Item added to cart&lt;/div&gt;
+&lt;div role="dialog" aria-modal="true"&gt;...&lt;/div&gt;
+
+&lt;!-- States: Current condition --&gt;
+&lt;button aria-expanded="false" aria-controls="menu"&gt;Menu&lt;/button&gt;
+&lt;input aria-invalid="true" aria-describedby="error-msg"&gt;
+
+&lt;!-- Properties: Relationships --&gt;
+&lt;nav aria-label="Main navigation"&gt;
+&lt;nav aria-label="Footer links"&gt;
+
+&lt;!-- Live regions: Announce dynamic changes --&gt;
+&lt;div aria-live="polite"&gt;3 items in cart&lt;/div&gt;
+&lt;div aria-live="assertive"&gt;Error: Payment failed&lt;/div&gt;</code>
+</div>
+
+<div class="info-box warning">
+    <div class="info-box-title">⚠️ First Rule of ARIA</div>
+    <p>Don't use ARIA if native HTML works. A &lt;button&gt; is better than &lt;div role="button"&gt;. Native elements have built-in keyboard handling, focus management, and semantics. ARIA is for custom components only.</p>
+</div>
+
+<h2>6. Testing Accessibility</h2>
+
+<ul>
+    <li><strong>Keyboard navigation:</strong> Can you complete checkout using only Tab, Enter, Space, Arrow keys?</li>
+    <li><strong>Screen reader:</strong> Test with VoiceOver (Mac), NVDA (Windows free), or browser extensions</li>
+    <li><strong>Automated tools:</strong> Lighthouse, axe DevTools, WAVE browser extension</li>
+    <li><strong>Color contrast:</strong> WCAG requires 4.5:1 for normal text, 3:1 for large text</li>
+    <li><strong>Zoom test:</strong> Does the site work at 200% browser zoom?</li>
+</ul>
+
+<div class="info-box">
+    <div class="info-box-title">💡 Business Case for Accessibility</div>
+    <p><strong>Legal:</strong> Many countries require accessibility (ADA in US, Equality Act in UK). Lawsuits are increasing.</p>
+    <p><strong>Market:</strong> 15-20% of population has disabilities. That's customers you're excluding.</p>
+    <p><strong>SEO:</strong> Many accessibility practices improve search rankings (semantic HTML, alt text, heading structure).</p>
+    <p><strong>Mobile:</strong> Accessibility features often help all users (larger touch targets, clear labels).</p>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: Accessibility Audit</div>
+    <ol>
+        <li>Run Lighthouse accessibility audit on your product page</li>
+        <li>Navigate your checkout using only keyboard (Tab, Enter, Escape)</li>
+        <li>Check all product images have meaningful alt text</li>
+        <li>Verify form fields have visible labels, not just placeholders</li>
+        <li>Check color contrast on your primary CTA buttons</li>
+    </ol>
+</div>
+`, 
+            questions: [
+                { q: "Your product page has h1, then jumps to h4 for sections. What's the problem?", options: ["Nothing—h4 is fine for smaller text", "Heading levels should be sequential (h1→h2→h3). Skipping breaks document outline for screen readers and hurts SEO.", "h4 is deprecated", "Should use h2 everywhere"], correct: 1, explanation: "Heading hierarchy must be sequential. Screen readers use headings for navigation and announce the level. Skipping from h1 to h4 suggests missing sections and breaks the document outline." },
+                { q: "A decorative flourish image appears between sections. What should the alt attribute be?", options: ["alt='decorative flourish'", "alt='' (empty)", "No alt attribute at all", "alt='image'"], correct: 1, explanation: "Decorative images that add no information should have empty alt (alt=''). This tells screen readers to skip it entirely. Missing alt is an error. Describing decoration wastes users' time." },
+                { q: "Your 'Add to Cart' button is a styled div with onclick handler. A keyboard user reports they can't activate it. Why?", options: ["They need a better keyboard", "div elements aren't focusable or keyboard-activatable by default. Use a real button element or add tabindex='0' and keyboard event handlers.", "JavaScript is disabled", "CSS is hiding it"], correct: 1, explanation: "Native button elements are focusable and respond to Enter/Space by default. div elements need tabindex='0' to be focusable, plus keydown handlers for Enter/Space. Always prefer semantic HTML." },
+                { q: "Developer uses placeholder='Email address' with no visible label. Why is this problematic?", options: ["Placeholders are fine as labels", "Placeholders disappear when typing begins, leaving users with no reference for what the field is. Always use visible labels.", "Placeholders are deprecated", "It affects SEO"], correct: 1, explanation: "Placeholders disappear on focus/input. Users with cognitive disabilities, or anyone who looks away, lose context. Placeholders are hints, not labels. Always have a visible, associated label." },
+                { q: "You want to announce 'Item added to cart' to screen reader users when they click Add to Cart. What's the approach?", options: ["Use alert() popup", "Use aria-live='polite' region—update its content and screen readers will announce it", "Write to console.log", "Just show it visually"], correct: 1, explanation: "aria-live regions announce content changes to screen readers. 'polite' waits for a pause in speech, 'assertive' interrupts immediately. Update the text content and screen readers announce it automatically." }
+            ], 
+            essay: { 
+                question: "Your ecommerce site needs to meet WCAG 2.1 Level AA compliance for a major B2B contract. Outline an accessibility remediation plan covering: how you'd audit current issues, priority order for fixes, specific technical changes needed, testing methodology, and ongoing processes to prevent regression.", 
+                guidance: "Cover: automated audit (Lighthouse, axe), manual testing (keyboard navigation, screen reader), prioritize by user impact (checkout flow > product pages > footer), specific fixes (semantic HTML, alt text, form labels, focus indicators, color contrast, skip links), testing with real assistive tech users if possible, developer training, CI/CD checks to prevent regression." 
+            } 
+        },
+        { 
+            day: 9, 
+            title: "CSS Architecture & Methodologies", 
+            desc: "BEM, CSS Modules, and managing stylesheets", 
+            duration: "45 min", 
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>CSS is deceptively simple to start but becomes a maintenance nightmare at scale. Today you'll learn methodologies that keep CSS manageable across large codebases and teams, and understand the problems they solve.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. The CSS Specificity Problem</li>
+        <li>2. BEM Naming Convention</li>
+        <li>3. CSS Custom Properties (Variables)</li>
+        <li>4. Responsive Design Patterns</li>
+        <li>5. Modern CSS Layout</li>
+        <li>6. CSS Organization at Scale</li>
+    </ul>
+</div>
+
+<h2>1. The CSS Specificity Problem</h2>
+
+<p>CSS specificity determines which styles win when multiple rules target the same element:</p>
+
+<div class="code-block" data-lang="CSS Specificity">
+<code>/* Specificity hierarchy (highest to lowest) */
+1. !important                    /* Nuclear option—avoid! */
+2. Inline styles (style="...")   /* Avoid in production */
+3. ID selectors (#header)        /* High specificity */
+4. Class selectors (.nav)        /* Preferred */
+5. Element selectors (div, p)    /* Low specificity */
+
+/* The specificity war: */
+.button { background: blue; }
+.header .button { background: red; }      /* More specific, wins */
+#nav .header .button { background: green; } /* Even more */
+.button { background: yellow !important; }  /* Nuclear option */
+
+/* This escalates until everything needs !important */</code>
+</div>
+
+<p>The problem: as codebases grow, developers add more specific selectors to override existing styles. Eventually you're fighting specificity wars, and !important becomes the only way to win—until someone adds !important to the other rule.</p>
+
+<h2>2. BEM Naming Convention</h2>
+
+<p>BEM (Block Element Modifier) eliminates specificity issues through naming conventions:</p>
+
+<div class="code-block" data-lang="BEM">
+<code>/* Block: Standalone component */
+.product-card { }
+
+/* Element: Part of block (double underscore) */
+.product-card__image { }
+.product-card__title { }
+.product-card__price { }
+.product-card__button { }
+
+/* Modifier: Variant (double hyphen) */
+.product-card--featured { }
+.product-card--sold-out { }
+.product-card__button--disabled { }
+.product-card__price--sale { }</code>
+</div>
+
+<p><strong>HTML usage:</strong></p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;article class="product-card product-card--featured"&gt;
+    &lt;img class="product-card__image" src="..." alt="..."&gt;
+    &lt;h3 class="product-card__title"&gt;Luna Ring&lt;/h3&gt;
+    &lt;span class="product-card__price product-card__price--sale"&gt;
+        £24.99
+    &lt;/span&gt;
+    &lt;button class="product-card__button"&gt;Add to Cart&lt;/button&gt;
+&lt;/article&gt;</code>
+</div>
+
+<p><strong>BEM Benefits:</strong></p>
+<ul>
+    <li><strong>Flat specificity:</strong> Single class selector = predictable, easy to override</li>
+    <li><strong>Self-documenting:</strong> product-card__price clearly belongs to product-card</li>
+    <li><strong>Isolation:</strong> Each block is independent—no cascade surprises</li>
+    <li><strong>Searchability:</strong> Find all product-card styles by searching .product-card</li>
+</ul>
+
+<h2>3. CSS Custom Properties (Variables)</h2>
+
+<p>CSS variables (custom properties) enable consistent design systems:</p>
+
+<div class="code-block" data-lang="CSS">
+<code>:root {
+    /* Colors */
+    --color-primary: #00d4aa;
+    --color-secondary: #ff6b35;
+    --color-text: #1a1a2e;
+    --color-text-muted: #6b7280;
+    --color-background: #ffffff;
+    
+    /* Spacing scale */
+    --space-xs: 0.25rem;  /* 4px */
+    --space-sm: 0.5rem;   /* 8px */
+    --space-md: 1rem;     /* 16px */
+    --space-lg: 2rem;     /* 32px */
+    --space-xl: 4rem;     /* 64px */
+    
+    /* Typography */
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    
+    /* Borders */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+}
+
+.button {
+    background: var(--color-primary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+}
+
+/* Dark theme override */
+.dark-theme {
+    --color-text: #ffffff;
+    --color-background: #1a1a2e;
+}</code>
+</div>
+
+<p><strong>Why CSS variables over Sass variables?</strong> CSS variables work at runtime—they cascade, inherit, and can be changed via JavaScript. Sass variables compile away to static values.</p>
+
+<h2>4. Responsive Design Patterns</h2>
+
+<p><strong>Mobile-first:</strong> Write base styles for mobile, then add complexity for larger screens:</p>
+
+<div class="code-block" data-lang="CSS">
+<code>/* Base: Mobile (smallest screens) */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+/* Tablet: 640px+ */
+@media (min-width: 640px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}</code>
+</div>
+
+<p><strong>Why mobile-first?</strong> Start simple, progressively enhance. Mobile styles are typically simpler (single column, stacked elements). This approach results in cleaner CSS and better mobile performance.</p>
+
+<h2>5. Modern CSS Layout</h2>
+
+<h3>Flexbox: One-dimensional layouts</h3>
+
+<div class="code-block" data-lang="CSS">
+<code>.header {
+    display: flex;
+    justify-content: space-between; /* Horizontal distribution */
+    align-items: center;            /* Vertical alignment */
+    gap: var(--space-md);           /* Space between items */
+}
+
+.nav {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 640px) {
+    .header {
+        flex-direction: column;
+    }
+}</code>
+</div>
+
+<h3>Grid: Two-dimensional layouts</h3>
+
+<div class="code-block" data-lang="CSS">
+<code>.product-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "images details"
+        "reviews reviews";
+    gap: var(--space-lg);
+}
+
+.product-images { grid-area: images; }
+.product-details { grid-area: details; }
+.product-reviews { grid-area: reviews; }
+
+@media (max-width: 768px) {
+    .product-page {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "images"
+            "details"
+            "reviews";
+    }
+}</code>
+</div>
+
+<h2>6. CSS Organization at Scale</h2>
+
+<div class="code-block" data-lang="File Structure">
+<code>styles/
+├── base/
+│   ├── reset.css        /* Normalize browser defaults */
+│   ├── typography.css   /* Font styles, headings */
+│   └── variables.css    /* Custom properties */
+├── components/
+│   ├── button.css
+│   ├── card.css
+│   ├── form.css
+│   └── modal.css
+├── layouts/
+│   ├── header.css
+│   ├── footer.css
+│   └── grid.css
+├── pages/
+│   ├── home.css
+│   ├── product.css
+│   └── checkout.css
+└── main.css             /* Imports all above */</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: CSS Audit</div>
+    <ol>
+        <li>Search your CSS for !important—how many instances?</li>
+        <li>Look for deeply nested selectors (4+ levels)</li>
+        <li>Check if there's a consistent naming convention</li>
+        <li>Are CSS variables used for colors and spacing?</li>
+        <li>Test your site at different viewport widths</li>
+    </ol>
+</div>
+`, 
+            questions: [
+                { q: "Your CSS has 50+ uses of !important. What does this indicate?", options: ["Normal practice for large sites", "Specificity wars—styles kept overriding each other, developers escalated to !important. Indicates need for flatter selectors.", "CSS framework requirement", "Good defensive coding"], correct: 1, explanation: "Excessive !important is a symptom of specificity problems. Each use often triggers another, escalating until everything needs !important. BEM and flat selectors prevent this." },
+                { q: "In BEM, what does .product-card__price--sale represent?", options: ["A sale page element", "The price element of the product-card block, with the sale modifier applied", "A child component of price", "Invalid BEM syntax"], correct: 1, explanation: "BEM: Block (product-card), Element (__price), Modifier (--sale). This is the price element within a product-card, with a variant style for sale items." },
+                { q: "Why use CSS custom properties instead of Sass variables?", options: ["They compile to smaller CSS", "They're runtime variables—can be changed via JS, cascade and inherit, enable theming without recompilation", "Sass is deprecated", "Better browser support"], correct: 1, explanation: "CSS custom properties work at runtime. They cascade (child elements inherit), can be changed via JavaScript (for themes), and respond to media queries. Sass variables compile to static values." },
+                { q: "Mobile-first CSS means:", options: ["Only supporting mobile devices", "Writing base styles for mobile, then using min-width media queries to enhance for larger screens", "Mobile users get priority loading", "Separate mobile stylesheet"], correct: 1, explanation: "Mobile-first: base CSS for mobile (simplest layout), then min-width queries add complexity for larger screens. Results in simpler, more maintainable CSS and better mobile performance." },
+                { q: "Deep selector like .page .sidebar .nav .list .item a causes what problems?", options: ["Slow CSS parsing", "High specificity making overrides difficult, plus tight coupling to HTML structure", "Invalid CSS", "Memory issues"], correct: 1, explanation: "Deep nesting creates high specificity (hard to override without more nesting or !important) and tightly couples CSS to HTML structure. Changing HTML breaks styles. BEM keeps selectors flat (single class)." }
+            ], 
+            essay: { 
+                question: "Your team's CSS has grown to 15,000 lines with no conventions. Developers complain about styles breaking unexpectedly and difficulty overriding existing styles. Propose a plan to introduce BEM naming, establish a design token system with CSS variables, and gradually refactor without breaking production.", 
+                guidance: "Cover: audit current state (identify most problematic areas), establish design tokens (colors, spacing, typography as CSS variables), create BEM style guide with examples, refactor component by component starting with isolated components, use feature flags or parallel stylesheets during transition, add stylelint to enforce conventions on new code, training sessions for team." 
+            } 
+        },
+        { 
+            day: 10, 
+            title: "Core Web Vitals & Performance", 
+            desc: "LCP, INP, CLS and optimization strategies", 
+            duration: "50 min", 
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Google's Core Web Vitals are now ranking factors, and performance directly impacts conversions—every 100ms of latency costs approximately 1% of sales. Today you'll understand how to measure and improve real-world performance.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Core Web Vitals Explained</li>
+        <li>2. Largest Contentful Paint (LCP)</li>
+        <li>3. Interaction to Next Paint (INP)</li>
+        <li>4. Cumulative Layout Shift (CLS)</li>
+        <li>5. Image Optimization</li>
+        <li>6. JavaScript Performance</li>
+        <li>7. Measuring Performance</li>
+    </ul>
+</div>
+
+<h2>1. Core Web Vitals Explained</h2>
+
+<p>Core Web Vitals are Google's metrics for user experience, measuring loading, interactivity, and visual stability:</p>
+
+<div class="code-block" data-lang="Metrics">
+<code>LCP (Largest Contentful Paint)
+├── What: When main content becomes visible
+├── Target: Under 2.5 seconds
+└── Measures: Loading performance
+
+INP (Interaction to Next Paint)
+├── What: Response time to user interactions
+├── Target: Under 200 milliseconds
+└── Measures: Interactivity (replaced FID in 2024)
+
+CLS (Cumulative Layout Shift)
+├── What: How much page elements move during load
+├── Target: Under 0.1
+└── Measures: Visual stability</code>
+</div>
+
+<h2>2. Largest Contentful Paint (LCP)</h2>
+
+<p>LCP measures when the largest content element becomes visible. This is usually:</p>
+<ul>
+    <li>Hero images</li>
+    <li>Large text blocks (h1, main paragraph)</li>
+    <li>Video poster images</li>
+    <li>Background images with significant area</li>
+</ul>
+
+<p><strong>Common LCP problems:</strong></p>
+
+<div class="code-block" data-lang="LCP Issues">
+<code>1. Slow server response (TTFB > 600ms)
+   → Optimize server, use CDN, caching
+
+2. Render-blocking resources
+   → Defer non-critical CSS/JS
+
+3. Large unoptimized images
+   → Compress, resize, modern formats (WebP/AVIF)
+
+4. Late-loading hero image
+   → Preload LCP image, avoid lazy-loading above fold
+
+5. Web fonts blocking render
+   → Use font-display: swap, preload fonts</code>
+</div>
+
+<p><strong>LCP optimization:</strong></p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Preload LCP image --&gt;
+&lt;link rel="preload" as="image" href="hero.jpg" 
+      fetchpriority="high"&gt;
+
+&lt;!-- Priority hint on LCP image --&gt;
+&lt;img src="hero.jpg" fetchpriority="high" alt="..."&gt;
+
+&lt;!-- Preload critical font --&gt;
+&lt;link rel="preload" as="font" type="font/woff2" 
+      href="font.woff2" crossorigin&gt;</code>
+</div>
+
+<h2>3. Interaction to Next Paint (INP)</h2>
+
+<p>INP measures how quickly the page responds to user interactions (clicks, taps, key presses). Poor INP means the site feels sluggish or unresponsive.</p>
+
+<p><strong>Common INP problems:</strong></p>
+
+<div class="code-block" data-lang="INP Issues">
+<code>1. Long JavaScript tasks blocking main thread
+   → Break up long tasks, use requestIdleCallback
+
+2. Excessive DOM size (> 1500 nodes)
+   → Simplify markup, virtualize long lists
+
+3. Heavy event handlers
+   → Debounce/throttle, move work off main thread
+
+4. Too much JavaScript
+   → Code split, defer non-critical scripts
+
+5. Third-party scripts
+   → Audit impact, load async, consider removal</code>
+</div>
+
+<h2>4. Cumulative Layout Shift (CLS)</h2>
+
+<p>CLS measures visual stability—how much page elements move around during load. Ever tried to click a button and it jumped away? That's layout shift.</p>
+
+<p><strong>Common CLS causes:</strong></p>
+
+<div class="code-block" data-lang="CLS Issues">
+<code>1. Images without dimensions
+   → Always set width and height attributes
+
+2. Ads/embeds without reserved space
+   → Reserve space with min-height or aspect-ratio
+
+3. Web fonts causing text reflow
+   → Use font-display: swap with similar fallback
+
+4. Dynamically injected content
+   → Reserve space or insert above viewport
+
+5. Animations that trigger layout
+   → Use transform/opacity, not width/height/top/left</code>
+</div>
+
+<p><strong>CLS prevention:</strong></p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Always set dimensions on images --&gt;
+&lt;img src="product.jpg" width="400" height="300" alt="..."&gt;
+
+&lt;!-- Or use aspect-ratio in CSS --&gt;
+&lt;style&gt;
+.product-image {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+}
+&lt;/style&gt;
+
+&lt;!-- Reserve space for ads --&gt;
+&lt;div class="ad-container" style="min-height: 250px;"&gt;
+    &lt;!-- Ad loads here --&gt;
+&lt;/div&gt;</code>
+</div>
+
+<h2>5. Image Optimization</h2>
+
+<p>Images are typically the largest assets on ecommerce sites:</p>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Responsive images with srcset --&gt;
+&lt;img 
+    srcset="product-400.jpg 400w,
+            product-800.jpg 800w,
+            product-1200.jpg 1200w"
+    sizes="(max-width: 640px) 100vw,
+           (max-width: 1024px) 50vw,
+           400px"
+    src="product-800.jpg"
+    alt="Luna Ring"
+    width="400" height="400"
+    loading="lazy"&gt;
+
+&lt;!-- Modern formats with fallback --&gt;
+&lt;picture&gt;
+    &lt;source srcset="product.avif" type="image/avif"&gt;
+    &lt;source srcset="product.webp" type="image/webp"&gt;
+    &lt;img src="product.jpg" alt="Luna Ring"&gt;
+&lt;/picture&gt;
+
+&lt;!-- Lazy load below-fold images --&gt;
+&lt;img src="related.jpg" loading="lazy" alt="..."&gt;
+
+&lt;!-- DON'T lazy load LCP/above-fold images --&gt;
+&lt;img src="hero.jpg" fetchpriority="high" alt="..."&gt;</code>
+</div>
+
+<p><strong>Format comparison:</strong></p>
+<ul>
+    <li><strong>JPEG:</strong> Photos, universal support, ~100% baseline</li>
+    <li><strong>WebP:</strong> 25-35% smaller than JPEG, 95%+ browser support</li>
+    <li><strong>AVIF:</strong> 50% smaller than JPEG, 85% browser support</li>
+</ul>
+
+<h2>6. JavaScript Performance</h2>
+
+<div class="code-block" data-lang="HTML">
+<code>&lt;!-- Defer non-critical scripts (loads parallel, executes after HTML) --&gt;
+&lt;script src="analytics.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Async for independent scripts (loads parallel, executes when ready) --&gt;
+&lt;script src="chat-widget.js" async&gt;&lt;/script&gt;
+
+&lt;!-- Critical CSS inline, rest deferred --&gt;
+&lt;style&gt;/* Critical above-fold CSS */&lt;/style&gt;
+&lt;link rel="preload" href="full.css" as="style" 
+      onload="this.rel='stylesheet'"&gt;
+
+&lt;!-- Module scripts are deferred by default --&gt;
+&lt;script type="module" src="app.js"&gt;&lt;/script&gt;</code>
+</div>
+
+<h2>7. Measuring Performance</h2>
+
+<p><strong>Lab tools (controlled testing):</strong></p>
+<ul>
+    <li><strong>Lighthouse:</strong> DevTools → Lighthouse tab → Generate report</li>
+    <li><strong>WebPageTest:</strong> Test from different locations and connections</li>
+    <li><strong>Chrome DevTools Performance:</strong> Record and analyze timeline</li>
+</ul>
+
+<p><strong>Field data (real users):</strong></p>
+<ul>
+    <li><strong>PageSpeed Insights:</strong> Shows real user data from Chrome UX Report</li>
+    <li><strong>Search Console:</strong> Core Web Vitals report for your whole site</li>
+    <li><strong>Web Vitals Extension:</strong> Real-time CWV as you browse</li>
+</ul>
+
+<div class="info-box">
+    <div class="info-box-title">💡 Lab vs Field Data</div>
+    <p><strong>Lab data</strong> (Lighthouse) tests in controlled conditions—useful for debugging but doesn't reflect real-user experience.</p>
+    <p><strong>Field data</strong> (PageSpeed Insights, Search Console) shows actual user experience across devices and connections. This is what Google uses for ranking.</p>
+    <p>Your site might score 95 in Lighthouse but fail field metrics because real users have slower devices and connections.</p>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: Performance Audit</div>
+    <ol>
+        <li>Run PageSpeed Insights on your product page (mobile mode)</li>
+        <li>Note your LCP, INP, CLS scores—are they passing?</li>
+        <li>Identify the LCP element using DevTools Performance panel</li>
+        <li>Check for images without width/height attributes</li>
+        <li>Look at Network tab—are images optimized? Using modern formats?</li>
+    </ol>
+</div>
+`, 
+            questions: [
+                { q: "Your LCP is 4.5 seconds, target is 2.5. What should you investigate first?", options: ["CLS optimization", "Server response time (TTFB), render-blocking resources, hero image size and loading strategy", "Adding more content", "JavaScript bundle size"], correct: 1, explanation: "LCP of 4.5s is poor. Investigate: TTFB (is server slow?), render-blocking CSS/JS (delaying render), hero image (too large? not preloaded? lazy-loaded incorrectly?), font loading blocking text paint." },
+                { q: "Product images load without width/height, causing content to jump. Which metric is affected?", options: ["LCP", "INP", "CLS—layout shifts when images load and push content around", "TTFB"], correct: 2, explanation: "CLS (Cumulative Layout Shift) measures visual stability. Images without dimensions cause layout shifts when they load. Always set width and height attributes or use CSS aspect-ratio." },
+                { q: "Analytics script delays page interactivity. What attribute helps?", options: ["src", "defer or async—loads script without blocking HTML parsing", "type", "integrity"], correct: 1, explanation: "defer loads script in parallel with HTML parsing, executes after HTML is complete. async loads in parallel, executes immediately when ready. Both prevent blocking the parser and improve interactivity." },
+                { q: "You're serving 2MB JPEGs for product images. Better approach?", options: ["They're fine for quality", "Resize appropriately, use modern formats (WebP/AVIF), implement srcset for responsive images, lazy load below-fold", "Just compress to 10% quality", "Remove images"], correct: 1, explanation: "2MB images are far too large. Serve appropriately sized images (srcset), use modern formats (WebP 30% smaller, AVIF 50% smaller), lazy load below-fold images, compress appropriately." },
+                { q: "Search Console shows Core Web Vitals failing for mobile. What's the business impact?", options: ["None—just vanity metrics", "CWV are ranking signals. Poor mobile performance can reduce search rankings and definitely hurts conversion rates.", "Site will be delisted", "Only affects ads"], correct: 1, explanation: "Core Web Vitals are Google ranking signals for mobile search. Poor CWV can reduce rankings. More directly, poor performance hurts conversions—users leave slow sites." }
+            ], 
+            essay: { 
+                question: "Your ecommerce site scores 45 on mobile Lighthouse (should be 90+). LCP is 5.8s, CLS is 0.35, INP is 380ms. Create a prioritized performance improvement plan covering: diagnostic steps, quick wins, medium-term improvements, and how to prevent regression.", 
+                guidance: "Cover: diagnostics (WebPageTest waterfall, DevTools Performance, identify LCP element, find layout shift sources), quick wins (image optimization, lazy loading, font-display: swap, defer scripts), medium-term (code splitting, critical CSS, image CDN, server optimization), monitoring (Real User Monitoring, performance budgets, Lighthouse CI in deployment pipeline)." 
+            } 
+        },
+        { 
+            day: 11, 
+            title: "JavaScript Fundamentals", 
+            desc: "JS for non-developers: reading and debugging", 
+            duration: "50 min", 
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>You don't need to write production JavaScript, but understanding how it works helps you debug issues, evaluate technical proposals, and communicate effectively with developers. Today covers practical JavaScript literacy.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Variables and Data Types</li>
+        <li>2. Functions</li>
+        <li>3. Objects and Arrays</li>
+        <li>4. Control Flow</li>
+        <li>5. Asynchronous JavaScript</li>
+        <li>6. Debugging in DevTools</li>
+    </ul>
+</div>
+
+<h2>1. Variables and Data Types</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Variable declarations
+const MAX_ITEMS = 10;       // Constant - cannot be reassigned
+let itemCount = 0;          // Let - can be reassigned
+var oldStyle = 'avoid';     // Var - old way, avoid using
+
+// Data types
+const productName = "Luna Ring";           // String (text)
+const price = 24.99;                       // Number
+const inStock = true;                      // Boolean (true/false)
+const tags = ["silver", "ring", "wedding"]; // Array (list)
+const product = {                          // Object (key-value pairs)
+    id: 456,
+    name: "Luna Ring",
+    price: 24.99
+};
+const nothing = null;                      // Null - intentionally empty
+let notDefined;                            // Undefined - not yet set</code>
+</div>
+
+<p><strong>const vs let:</strong> Use const by default (can't accidentally reassign). Use let when the value needs to change (counters, accumulators).</p>
+
+<h2>2. Functions</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Traditional function declaration
+function calculateTotal(price, quantity) {
+    return price * quantity;
+}
+
+// Arrow function (modern, concise)
+const calculateTotal = (price, quantity) => price * quantity;
+
+// Arrow function with multiple lines
+const formatPrice = (pence) => {
+    const pounds = pence / 100;
+    return '£' + pounds.toFixed(2);
+};
+
+// Calling functions
+const total = calculateTotal(2499, 2);  // Returns 4998
+const display = formatPrice(4998);       // Returns "£49.98"</code>
+</div>
+
+<h2>3. Objects and Arrays</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Objects: key-value pairs
+const product = {
+    id: 456,
+    name: "Luna Ring",
+    price: 2499,
+    sizes: ["K", "L", "M"]
+};
+
+// Accessing object properties
+product.name           // "Luna Ring"
+product['name']        // "Luna Ring" (same thing)
+product.sizes[0]       // "K" (first size)
+
+// Arrays: ordered lists
+const cart = [
+    { productId: 456, quantity: 1 },
+    { productId: 789, quantity: 2 }
+];
+
+// Array methods you'll see often
+cart.length            // 2 (number of items)
+cart[0]                // First item
+cart.push(item)        // Add item to end
+cart.filter(...)       // Filter items matching condition
+cart.map(...)          // Transform each item
+cart.find(...)         // Find first matching item
+cart.forEach(...)      // Do something for each item</code>
+</div>
+
+<h2>4. Control Flow</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Conditionals
+if (cart.length === 0) {
+    showEmptyCartMessage();
+} else if (cart.length < 3) {
+    showSmallCartMessage();
+} else {
+    showFullCartMessage();
+}
+
+// Comparison operators
+===   // Equals (use this, not ==)
+!==   // Not equals
+>     // Greater than
+<     // Less than
+>=    // Greater or equal
+<=    // Less or equal
+&&    // AND
+||    // OR
+!     // NOT
+
+// Ternary operator (short if/else)
+const message = inStock ? "Add to Cart" : "Out of Stock";
+
+// Loops
+for (let i = 0; i < items.length; i++) {
+    console.log(items[i]);
+}
+
+// Modern loop (preferred)
+items.forEach(item => {
+    console.log(item.name);
+});</code>
+</div>
+
+<h2>5. Asynchronous JavaScript</h2>
+
+<p>Many operations take time (API calls, loading images). JavaScript uses async patterns so the page doesn't freeze while waiting.</p>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Promises with .then()
+fetch('/api/cart')
+    .then(response => response.json())
+    .then(cart => {
+        console.log('Cart has', cart.items.length, 'items');
+    })
+    .catch(error => {
+        console.error('Failed to load cart:', error);
+    });
+
+// Async/await (cleaner syntax, same thing)
+async function loadCart() {
+    try {
+        const response = await fetch('/api/cart');
+        const cart = await response.json();
+        console.log('Cart has', cart.items.length, 'items');
+    } catch (error) {
+        console.error('Failed to load cart:', error);
+    }
+}
+
+// Key insight: Code after await doesn't run until the await completes
+// This is how JS handles "waiting" without freezing</code>
+</div>
+
+<h2>6. Debugging in DevTools</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Console methods for debugging
+console.log('Simple message');
+console.log('Product:', product);     // Log objects
+console.error('Something failed');    // Red error message
+console.table(arrayOfObjects);        // Display as table
+console.dir(element);                 // Expandable DOM element
+
+// Breakpoints
+debugger;  // Pauses execution here when DevTools is open
+
+// In DevTools Console tab:
+// - Type JavaScript directly to test
+// - Access page variables
+// - See errors in red
+
+// In DevTools Sources tab:
+// - View all JavaScript files
+// - Click line numbers to set breakpoints
+// - Step through code line by line
+// - Inspect variable values at each step</code>
+</div>
+
+<div class="info-box">
+    <div class="info-box-title">💡 Common Error Messages</div>
+    <p><strong>"Uncaught TypeError: Cannot read property 'x' of undefined"</strong> — Code tried to access .x on something that doesn't exist. Usually means an API response is missing expected data, or an element wasn't found.</p>
+    <p><strong>"Uncaught ReferenceError: x is not defined"</strong> — Using a variable that doesn't exist. Typo in variable name or forgot to declare it.</p>
+    <p><strong>"Uncaught SyntaxError"</strong> — Invalid JavaScript syntax. Missing bracket, quote, or semicolon.</p>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: JavaScript Exploration</div>
+    <ol>
+        <li>Open your site with DevTools Console tab</li>
+        <li>Type: document.querySelectorAll('img').length (counts images)</li>
+        <li>Type: document.querySelector('h1').textContent (gets h1 text)</li>
+        <li>Look for any red error messages in Console</li>
+        <li>Find a button and inspect its event listeners in Elements panel</li>
+    </ol>
+</div>
+`, 
+            questions: [
+                { q: "Console shows 'Uncaught TypeError: Cannot read property length of undefined'. What happened?", options: ["Network error", "Code tried to access .length on something that doesn't exist (undefined). Usually means expected data is missing.", "CSS error", "Server error"], correct: 1, explanation: "This error means code expected an array or string (which have .length) but got undefined. Common causes: API didn't return expected data structure, element wasn't found on page, typo in property name." },
+                { q: "What's the difference between const and let?", options: ["No difference", "const cannot be reassigned after declaration, let can be reassigned", "const is for numbers, let is for strings", "let is deprecated"], correct: 1, explanation: "const declares a constant that cannot be reassigned (const x = 5; x = 10 fails). let declares a variable that can be reassigned. Use const by default for safety." },
+                { q: "What does async/await do?", options: ["Makes code run faster", "Handles operations that take time (API calls, file loading) without freezing the page", "Encrypts data", "Improves SEO"], correct: 1, explanation: "async/await handles asynchronous operations. Code pauses at await until the operation completes, but doesn't freeze the page—other code can run. Essential for API calls." },
+                { q: "Developer says 'add an event listener for clicks'. What does this mean?", options: ["Install a browser extension", "Attach a function that runs when the user clicks an element—addEventListener('click', function)", "Add a CSS hover effect", "Create a log file"], correct: 1, explanation: "Event listeners are functions attached to elements that run when events occur (click, submit, keypress). addEventListener connects the element, event type, and handler function." },
+                { q: "You see fetch('/api/cart').then(...).catch(...). What's the .catch() for?", options: ["Caching the response", "Error handling—runs if the fetch request fails", "Catching user input", "Performance optimization"], correct: 1, explanation: ".catch() handles errors in the promise chain. If the network request fails or the server returns an error status, the catch block runs instead of the .then() blocks." }
+            ], 
+            essay: { 
+                question: "Your checkout page has a bug: the 'Place Order' button sometimes doesn't respond to clicks. How would you approach debugging this as a non-developer? Describe what you would check in DevTools, what information you would gather for developers, and what questions you would ask.", 
+                guidance: "Cover: check Console for JavaScript errors (red messages), check Network tab for failed API requests, try to reproduce consistently (when exactly does it happen?), check if button shows visual feedback on click, look at Elements panel for the button's event listeners, gather browser/device info, create steps to reproduce, ask developers: Is there client-side validation failing? Is an API call timing out? Is there a race condition?" 
+            } 
+        },
+        { 
+            day: 12, 
+            title: "DOM & Event Handling", 
+            desc: "How JavaScript interacts with pages", 
+            duration: "45 min", 
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Building on yesterday's JavaScript foundations, today we dive into how JavaScript actually manipulates web pages. Every interactive feature—cart updates, form validation, product galleries—uses these concepts.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. The DOM Tree</li>
+        <li>2. Selecting Elements</li>
+        <li>3. Modifying Elements</li>
+        <li>4. Event Handling</li>
+        <li>5. Event Delegation</li>
+        <li>6. Common Patterns</li>
+    </ul>
+</div>
+
+<h2>1. The DOM Tree</h2>
+
+<p>The browser parses HTML into a tree structure called the DOM (Document Object Model). JavaScript can read and modify this tree.</p>
+
+<div class="code-block" data-lang="DOM Tree">
+<code>HTML:
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Products&lt;/h1&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+Becomes DOM tree:
+document
+└── html
+    └── body
+        ├── header
+        │   └── nav
+        │       └── a
+        └── main
+            └── h1
+
+JavaScript accesses via: document.querySelector('h1')</code>
+</div>
+
+<h2>2. Selecting Elements</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Select single element (first match)
+document.querySelector('.product-card');      // By class
+document.querySelector('#main-nav');          // By ID
+document.querySelector('article');            // By tag
+document.querySelector('[data-product-id]');  // By attribute
+document.querySelector('.card .price');       // Nested selector
+
+// Select ALL matching elements (returns NodeList)
+document.querySelectorAll('.product-card');
+document.querySelectorAll('input[required]');
+
+// Working with NodeList (like an array)
+const cards = document.querySelectorAll('.product-card');
+cards.length;           // Number of elements
+cards[0];               // First element
+cards.forEach(card => { /* do something */ });
+
+// Traversing from an element
+element.parentElement;           // Parent
+element.children;                // Direct children
+element.nextElementSibling;      // Next sibling
+element.closest('.ancestor');    // Find ancestor matching selector</code>
+</div>
+
+<h2>3. Modifying Elements</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>const card = document.querySelector('.product-card');
+
+// Changing content
+card.textContent = 'Plain text only';
+card.innerHTML = '&lt;span&gt;Can include HTML&lt;/span&gt;';
+
+// Changing attributes
+card.setAttribute('data-product-id', '456');
+card.getAttribute('data-product-id');  // '456'
+card.dataset.productId;                // '456' (shorthand for data-*)
+
+// Changing classes
+card.classList.add('highlighted');
+card.classList.remove('hidden');
+card.classList.toggle('expanded');      // Add if absent, remove if present
+card.classList.contains('highlighted'); // true
+
+// Changing styles
+card.style.backgroundColor = '#fff';
+card.style.display = 'none';           // Hide element
+
+// Creating new elements
+const badge = document.createElement('span');
+badge.textContent = 'Sale';
+badge.className = 'badge badge--sale';
+card.appendChild(badge);               // Add as last child
+card.prepend(badge);                   // Add as first child
+
+// Removing elements
+element.remove();</code>
+</div>
+
+<h2>4. Event Handling</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Adding event listener
+button.addEventListener('click', function(event) {
+    console.log('Button clicked!');
+    console.log(event.target);  // The element that was clicked
+});
+
+// Arrow function version
+button.addEventListener('click', (e) => {
+    e.preventDefault();  // Stop default behavior (form submit, link navigation)
+    handleClick();
+});
+
+// Common events
+'click'           // Mouse click
+'submit'          // Form submission
+'input'           // Input field value changes (fires on every keystroke)
+'change'          // Select/checkbox changes, input on blur
+'keydown'         // Key pressed
+'keyup'           // Key released
+'focus'           // Element receives focus
+'blur'            // Element loses focus
+'scroll'          // Page or element scrolled
+'load'            // Resource finished loading
+'DOMContentLoaded' // HTML parsed (before images load)
+
+// Remove event listener
+button.removeEventListener('click', handlerFunction);</code>
+</div>
+
+<h2>5. Event Delegation</h2>
+
+<p>Instead of adding listeners to many elements, add one to their parent:</p>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// BAD: Listener on every button (doesn't work for dynamic content)
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', handleAddToCart);
+});
+// Problem: New buttons added later won't have listeners!
+
+// GOOD: Event delegation to parent
+document.querySelector('.product-grid').addEventListener('click', (e) => {
+    // Find if click was on (or inside) an add-to-cart button
+    const button = e.target.closest('.add-to-cart');
+    if (button) {
+        const productId = button.dataset.productId;
+        addToCart(productId);
+    }
+});
+// Works for all buttons, including dynamically added ones!
+
+// How it works:
+// 1. Click happens on child element
+// 2. Event "bubbles up" through parent elements
+// 3. Parent listener catches it
+// 4. e.target tells us what was actually clicked
+// 5. .closest() finds the button (even if click was on icon inside)</code>
+</div>
+
+<h2>6. Common Patterns</h2>
+
+<div class="code-block" data-lang="JavaScript">
+<code>// Form submission handling
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();  // Stop page reload
+    
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    try {
+        const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            showSuccess();
+        } else {
+            showError('Submission failed');
+        }
+    } catch (error) {
+        showError('Network error');
+    }
+});
+
+// Show/hide elements
+function toggleModal() {
+    modal.classList.toggle('is-visible');
+}
+
+// Update cart count
+function updateCartCount(count) {
+    document.querySelector('.cart-count').textContent = count;
+}
+
+// Debounce (limit how often function runs)
+function debounce(func, wait) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), wait);
+    };
+}
+
+// Use for search-as-you-type
+searchInput.addEventListener('input', debounce(handleSearch, 300));</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: DOM Exploration</div>
+    <p>In DevTools Console on your site:</p>
+    <ol>
+        <li>document.querySelectorAll('a').length — how many links?</li>
+        <li>document.querySelector('h1').textContent — what's the main heading?</li>
+        <li>Try: document.querySelector('h1').style.color = 'red'</li>
+        <li>Find a button in Elements panel, check its Event Listeners tab</li>
+    </ol>
+</div>
+`, 
+            questions: [
+                { q: "querySelectorAll('.product-card') returns what?", options: ["A single element", "A NodeList of all matching elements (similar to an array)", "A string", "An error if multiple match"], correct: 1, explanation: "querySelectorAll returns a NodeList containing all matching elements. querySelector returns only the first match. NodeList can be iterated with forEach or accessed by index." },
+                { q: "Why use event delegation instead of listeners on each element?", options: ["It's faster to type", "One listener handles all matching elements, including ones added dynamically later. Better performance, works with dynamic content.", "Required by HTML5", "Looks cleaner in code"], correct: 1, explanation: "Event delegation means one listener on a parent handles events from all children (via bubbling). Benefits: works for dynamically added elements, fewer listeners = better memory, cleaner code." },
+                { q: "e.preventDefault() in a form submit handler does what?", options: ["Deletes the form", "Stops the form from submitting normally (page reload), letting JavaScript handle it instead", "Validates the form", "Shows an error"], correct: 1, explanation: "preventDefault stops the browser's default action. For forms, that means no page reload/redirect. JavaScript can then handle submission via fetch (AJAX) without losing page state." },
+                { q: "textContent vs innerHTML—when to use each?", options: ["They're the same", "textContent for plain text (safe), innerHTML when you need to insert HTML tags (security risk with user input)", "innerHTML is deprecated", "textContent is slower"], correct: 1, explanation: "textContent sets/gets plain text—safe for any content. innerHTML parses HTML—useful but dangerous with user input (XSS risk). Default to textContent; use innerHTML carefully." },
+                { q: "element.closest('.ancestor') does what?", options: ["Finds the element closest to the mouse", "Traverses UP the DOM tree, returning first ancestor (or self) matching the selector", "Finds the nearest sibling", "Calculates distance in pixels"], correct: 1, explanation: "closest() walks up the DOM tree from the element, returning the first ancestor (including the element itself) that matches the selector. Essential for event delegation." }
+            ], 
+            essay: { 
+                question: "Your product page has a quantity selector (+/- buttons and input), 'Add to Cart' button, and price display that should update based on quantity. Describe how these would work together using DOM manipulation and events. What events would you listen for? How would elements update? What edge cases need handling?", 
+                guidance: "Cover: click events on +/- buttons, input event on quantity field, event delegation for buttons, reading/updating quantity input value, calculating and displaying updated price, disabling - at quantity 1, maximum quantity limits, input validation (numbers only, within stock), updating Add to Cart button state, accessibility considerations." 
+            } 
+        },
+        { 
+            day: 13, 
+            title: "Frontend Build Tools", 
+            desc: "Webpack, Vite, npm, and the build pipeline", 
+            duration: "45 min", 
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Modern frontend development involves build tools that transform, bundle, and optimize code. Understanding this pipeline helps you interpret build errors, evaluate technical decisions, and understand why deployments work the way they do.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Why Build Tools Exist</li>
+        <li>2. Package Managers (npm, yarn)</li>
+        <li>3. Module Bundlers</li>
+        <li>4. Transpilation</li>
+        <li>5. The Build Pipeline</li>
+        <li>6. Development vs Production</li>
+    </ul>
+</div>
+
+<h2>1. Why Build Tools Exist</h2>
+
+<p>Browsers understand HTML, CSS, and JavaScript. But modern development uses features browsers don't natively support:</p>
+
+<div class="code-block" data-lang="Problems Build Tools Solve">
+<code>Problem: Modern JavaScript features
+→ Transpile to older JavaScript for browser compatibility
+
+Problem: Many small files (modules)
+→ Bundle into fewer files for fewer HTTP requests
+
+Problem: Large file sizes
+→ Minify code, compress images, remove unused code
+
+Problem: Sass/LESS for CSS
+→ Compile to standard CSS
+
+Problem: TypeScript for type safety
+→ Compile to JavaScript
+
+Problem: React/Vue components
+→ Compile JSX/templates to JavaScript</code>
+</div>
+
+<h2>2. Package Managers (npm, yarn, pnpm)</h2>
+
+<p>Package managers install and manage third-party code (libraries, frameworks):</p>
+
+<div class="code-block" data-lang="npm">
+<code># package.json - defines project dependencies
+{
+    "name": "jewellery-store",
+    "version": "1.0.0",
+    "dependencies": {
+        "react": "^18.2.0",     // Runtime dependency (used in browser)
+        "stripe": "^12.0.0"
+    },
+    "devDependencies": {
+        "webpack": "^5.88.0",   // Build-time only
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "dev": "vite",              // npm run dev
+        "build": "vite build",      // npm run build
+        "test": "jest"              // npm run test
+    }
+}
+
+# Install all dependencies
+npm install
+
+# Add a new dependency
+npm install lodash
+
+# Add a dev dependency
+npm install --save-dev typescript
+
+# node_modules/ - where packages are installed (don't commit to git)
+# package-lock.json - exact versions (do commit)</code>
+</div>
+
+<p><strong>Key files:</strong></p>
+<ul>
+    <li><strong>package.json:</strong> Project config and dependencies list</li>
+    <li><strong>package-lock.json:</strong> Exact versions of all dependencies (ensures consistent installs)</li>
+    <li><strong>node_modules/:</strong> Installed packages (often huge, don't commit to git)</li>
+</ul>
+
+<h2>3. Module Bundlers (Webpack, Vite, esbuild)</h2>
+
+<p>Bundlers combine many JavaScript files into fewer optimized files:</p>
+
+<div class="code-block" data-lang="Bundling">
+<code>Input (development):
+src/
+├── index.js          // imports components
+├── components/
+│   ├── Header.js     // imports utils, styles
+│   ├── ProductCard.js
+│   └── Cart.js
+├── utils/
+│   └── formatPrice.js
+└── styles/
+    └── main.css
+
+↓ Bundler processes ↓
+
+Output (production):
+dist/
+├── index.html
+├── main.a1b2c3.js    // All JS combined, minified, hashed
+├── main.d4e5f6.css   // All CSS combined, minified, hashed
+└── images/
+    └── logo.g7h8i9.png</code>
+</div>
+
+<p><strong>What bundlers do:</strong></p>
+<ul>
+    <li><strong>Bundle:</strong> Combine modules into fewer files</li>
+    <li><strong>Minify:</strong> Remove whitespace, shorten variable names</li>
+    <li><strong>Tree shake:</strong> Remove unused code</li>
+    <li><strong>Code split:</strong> Create separate bundles loaded on demand</li>
+    <li><strong>Hash filenames:</strong> main.a1b2c3.js for cache busting</li>
+    <li><strong>Process assets:</strong> Optimize images, compile Sass</li>
+</ul>
+
+<h2>4. Transpilation</h2>
+
+<p>Transpilers convert code from one form to another:</p>
+
+<div class="code-block" data-lang="Transpilation">
+<code>// Modern JavaScript (ES2020+)
+const prices = products.map(p => p.price);
+const total = prices.reduce((a, b) => a + b, 0);
+const { name, price } = product;
+async function loadData() { ... }
+
+↓ Babel transpiles to ES5 ↓
+
+// Older JavaScript (works in IE11)
+var prices = products.map(function(p) { return p.price; });
+var total = prices.reduce(function(a, b) { return a + b; }, 0);
+var name = product.name;
+var price = product.price;
+function loadData() { return regeneratorRuntime.async(...); }
+
+
+// TypeScript
+const price: number = 24.99;
+interface Product { id: number; name: string; }
+
+↓ TypeScript compiler ↓
+
+// JavaScript (types stripped out)
+const price = 24.99;
+
+
+// JSX (React)
+&lt;Button onClick={handleClick}&gt;Buy Now&lt;/Button&gt;
+
+↓ Babel transforms ↓
+
+// JavaScript
+React.createElement(Button, { onClick: handleClick }, "Buy Now")</code>
+</div>
+
+<h2>5. The Build Pipeline</h2>
+
+<div class="code-block" data-lang="Pipeline">
+<code>Development workflow:
+1. Developer saves file
+2. File watcher detects change
+3. Affected modules recompiled
+4. Hot Module Replacement updates browser (no refresh)
+
+Production build:
+1. npm run build
+2. Clean output directory
+3. Compile TypeScript/JSX → JavaScript
+4. Bundle all modules together
+5. Tree shake (remove unused exports)
+6. Minify JavaScript and CSS
+7. Optimize and compress images
+8. Generate hashed filenames
+9. Create source maps (for debugging)
+10. Output to dist/ folder
+
+Deployment:
+1. Upload dist/ contents to CDN/server
+2. Hashed filenames ensure cache busting
+3. Old files can be cached forever</code>
+</div>
+
+<h2>6. Development vs Production</h2>
+
+<div class="code-block" data-lang="Comparison">
+<code>Development mode (npm run dev):
+├── Fast rebuilds (incremental)
+├── Source maps (debug original code)
+├── Hot reloading (instant updates)
+├── Verbose error messages
+├── No minification (readable code)
+└── Runs local dev server
+
+Production mode (npm run build):
+├── Full optimization
+├── Minified and compressed
+├── Tree shaking enabled
+├── Code splitting
+├── Hashed filenames
+└── Outputs static files for deployment
+
+// Environment variables
+if (process.env.NODE_ENV === 'production') {
+    // Production-only code
+    enableAnalytics();
+}</code>
+</div>
+
+<div class="info-box">
+    <div class="info-box-title">💡 Common Build Issues</div>
+    <p><strong>"Module not found"</strong> — Package not installed. Run npm install.</p>
+    <p><strong>"Cannot find module './component'"</strong> — File path wrong or file doesn't exist.</p>
+    <p><strong>Build succeeds locally, fails in CI</strong> — Different Node versions, missing dependencies, or environment variable issues.</p>
+    <p><strong>CSS not applying</strong> — CSS modules, import order issues, or purging removing needed styles.</p>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: Explore Your Build</div>
+    <ol>
+        <li>Find your project's package.json—what are the main dependencies?</li>
+        <li>What scripts are defined? (dev, build, test?)</li>
+        <li>Look at the build output (dist/ or build/)—what files are generated?</li>
+        <li>Check file sizes—is JavaScript larger than 500KB?</li>
+    </ol>
+</div>
+`, 
+            questions: [
+                { q: "Developer says 'npm install failed'. What's the first thing to check?", options: ["Internet connection", "Check for error message, ensure Node.js is installed, try deleting node_modules and package-lock.json then reinstall", "Restart computer", "Update npm"], correct: 1, explanation: "npm install failures have many causes. Read the error message first. Common fixes: delete node_modules and package-lock.json, ensure correct Node version, check for permission issues, verify package.json syntax." },
+                { q: "What does 'tree shaking' do?", options: ["Reorganizes file structure", "Removes unused code/exports from the final bundle, reducing file size", "Sorts imports alphabetically", "Validates code syntax"], correct: 1, explanation: "Tree shaking statically analyzes ES6 module imports/exports and removes code that's never used. If you import one function from a library, only that function (and its dependencies) ends up in the bundle." },
+                { q: "Build output has files like main.a1b2c3d4.js. Why the hash?", options: ["Security encryption", "Cache busting—new content gets a new hash, forcing browsers to download the new file instead of using cached version", "Compression identifier", "Random organization"], correct: 1, explanation: "Content hashing in filenames enables aggressive caching. Browsers can cache forever because when content changes, the filename changes. New deploy = new hash = fresh download." },
+                { q: "Difference between dependencies and devDependencies in package.json?", options: ["No difference", "dependencies are needed at runtime (shipped to users), devDependencies are build-time only (bundlers, test tools)", "devDependencies are optional", "dependencies are more stable"], correct: 1, explanation: "dependencies (React, Stripe) are needed when the app runs. devDependencies (Webpack, TypeScript, Jest) are only needed during development/build—they don't ship to users." },
+                { q: "Site works locally but is broken in production. What build-related issues should you check?", options: ["Server is slow", "Environment variables missing, different Node versions, development-only code not stripped, API URLs not updated for production", "DNS issues", "Database connection"], correct: 1, explanation: "Dev vs prod differences: environment variables may differ (API keys, URLs), code might rely on dev-only features, optimizations might remove code that seemed unused, source maps might reveal issues hidden in dev." }
+            ], 
+            essay: { 
+                question: "Your team is starting a new frontend project. The tech lead proposes using Vite instead of the existing Webpack setup. What factors should influence this decision? Consider build speed, ecosystem maturity, team familiarity, migration effort, and long-term maintainability.", 
+                guidance: "Cover: Vite advantages (faster dev server, ES modules, simpler config), Webpack advantages (mature ecosystem, more plugins, proven at scale), migration considerations (config rewrite, plugin compatibility), team factors (learning curve, existing expertise), project factors (size, complexity, timeline), recommendation approach (try Vite for new project, evaluate before migrating existing)." 
+            } 
+        },
+        {
+            day: 14,
+            title: "Frontend Frameworks Overview",
+            desc: "React, Vue, and when to use frameworks",
+            duration: "45 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Frontend frameworks like React, Vue, and Angular dominate modern web development. Today you'll understand what problems they solve, how they differ, and how to evaluate framework choices for your platform.</p>
+
+<h2>1. Why Frameworks Exist</h2>
+
+<p>Building interactive UIs with vanilla JavaScript becomes painful at scale. Frameworks provide:</p>
+<ul>
+    <li><strong>Declarative rendering:</strong> Describe what UI should look like, framework handles updates</li>
+    <li><strong>Component model:</strong> Reusable, self-contained pieces</li>
+    <li><strong>State management:</strong> Predictable data flow</li>
+    <li><strong>Ecosystem:</strong> Routing, forms, testing, tooling</li>
+</ul>
+
+<h2>2. The Component Model</h2>
+
+<div class="code-block" data-lang="Components">
+<code>App
+├── Header
+│   ├── Logo
+│   ├── Navigation
+│   └── CartIcon
+├── ProductGrid
+│   ├── ProductCard (reused)
+│   ├── ProductCard
+│   └── ProductCard
+└── Footer
+
+Each component has:
+- Own HTML structure
+- Own CSS (scoped)
+- Own JavaScript logic
+- Receives data via "props"
+- Manages internal "state"</code>
+</div>
+
+<h2>3. React vs Vue</h2>
+
+<p><strong>React</strong> (Meta): Most popular, largest ecosystem, uses JSX. Flexible but more decisions required.</p>
+<p><strong>Vue</strong>: Approachable, great docs, single-file components. More opinionated, gentler learning curve.</p>
+
+<h2>4. Rendering Strategies</h2>
+
+<div class="code-block" data-lang="Rendering">
+<code>CSR (Client-Side): Empty HTML, JS renders everything
+- Fast after load, poor SEO, slow first paint
+
+SSR (Server-Side): Server renders HTML, JS hydrates
+- Good SEO, fast first paint, more complex
+
+SSG (Static): Pre-rendered at build time
+- Fastest delivery, good for stable content
+
+ISR (Incremental Static): Static + scheduled rebuilds
+- Best of both worlds</code>
+</div>
+
+<h2>5. When to Use Frameworks</h2>
+
+<p><strong>Use frameworks for:</strong> Complex interactive UIs, SPAs, dashboards, when team has experience</p>
+<p><strong>Consider simpler approaches for:</strong> Mostly static content, simple sites, performance-critical, inexperienced team</p>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>What framework does your site use (if any)?</li>
+        <li>View source: HTML content or empty div?</li>
+        <li>Is it server or client rendered?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Main benefit of component-based architecture:", options: ["Faster websites", "Reusable, self-contained pieces with HTML/CSS/JS that compose into complex UIs", "Smaller files", "Better SEO"], correct: 1, explanation: "Components encapsulate structure, style, and behavior into reusable units. Build once, use everywhere." },
+                { q: "CSR main disadvantage:", options: ["Slow on mobile", "Initial page empty—poor SEO, slow first paint until JS loads", "Firefox issues", "Needs more devs"], correct: 1, explanation: "CSR sends minimal HTML, JS renders everything. Blank page until JS loads. Poor for SEO." },
+                { q: "View source shows HTML content. This suggests:", options: ["CSR", "Server-side rendering (SSR/SSG)", "Site broken", "No JavaScript"], correct: 1, explanation: "Meaningful HTML in source = server-rendered. Empty div = client-rendered." },
+                { q: "When NOT to use React:", options: ["Never", "For simple/static sites, or when team lacks framework experience", "Large apps", "Need components"], correct: 1, explanation: "Frameworks add complexity. For simple sites or inexperienced teams, simpler tools may be better." },
+                { q: "ISR provides:", options: ["Real-time updates", "Static speed with scheduled content updates without full rebuild", "Better JS", "Smaller images"], correct: 1, explanation: "ISR combines static performance with ability to update content periodically." }
+            ],
+            essay: {
+                question: "Evaluate headless (React/Next.js) vs traditional server-rendered ecommerce for a mid-market retailer. Cover: what headless means, pros/cons of each, decision factors, and recommendation.",
+                guidance: "Cover: headless = separate frontend + APIs; headless pros (customization, modern DX) vs cons (complexity, cost, specialized devs); traditional pros (simpler, ecosystem) vs cons (less flexible); factors (team capability, customization needs, budget); mid-market usually better with traditional unless strong customization need."
+            }
+        }
     ],
     week3: [
         { day: 15, title: "Server-Side Rendering", desc: "SSR, SSG, ISR and rendering patterns", duration: "45 min", content: `<p>Full content for Day 15.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
