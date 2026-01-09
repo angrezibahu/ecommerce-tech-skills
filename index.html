@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tech Fluency for Ecom Directors | Advanced 30-Day Programme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Fluency for Ecommerce Pilled Legends | 30-Day Programme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0a0f;
@@ -25,309 +25,927 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Atkinson Hyperlegible', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.8;
-            letter-spacing: 0.02em;
-            min-height: 100vh;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 80%, rgba(0, 212, 170, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        p, li, label, button { font-size: 1.1rem; }
-        code, pre, .code-block { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 1.5rem;
-            z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--accent-primary); }
-        .nav-brand::before { content: '▹ '; color: var(--accent-secondary); }
-        .progress-bar { height: 3px; background: var(--border); position: fixed; top: 60px; left: 0; right: 0; z-index: 999; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary)); width: 0%; transition: width 0.5s ease; }
-        .nav-stats { display: flex; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary); }
-        .stat-value { color: var(--accent-primary); font-weight: 700; }
+        body { font-family: 'Atkinson Hyperlegible', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.8; letter-spacing: 0.02em; }
+        code, .code-block { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
         .container { max-width: 900px; margin: 0 auto; padding: 80px 1.5rem 3rem; }
-        .hero { text-align: center; padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
-        .hero-tag { display: inline-block; background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary)); color: var(--bg-dark); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-        .hero h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-subtitle { color: var(--text-secondary); font-size: 1.15rem; max-width: 600px; margin: 0 auto 2rem; }
-        .hero-meta { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; color: var(--text-muted); font-size: 0.95rem; }
-        .week-section { margin-bottom: 2.5rem; }
-        .week-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
-        .week-number { background: var(--bg-card); border: 2px solid var(--accent-tertiary); color: var(--accent-tertiary); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
-        .week-info h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
-        .week-desc { color: var(--text-secondary); font-size: 0.95rem; }
-        .day-grid { display: grid; gap: 1rem; }
-        .day-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem 1.5rem; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .day-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--border); transition: background 0.3s ease; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 700; color: var(--accent-primary); }
+        .progress-bar { height: 3px; background: var(--border); position: fixed; top: 60px; left: 0; right: 0; z-index: 999; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary)); width: 0%; transition: width 0.5s; }
+        .hero { text-align: center; padding: 2rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .hero h1 { font-size: 2rem; background: linear-gradient(135deg, var(--text-primary), var(--accent-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+        .hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        .week-section { margin-bottom: 2rem; }
+        .week-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+        .week-number { background: var(--bg-card); border: 2px solid var(--accent-tertiary); color: var(--accent-tertiary); width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .week-info h2 { font-size: 1.2rem; }
+        .week-desc { color: var(--text-secondary); font-size: 0.9rem; }
+        .day-grid { display: grid; gap: 0.75rem; }
+        .day-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.2s; position: relative; }
         .day-card:hover { background: var(--bg-card-hover); border-color: var(--accent-primary); transform: translateX(4px); }
-        .day-card:hover::before { background: var(--accent-primary); }
         .day-card.locked { opacity: 0.5; cursor: not-allowed; }
         .day-card.locked:hover { transform: none; border-color: var(--border); }
-        .day-card.completed::before { background: var(--success); }
-        .day-card.current::before { background: var(--accent-secondary); animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .day-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
-        .day-number { font-weight: 700; color: var(--accent-primary); font-size: 0.9rem; }
-        .day-status { font-size: 1.2rem; }
-        .day-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .day-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .day-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tag { background: rgba(124, 58, 237, 0.15); color: var(--accent-tertiary); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
-        .tag.practical { background: rgba(0, 212, 170, 0.15); color: var(--accent-primary); }
-        .tag.theory { background: rgba(255, 107, 53, 0.15); color: var(--accent-secondary); }
-        .tag.hands-on { background: rgba(255, 184, 0, 0.15); color: var(--warning); }
-        .lesson-view { display: none; animation: fadeIn 0.3s ease; }
+        .day-card.completed { border-left: 4px solid var(--success); }
+        .day-card.current { border-left: 4px solid var(--accent-secondary); }
+        .day-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .day-number { font-weight: 700; color: var(--accent-primary); font-size: 0.85rem; }
+        .day-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .day-desc { color: var(--text-secondary); font-size: 0.9rem; }
+        .lesson-view { display: none; }
         .lesson-view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .lesson-header { padding: 2rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
-        .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.95rem; cursor: pointer; transition: color 0.2s ease; background: none; border: none; font-family: inherit; }
+        .lesson-header { padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .back-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-family: inherit; font-size: 0.95rem; padding: 0; margin-bottom: 1rem; display: block; }
         .back-btn:hover { color: var(--accent-primary); }
-        .lesson-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 1rem; }
-        .lesson-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.95rem; }
-        .lesson-content { font-size: 1.1rem; }
-        .lesson-content h2 { color: var(--accent-primary); font-size: 1.5rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-        .lesson-content h3 { color: var(--text-primary); font-size: 1.25rem; margin: 2rem 0 0.75rem; }
-        .lesson-content h4 { color: var(--accent-secondary); font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
-        .lesson-content p { margin-bottom: 1.25rem; color: var(--text-secondary); }
-        .lesson-content ul, .lesson-content ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .lesson-content li { margin-bottom: 0.5rem; color: var(--text-secondary); }
+        .lesson-title { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .lesson-meta { color: var(--text-secondary); font-size: 0.9rem; }
+        .lesson-content { font-size: 1.05rem; }
+        .lesson-content h2 { color: var(--accent-primary); font-size: 1.4rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+        .lesson-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: var(--text-primary); }
+        .lesson-content h4 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; color: var(--accent-secondary); }
+        .lesson-content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .lesson-content ul, .lesson-content ol { margin-bottom: 1rem; padding-left: 1.5rem; color: var(--text-secondary); }
+        .lesson-content li { margin-bottom: 0.4rem; }
         .lesson-content strong { color: var(--text-primary); }
-        .code-block { background: #1a1a24; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; position: relative; }
-        .code-block::before { content: attr(data-lang); position: absolute; top: 0; right: 0; background: var(--accent-tertiary); color: white; padding: 0.25rem 0.75rem; font-size: 0.75rem; border-radius: 0 12px 0 8px; text-transform: uppercase; font-weight: 600; }
-        .code-block code { color: var(--text-primary); white-space: pre; display: block; line-height: 1.6; }
-        .info-box { background: rgba(124, 58, 237, 0.1); border-left: 4px solid var(--accent-tertiary); padding: 1.25rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
-        .info-box.warning { background: rgba(255, 184, 0, 0.1); border-color: var(--warning); }
-        .info-box.success { background: rgba(0, 212, 170, 0.1); border-color: var(--success); }
-        .info-box.critical { background: rgba(255, 71, 87, 0.1); border-color: var(--error); }
-        .info-box-title { font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
-        .info-box p { margin-bottom: 0.5rem; font-size: 1rem; }
-        .info-box p:last-child { margin-bottom: 0; }
-        .scenario { background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(124, 58, 237, 0.05)); border: 1px solid var(--accent-secondary); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
-        .scenario-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--accent-secondary); font-weight: 700; font-size: 1.1rem; }
-        .exercise { background: var(--bg-card); border: 2px solid var(--warning); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
-        .exercise-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--warning); font-weight: 700; font-size: 1.1rem; }
-        .exercise ol { margin-top: 1rem; }
-        .quiz-section { background: var(--bg-card); border: 2px solid var(--accent-tertiary); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
-        .quiz-header { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-primary); }
+        .code-block { background: #1a1a24; border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin: 1rem 0; overflow-x: auto; position: relative; }
+        .code-block::before { content: attr(data-lang); position: absolute; top: 0; right: 0; background: var(--accent-tertiary); color: white; padding: 0.2rem 0.6rem; font-size: 0.7rem; border-radius: 0 10px 0 6px; }
+        .code-block code { white-space: pre; display: block; line-height: 1.5; }
+        .info-box { border-left: 4px solid var(--accent-tertiary); padding: 1rem; margin: 1.5rem 0; background: rgba(124,58,237,0.1); border-radius: 0 10px 10px 0; }
+        .info-box.warning { border-color: var(--warning); background: rgba(255,184,0,0.1); }
+        .info-box.critical { border-color: var(--error); background: rgba(255,71,87,0.1); }
+        .info-box.success { border-color: var(--success); background: rgba(0,212,170,0.1); }
+        .info-box-title { font-weight: 700; margin-bottom: 0.5rem; }
+        .exercise { background: var(--bg-card); border: 2px solid var(--warning); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; }
+        .exercise-header { color: var(--warning); font-weight: 700; margin-bottom: 0.75rem; }
+        .quiz-section { background: var(--bg-card); border: 2px solid var(--accent-tertiary); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
         .quiz-progress { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
-        .quiz-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem; padding: 1rem; background: var(--bg-dark); border-radius: 10px; }
-        .quiz-options { display: grid; gap: 0.75rem; margin-bottom: 1rem; }
-        .quiz-option { background: var(--bg-dark); border: 2px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: flex-start; gap: 0.75rem; }
+        .quiz-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; padding: 1rem; background: var(--bg-dark); border-radius: 8px; }
+        .quiz-options { display: grid; gap: 0.6rem; }
+        .quiz-option { background: var(--bg-dark); border: 2px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; display: flex; align-items: flex-start; gap: 0.75rem; transition: all 0.2s; }
         .quiz-option:hover { border-color: var(--accent-tertiary); }
-        .quiz-option.selected { border-color: var(--accent-primary); background: rgba(0, 212, 170, 0.1); }
-        .quiz-option.correct { border-color: var(--success); background: rgba(0, 212, 170, 0.15); }
-        .quiz-option.incorrect { border-color: var(--error); background: rgba(255, 71, 87, 0.15); }
-        .option-letter { min-width: 28px; height: 28px; border-radius: 6px; background: var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
-        .quiz-option.selected .option-letter { background: var(--accent-primary); color: var(--bg-dark); }
+        .quiz-option.selected { border-color: var(--accent-primary); background: rgba(0,212,170,0.1); }
+        .quiz-option.correct { border-color: var(--success); background: rgba(0,212,170,0.15); }
+        .quiz-option.incorrect { border-color: var(--error); background: rgba(255,71,87,0.15); }
+        .option-letter { min-width: 26px; height: 26px; border-radius: 5px; background: var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
         .quiz-option.correct .option-letter { background: var(--success); color: var(--bg-dark); }
         .quiz-option.incorrect .option-letter { background: var(--error); color: white; }
-        .quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: 10px; display: none; }
+        .quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none; }
         .quiz-feedback.show { display: block; }
-        .quiz-feedback.correct { background: rgba(0, 212, 170, 0.15); border: 1px solid var(--success); }
-        .quiz-feedback.incorrect { background: rgba(255, 71, 87, 0.15); border: 1px solid var(--error); }
-        .quiz-nav { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.2s ease; border: none; font-family: inherit; }
+        .quiz-feedback.correct { background: rgba(0,212,170,0.15); border: 1px solid var(--success); }
+        .quiz-feedback.incorrect { background: rgba(255,71,87,0.15); border: 1px solid var(--error); }
+        .quiz-nav { display: flex; justify-content: space-between; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .btn { padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; font-family: inherit; transition: all 0.2s; }
         .btn-primary { background: var(--accent-primary); color: var(--bg-dark); }
-        .btn-primary:hover { background: #00eabb; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3); }
+        .btn-primary:hover { transform: translateY(-2px); }
         .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
-        .btn-small { padding: 0.5rem 1rem; font-size: 0.9rem; }
-        .btn-group { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
-        .quiz-score { text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(124, 58, 237, 0.1)); border-radius: 16px; margin-top: 2rem; }
-        .score-value { font-size: 3rem; font-weight: 700; color: var(--accent-primary); }
-        .score-label { color: var(--text-secondary); margin-top: 0.5rem; }
-        .lesson-completion { background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(124, 58, 237, 0.1)); border: 2px solid var(--success); border-radius: 16px; padding: 2rem; text-align: center; margin-top: 3rem; }
-        .completion-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .completion-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .completion-text { color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .footer { text-align: center; padding: 3rem 0; margin-top: 3rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
-        .reset-btn { position: fixed; bottom: 1rem; right: 1rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; z-index: 1000; }
-        .reset-btn:hover { border-color: var(--error); color: var(--error); }
-        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
-        .toc-title { font-weight: 700; margin-bottom: 1rem; color: var(--accent-primary); }
+        .btn-secondary:hover { border-color: var(--accent-primary); }
+        .essay-section { background: var(--bg-card); border: 2px solid var(--accent-secondary); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .essay-header { color: var(--accent-secondary); font-weight: 700; margin-bottom: 1rem; }
+        .essay-question { margin-bottom: 1rem; }
+        .essay-textarea { width: 100%; min-height: 200px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; color: var(--text-primary); font-family: inherit; font-size: 1rem; resize: vertical; }
+        .essay-textarea:focus { outline: 2px solid var(--accent-primary); border-color: transparent; }
+        .quiz-results { text-align: center; padding: 2rem; }
+        .score-display { font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); }
+        .btn-group { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .reset-btn { position: fixed; bottom: 1rem; right: 1rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
+        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
+        .toc-title { font-weight: 700; color: var(--accent-primary); margin-bottom: 0.75rem; }
         .toc-list { list-style: none; padding: 0; }
-        .toc-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-        .toc-list li:last-child { border-bottom: none; }
-        .toc-list a { color: var(--text-secondary); text-decoration: none; }
-        .toc-list a:hover { color: var(--accent-primary); }
+        .toc-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 0.95rem; }
+        .toc-list li:last-child { border: none; }
         @media (max-width: 600px) {
-            .container { padding: 80px 1rem 2rem; }
-            .hero { padding: 2rem 0 1.5rem; }
-            .hero-meta { flex-direction: column; gap: 0.75rem; }
-            .week-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-            .nav-stats { display: none; }
+            .container { padding: 70px 1rem 2rem; }
             .btn-group { flex-direction: column; }
-            .btn { width: 100%; }
-            .quiz-nav { flex-direction: column; gap: 1rem; }
+            .quiz-nav { flex-direction: column; gap: 0.75rem; }
         }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-brand">TECH FLUENCY: ADVANCED</div>
-        <div class="nav-stats">
-            <div class="stat"><span class="stat-value" id="completedCount">0</span>/30</div>
-            <div class="stat"><span class="stat-value" id="streakCount">0</span>🔥</div>
-        </div>
+        <div class="nav-brand">TECH FLUENCY: DIRECTOR LEVEL</div>
+        <div style="color: var(--text-secondary); font-size: 0.9rem;"><span id="completedCount">0</span>/30 Complete</div>
     </nav>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
+    
     <div class="container">
         <div id="dashboardView">
             <header class="hero">
-                <span class="hero-tag">Advanced 30-Day Programme</span>
                 <h1>Technical Fluency for Ecommerce Directors</h1>
-                <p class="hero-subtitle">Deep technical knowledge, hands-on exercises, and the understanding to lead technical teams and make architecture decisions.</p>
-                <div class="hero-meta">
-                    <span>📚 1000+ words/day</span>
-                    <span>🧪 20 questions/lesson</span>
-                    <span>🔧 Hands-on exercises</span>
-                </div>
+                <p>Deep technical knowledge, hands-on exercises, and real understanding. 1000+ words per lesson, 5 quiz questions + essay per day.</p>
             </header>
             <section class="week-section"><div class="week-header"><div class="week-number">W1</div><div class="week-info"><h2>Infrastructure & Architecture</h2><p class="week-desc">Deep dive into how web systems work at scale</p></div></div><div class="day-grid" id="week1Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">W2</div><div class="week-info"><h2>Frontend Engineering</h2><p class="week-desc">HTML, CSS, JavaScript and modern frameworks</p></div></div><div class="day-grid" id="week2Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">W3</div><div class="week-info"><h2>Backend & Data Systems</h2><p class="week-desc">Servers, databases, APIs and integrations</p></div></div><div class="day-grid" id="week3Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">W4</div><div class="week-info"><h2>Ecommerce Architecture & Operations</h2><p class="week-desc">Platform architecture, performance, security and DevOps</p></div></div><div class="day-grid" id="week4Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">+</div><div class="week-info"><h2>Leadership & Strategy</h2><p class="week-desc">Technical leadership, vendor management and roadmapping</p></div></div><div class="day-grid" id="bonusGrid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W2</div><div class="week-info"><h2>Frontend Engineering</h2><p class="week-desc">HTML, CSS, JavaScript and modern patterns</p></div></div><div class="day-grid" id="week2Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W3</div><div class="week-info"><h2>Backend & Integrations</h2><p class="week-desc">Servers, databases, APIs and payment systems</p></div></div><div class="day-grid" id="week3Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W4</div><div class="week-info"><h2>Operations & Security</h2><p class="week-desc">DevOps, monitoring, security, and performance</p></div></div><div class="day-grid" id="week4Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">+</div><div class="week-info"><h2>Leadership & Strategy</h2><p class="week-desc">Technical decision making and roadmapping</p></div></div><div class="day-grid" id="bonusGrid"></div></section>
         </div>
         <div id="lessonView" class="lesson-view"></div>
     </div>
     <button class="reset-btn" onclick="resetProgress()">Reset Progress</button>
-    <footer class="footer"><p>Advanced technical training for ecommerce leadership</p></footer>
 
 <script>
+// Course Data - Full content for Week 1, structure for remaining weeks
 const courseData = {
     week1: [
         {
             day: 1,
             title: "The HTTP Protocol Deep Dive",
             desc: "Understanding the foundation of all web communication",
-            tags: ["theory", "hands-on"],
             duration: "45 min",
-            content: `<h2>Sample lesson content - Day 1</h2><p>This is a placeholder for the full HTTP deep dive content.</p>`,
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>By the end of this lesson, you will understand HTTP at a level that allows you to debug integration issues, evaluate API documentation, and have informed conversations about web performance and security.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. What HTTP Actually Is</li>
+        <li>2. The Anatomy of HTTP Requests</li>
+        <li>3. HTTP Methods and Idempotency</li>
+        <li>4. Status Codes Deep Dive</li>
+        <li>5. Headers That Control Behavior</li>
+        <li>6. HTTPS and TLS</li>
+        <li>7. Hands-On Exercise</li>
+    </ul>
+</div>
+
+<h2>1. What HTTP Actually Is</h2>
+
+<p>HTTP (Hypertext Transfer Protocol) is a stateless, text-based, application-layer protocol that defines how clients and servers communicate. Every interaction your customers have—viewing products, adding to cart, checking out—happens through HTTP.</p>
+
+<p><strong>Stateless</strong> means each request-response cycle is independent. The server has no inherent memory of previous requests. When a customer adds a product to their cart then navigates away, the server doesn't automatically know about their cart—unless we explicitly tell it via cookies, sessions, or tokens.</p>
+
+<p>Understanding statelessness explains common bugs:</p>
+<ul>
+    <li>"Why do customers keep getting logged out?" → Session cookies not being set correctly</li>
+    <li>"Why does the cart empty on different devices?" → Sessions are device-specific unless stored against user accounts</li>
+</ul>
+
+<h2>2. The Anatomy of HTTP Requests</h2>
+
+<p>Every HTTP request has four parts: request line, headers, empty line, and optional body. Here's a real example—adding a product to cart:</p>
+
+<div class="code-block" data-lang="HTTP Request">
+<code>POST /api/cart/items HTTP/1.1
+Host: www.yourstore.com
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
+Cookie: session_id=abc123
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_0)
+Content-Length: 89
+
+{"product_id": "RING-001", "quantity": 1, "size": "M"}</code>
+</div>
+
+<p><strong>Request Line:</strong> POST /api/cart/items HTTP/1.1 tells the server the method (POST—creating something), path, and protocol version.</p>
+
+<p><strong>Key Headers:</strong></p>
+<ul>
+    <li><strong>Host:</strong> Which domain—essential because one server might host multiple sites</li>
+    <li><strong>Content-Type:</strong> How the body is formatted (application/json)</li>
+    <li><strong>Authorization:</strong> Credentials proving who the user is</li>
+    <li><strong>Cookie:</strong> Session data the browser automatically includes</li>
+</ul>
+
+<h2>3. HTTP Methods and Idempotency</h2>
+
+<div class="code-block" data-lang="HTTP Methods">
+<code>GET     → Retrieve. SAFE (no side effects) and IDEMPOTENT
+POST    → Create new resource. NOT idempotent
+PUT     → Replace entire resource. IDEMPOTENT
+PATCH   → Partial update. May or may not be idempotent
+DELETE  → Remove resource. IDEMPOTENT
+HEAD    → Like GET but headers only
+OPTIONS → What methods are allowed (CORS preflight)</code>
+</div>
+
+<p><strong>Idempotency is crucial for reliability.</strong> An idempotent operation produces the same result whether performed once or multiple times. Consider a payment timeout:</p>
+<ul>
+    <li>If the payment endpoint is idempotent (or uses idempotency keys), retrying is safe</li>
+    <li>If not, retrying might charge the customer twice</li>
+</ul>
+
+<p>This is why Stripe uses Idempotency-Key headers. You generate a unique key per payment attempt. Retrying with the same key returns the original result.</p>
+
+<h2>4. Status Codes Deep Dive</h2>
+
+<h3>2xx: Success</h3>
+<ul>
+    <li><strong>200 OK:</strong> Standard success</li>
+    <li><strong>201 Created:</strong> New resource created (should include Location header)</li>
+    <li><strong>204 No Content:</strong> Success but nothing to return (common for DELETE)</li>
+</ul>
+
+<h3>3xx: Redirection</h3>
+<ul>
+    <li><strong>301:</strong> Permanent redirect—browsers cache this, SEO passes to new URL</li>
+    <li><strong>302:</strong> Temporary redirect (ambiguous—prefer 307)</li>
+    <li><strong>304:</strong> Not Modified—your cached version is still valid</li>
+    <li><strong>307:</strong> Temporary redirect that preserves method (POST stays POST)</li>
+</ul>
+
+<h3>4xx: Client Errors</h3>
+<ul>
+    <li><strong>400:</strong> Bad Request—malformed syntax</li>
+    <li><strong>401:</strong> Unauthorized—authentication required (really means "unauthenticated")</li>
+    <li><strong>403:</strong> Forbidden—authenticated but not permitted</li>
+    <li><strong>404:</strong> Not Found</li>
+    <li><strong>422:</strong> Unprocessable—valid syntax but semantic errors</li>
+    <li><strong>429:</strong> Too Many Requests—rate limited</li>
+</ul>
+
+<h3>5xx: Server Errors</h3>
+
+<div class="info-box critical">
+    <div class="info-box-title">🔴 Critical: 502 vs 503 vs 504</div>
+    <p><strong>502 Bad Gateway:</strong> Your proxy received an invalid response from upstream. Your app likely crashed.</p>
+    <p><strong>503 Service Unavailable:</strong> Server temporarily overloaded. Usually recoverable with retry.</p>
+    <p><strong>504 Gateway Timeout:</strong> Upstream didn't respond in time. Dangerous—the request might still be processing!</p>
+</div>
+
+<h2>5. Headers That Control Behavior</h2>
+
+<h3>Caching Headers</h3>
+<div class="code-block" data-lang="Cache Headers">
+<code>Cache-Control: public, max-age=31536000, immutable
+# Cache publicly for 1 year, never revalidate
+
+Cache-Control: private, no-cache
+# Only browser, always check if modified
+
+Cache-Control: no-store
+# Never cache (sensitive data)
+
+ETag: "abc123"
+# Version identifier for conditional requests</code>
+</div>
+
+<h3>Security Headers</h3>
+<div class="code-block" data-lang="Security Headers">
+<code>Strict-Transport-Security: max-age=31536000
+# Force HTTPS for 1 year
+
+Content-Security-Policy: default-src 'self'
+# Control where resources load from
+
+X-Frame-Options: DENY
+# Prevent iframe embedding (clickjacking)</code>
+</div>
+
+<h2>6. HTTPS and TLS</h2>
+
+<p>HTTPS is HTTP over TLS (Transport Layer Security). TLS provides:</p>
+<ol>
+    <li><strong>Confidentiality:</strong> Data is encrypted</li>
+    <li><strong>Integrity:</strong> Data can't be modified in transit</li>
+    <li><strong>Authentication:</strong> You're talking to the real server</li>
+</ol>
+
+<p><strong>Common certificate issues:</strong></p>
+<ul>
+    <li><strong>Expired:</strong> Certs expire annually. Set up monitoring and auto-renewal.</li>
+    <li><strong>Name mismatch:</strong> Cert for example.com doesn't cover www.example.com</li>
+    <li><strong>Untrusted CA:</strong> Self-signed or unknown Certificate Authority</li>
+</ul>
+
+<h2>7. Hands-On Exercise</h2>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: HTTP Inspection</div>
+    <ol>
+        <li>Open your site with DevTools Network tab</li>
+        <li>Find the main document request—what caching headers are present?</li>
+        <li>Add a product to cart—find the XHR request. What method? What status?</li>
+        <li>Look for any 3xx redirects—what's being redirected?</li>
+        <li>Check security headers on the main response</li>
+    </ol>
+</div>
+`,
             questions: [
-                { q: "What does 'stateless' mean in HTTP?", options: ["Server maintains connection forever", "Each request is independent - server doesn't remember previous requests", "Requests don't have status codes", "Only GET requests are allowed"], correct: 1, explanation: "Stateless means each request is independent. The server doesn't inherently remember previous requests, which is why we need cookies/sessions/tokens to maintain state like login status." },
-                { q: "Which HTTP method should be used to partially update a resource?", options: ["POST", "PUT", "PATCH", "UPDATE"], correct: 2, explanation: "PATCH is for partial updates. PUT replaces the entire resource. There is no UPDATE method in HTTP." }
-            ]
+                { q: "Checkout intermittently logs customers out. Based on HTTP's stateless nature, what should you investigate?", options: ["Login form JavaScript bug", "Session cookie or storage problems—cookies not being set, session store clearing, SameSite attributes", "Customer internet speed", "Server memory"], correct: 1, explanation: "HTTP is stateless—the server only knows a user is logged in if something tells it on every request. Intermittent logouts almost always trace to session cookies not being sent correctly or session storage losing data." },
+                { q: "Payment times out with 504. Customer says they were charged but got no confirmation. What likely happened?", options: ["Payment definitely failed", "Payment might still have processed—504 means we gave up waiting, not that it failed", "Payment succeeded and was recorded", "Server needs more capacity"], correct: 1, explanation: "504 means our server gave up waiting for a response. The payment could have succeeded—the provider might have processed it, but the response didn't return in time. This is why idempotency keys are critical." },
+                { q: "API uses GET /cart/add?product_id=123 to add items. What's wrong?", options: ["Nothing—GET is faster", "GET should be safe and idempotent—browsers might prefetch it, bots might trigger it, back button might re-add items", "GET can't have query params", "URL too long"], correct: 1, explanation: "GET must be 'safe' (no side effects). Using GET for cart additions violates HTTP semantics and causes problems: prefetch adds items automatically, back button re-adds items, search crawlers might add items while indexing." },
+                { q: "Developer returns 200 OK with {success: false, error: 'Not found'} for missing products. Why is this bad?", options: ["JSON is wrong", "HTTP status codes drive infrastructure—monitoring, caching, retry logic all expect correct status codes. Return 404.", "Success should be true", "Error message too short"], correct: 1, explanation: "Status codes aren't just for humans—they drive infrastructure behavior. 200 gets cached, doesn't trigger alerts, retry logic doesn't activate. Returning 200 for errors means CDNs cache errors, monitoring misses failures." },
+                { q: "Product prices are cached for 24 hours. You update a price but customers see the old one. What's the proper fix?", options: ["Disable caching", "Use cache-busting URLs (versioned filenames) or implement proper Cache-Control with ETags", "Ask customers to clear cache", "Reduce cache to 1 minute"], correct: 1, explanation: "Cache invalidation is hard. Most reliable: URL versioning—new content gets new URL. For stable URLs, use ETags with short max-age. Disabling caching entirely hurts performance." }
+            ],
+            essay: {
+                question: "You're meeting with your CTO about checkout completion rates dropping during flash sales. Using your HTTP knowledge, explain three different HTTP-related factors that could contribute, how to diagnose each using dev tools or logs, and technical solutions.",
+                guidance: "Strong answers discuss: (1) 503/504 errors from overload—Network tab shows 5xx, solved with scaling/caching/queuing; (2) Slow TTFB in timing breakdown—server processing bottlenecks; (3) Connection limits and HTTP/1.1 blocking—waterfall shows queued requests, solved by HTTP/2; (4) Third-party script failures blocking checkout."
+            }
         },
         {
             day: 2,
             title: "DNS, Load Balancing & CDN Architecture",
             desc: "How traffic finds your servers and scales globally",
-            tags: ["theory", "hands-on"],
-            duration: "45 min",
-            content: `<h2>Sample lesson content - Day 2</h2><p>This is a placeholder for the full DNS and CDN content.</p>`,
+            duration: "50 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Understand the complete journey from domain name to server response—DNS resolution, load balancing strategies, and CDN architecture. Essential for diagnosing outages, planning migrations, and understanding global performance.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. DNS Fundamentals</li>
+        <li>2. DNS Record Types</li>
+        <li>3. Load Balancing Strategies</li>
+        <li>4. CDN Architecture</li>
+        <li>5. Cache Invalidation</li>
+    </ul>
+</div>
+
+<h2>1. DNS Fundamentals</h2>
+
+<p>DNS translates domain names (yourstore.com) to IP addresses (104.21.55.123). It's a globally distributed, hierarchical database.</p>
+
+<p><strong>The DNS hierarchy:</strong></p>
+<ul>
+    <li><strong>Root Zone (.):</strong> 13 root server clusters globally</li>
+    <li><strong>TLDs:</strong> .com, .co.uk—managed by registries like Verisign, Nominet</li>
+    <li><strong>Second-Level:</strong> yourstore.com—what you purchase</li>
+    <li><strong>Subdomains:</strong> www, api—you control these</li>
+</ul>
+
+<p><strong>TTL (Time To Live)</strong> is critical. If your A record has TTL 86400 (24 hours), changing IPs means waiting up to 24 hours for caches to expire.</p>
+
+<div class="info-box warning">
+    <div class="info-box-title">⚠️ Pre-Migration TTL Strategy</div>
+    <p>48-72 hours before DNS changes: Lower TTL to 300 seconds. Wait the old TTL duration. Then make changes—caches refresh within 5 minutes. After success, raise TTL back.</p>
+</div>
+
+<h2>2. DNS Record Types</h2>
+
+<div class="code-block" data-lang="DNS Records">
+<code>A Record    → Domain to IPv4 address
+AAAA Record → Domain to IPv6 address
+CNAME       → Alias to another domain (can't use at apex)
+MX Record   → Mail servers (with priority)
+TXT Record  → SPF, DKIM, verification strings
+NS Record   → Authoritative nameservers
+CAA Record  → Which CAs can issue SSL certs</code>
+</div>
+
+<p><strong>Email authentication records</strong> (critical for deliverability):</p>
+<ul>
+    <li><strong>SPF:</strong> Which servers can send email for your domain</li>
+    <li><strong>DKIM:</strong> Cryptographic signature verification</li>
+    <li><strong>DMARC:</strong> Policy for handling failed authentication</li>
+</ul>
+
+<h2>3. Load Balancing</h2>
+
+<p><strong>Layer 4:</strong> Routes on IP/port only. Fast but no application awareness.</p>
+<p><strong>Layer 7:</strong> Routes on HTTP content—paths, headers, cookies. Enables sophisticated routing.</p>
+
+<div class="code-block" data-lang="L7 Routing">
+<code>/api/*     → API server pool
+/static/*  → Static servers or CDN origin
+/admin/*   → Admin servers with IP whitelist
+/*         → Web application servers</code>
+</div>
+
+<p><strong>Algorithms:</strong> Round Robin, Weighted Round Robin, Least Connections, Least Response Time, IP Hash.</p>
+
+<h2>4. CDN Architecture</h2>
+
+<p>CDNs cache content at edge locations worldwide, reducing latency and origin load.</p>
+
+<div class="code-block" data-lang="CDN Flow">
+<code>Sydney user requests /images/ring.jpg
+1. DNS resolves to nearest CDN edge (Sydney)
+2. Sydney edge: CACHE HIT? Return (~20ms)
+3. CACHE MISS? Forward to origin, cache response
+4. Subsequent Sydney requests served from edge
+
+Benefits:
+- Latency: Edge 20ms vs origin 300ms
+- Origin offload: 95%+ requests from cache
+- DDoS protection: Traffic absorbed at edge</code>
+</div>
+
+<h2>5. Cache Control</h2>
+
+<div class="code-block" data-lang="Cache-Control">
+<code>public, max-age=31536000, immutable
+# Static assets—cache forever
+
+public, s-maxage=60, stale-while-revalidate=300
+# HTML—CDN caches 60s, serves stale while refreshing
+
+private, no-store
+# Personal content—never cache at CDN</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise: DNS Investigation</div>
+    <ol>
+        <li>Run: nslookup yoursite.com</li>
+        <li>Check TTL values—suitable for quick changes?</li>
+        <li>Look for CDN headers (CF-Ray, X-Cache) in DevTools</li>
+        <li>Check cache HIT/MISS status on static assets</li>
+    </ol>
+</div>
+`,
             questions: [
-                { q: "What prevents you from using a CNAME record on a naked domain?", options: ["Security restrictions", "DNS specification limitation", "Registrar policy", "Cost"], correct: 1, explanation: "The DNS RFC specifies CNAME cannot coexist with other records. Since apex must have SOA and NS records, CNAME is prohibited there." }
-            ]
+                { q: "Migrating from Magento to Shopify. DNS TTL is 86400. Correct approach?", options: ["Change DNS immediately", "Lower TTL to 300, wait 24 hours, then change DNS", "Ask customers to clear DNS cache", "CNAME ignores TTL"], correct: 1, explanation: "Lower TTL first, wait for old TTL to expire, then change. Otherwise resolvers keep old records cached for up to 24 hours." },
+                { q: "Marketing emails going to spam. You have SPF and DKIM but no DMARC. What does DMARC do?", options: ["DMARC tells servers what to do when SPF/DKIM fail", "DMARC is just reporting", "Need MX record instead", "DMARC is optional"], correct: 0, explanation: "DMARC tells receivers your policy for handling authentication failures. Without it, Gmail makes its own decision and may be suspicious." },
+                { q: "Site uses sticky sessions. Team wants Redis for sessions instead. Business benefit?", options: ["None", "Better resilience, smoother deployments, more even load distribution", "Redis is faster", "PCI requirement"], correct: 1, explanation: "Externalizing sessions enables true horizontal scaling: any server handles any request, servers can be replaced without losing sessions." },
+                { q: "CDN shows 40% cache hit rate for images despite max-age=31536000. Likely cause?", options: ["40% is good", "Images may have unique query strings or Vary header is too broad", "CDN misconfigured", "Images too large"], correct: 1, explanation: "Low hit rates often mean cache fragmentation: unique query strings, broad Vary headers, or inconsistent URLs create separate cache entries." },
+                { q: "Flash sale: origin overloaded despite 95% CDN hit rate on static assets. What's missing?", options: ["CDN not fast enough", "Dynamic HTML pages aren't cached—add short s-maxage with stale-while-revalidate", "Image compression", "Database bottleneck"], correct: 1, explanation: "CDNs excel at static assets but dynamic pages often bypass caching. Even 5-second cache with stale-while-revalidate can reduce origin load 95%+." }
+            ],
+            essay: {
+                question: "Your site went down for 2 hours during Black Friday last year (£200k lost). As new Head of Ecommerce, outline a technical plan covering: investigation approach, DNS configuration for failover, load balancing improvements, CDN optimization, and testing methodology.",
+                guidance: "Cover: post-mortem analysis, lower TTL before sales, multi-region DNS with health checks, proper health checks and auto-scaling, maximize CDN caching including HTML, load testing and chaos engineering."
+            }
         },
         {
             day: 3,
-            title: "Cloud Hosting & Infrastructure as Code",
-            desc: "AWS, containers, and modern deployment",
-            tags: ["theory", "practical"],
+            title: "Web Servers, Containers & Cloud Infrastructure",
+            desc: "Understanding compute infrastructure and deployment",
             duration: "50 min",
-            content: `<h2>Sample lesson content - Day 3</h2><p>This is a placeholder for the full cloud hosting content.</p>`,
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Understand the compute infrastructure running your ecommerce platform: web servers, application servers, containers, orchestration, and cloud patterns.</p>
+
+<h2>1. Web Servers vs Application Servers</h2>
+
+<p><strong>Web Server (Nginx, Apache):</strong> Handles HTTP—accepts connections, serves static files, terminates SSL, forwards to application servers.</p>
+
+<p><strong>Application Server (Gunicorn, PHP-FPM, Puma):</strong> Executes business logic—processes requests, queries databases, runs your code.</p>
+
+<div class="code-block" data-lang="Request Flow">
+<code>Customer → Internet → Nginx → Gunicorn → PostgreSQL
+                       ↓
+                 Static files
+                 (served directly)</code>
+</div>
+
+<h2>2. Containerization with Docker</h2>
+
+<p>Docker packages applications with dependencies into portable containers. Unlike VMs, containers share the host kernel—lightweight and fast.</p>
+
+<div class="code-block" data-lang="Dockerfile">
+<code>FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["node", "dist/server.js"]</code>
+</div>
+
+<p><strong>Layer caching:</strong> Copy package.json before code—dependencies only reinstall when package.json changes.</p>
+
+<h2>3. Container Orchestration</h2>
+
+<p>Kubernetes manages containers across servers: scheduling, scaling, networking, deployments.</p>
+
+<p><strong>Key concepts:</strong></p>
+<ul>
+    <li><strong>Pod:</strong> Smallest unit—one or more containers</li>
+    <li><strong>Deployment:</strong> Manages Pod replicas, rolling updates</li>
+    <li><strong>Service:</strong> Stable network endpoint for Pods</li>
+    <li><strong>Ingress:</strong> HTTP routing, SSL termination</li>
+</ul>
+
+<p><strong>Readiness vs Liveness probes:</strong></p>
+<ul>
+    <li><strong>Readiness:</strong> Can this Pod handle requests? Failed = removed from Service</li>
+    <li><strong>Liveness:</strong> Is this Pod fundamentally healthy? Failed = restart container</li>
+</ul>
+
+<h2>4. Cloud Architecture</h2>
+
+<div class="code-block" data-lang="AWS Stack">
+<code>Route 53 (DNS)
+    ↓
+CloudFront (CDN) ← S3 (Static assets)
+    ↓
+WAF (Firewall)
+    ↓
+ALB (Load Balancer)
+    ↓
+ECS/EKS (Containers)
+    ↓
+RDS + ElastiCache + OpenSearch</code>
+</div>
+
+<h2>5. Infrastructure as Code</h2>
+
+<p>Define infrastructure in version-controlled files (Terraform, CloudFormation):</p>
+<ul>
+    <li>Version control every change</li>
+    <li>Review process via pull requests</li>
+    <li>Reproducible environments</li>
+    <li>Disaster recovery from code</li>
+</ul>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>Identify your stack: web server, app server, container orchestration?</li>
+        <li>Is infrastructure defined as code or manually configured?</li>
+        <li>How long to rebuild everything from scratch?</li>
+    </ol>
+</div>
+`,
             questions: [
-                { q: "Infrastructure as Code tools like Terraform allow:", options: ["Only AWS", "Defining infrastructure in version-controlled config files", "Manual server setup", "Database design"], correct: 1, explanation: "IaC tools define infrastructure declaratively in config files, enabling version control, peer review, reproducible environments, and disaster recovery." },
-                { q: "RDS Read Replica is used for:", options: ["Backup only", "Offloading read traffic from primary database", "Writing data faster", "DNS"], correct: 1, explanation: "Read replicas handle SELECT queries, offloading the primary database. Reporting, search indexing, and read-heavy workloads use replicas." }
-            ]
+                { q: "Nginx logs show thousands of static file requests but app logs show only 50/second. What's happening?", options: ["Logging bug", "Nginx serves static files directly without forwarding to app—correct, efficient configuration", "Nginx caching responses", "App dropping requests"], correct: 1, explanation: "This is optimal. Nginx serves static files directly, freeing the app server for business logic." },
+                { q: "Developer says 'Docker is enough, we don't need Kubernetes.' When is this true?", options: ["Never", "For single-server deployments. K8s handles multi-server orchestration, scaling, health-based restarts, rolling updates", "Kubernetes is always overkill", "Docker can do everything"], correct: 1, explanation: "Docker runs containers on one machine. Kubernetes orchestrates across many machines with automatic scaling, healing, and deployments." },
+                { q: "K8s deployment stuck: new Pods created but old ones not terminating. New Pods' /health returns 500. What's happening?", options: ["K8s broken", "Readiness probe protecting you—new Pods aren't healthy so old ones stay. Run migrations before deploying.", "Remove readiness probe", "Memory limit"], correct: 1, explanation: "K8s won't terminate old Pods until new ones pass readiness. Your deployment is stuck because new Pods aren't healthy." },
+                { q: "Choosing between AWS ECS and EKS. Team has limited DevOps experience but expects growth. Factors?", options: ["Always EKS", "Always ECS", "ECS simpler/AWS-native, EKS provides K8s portability and ecosystem but needs more expertise. Match to team skills.", "Flip a coin"], correct: 2, explanation: "ECS is simpler and fully AWS-managed. EKS gives Kubernetes portability but requires more expertise. Consider team skills and multi-cloud needs." },
+                { q: "Infrastructure was manually set up via AWS Console by a contractor who left. CTO asks about disaster recovery. Your answer?", options: ["Recover in an hour by clicking", "Without Infrastructure as Code, we can't reliably recreate the environment. Recovery could take days. We need to reverse-engineer into Terraform.", "AWS backs everything up", "Hope region doesn't fail"], correct: 1, explanation: "Manual 'ClickOps' is a major risk. Without IaC, you're relying on memory and hope. Reverse-engineering into Terraform is critical." }
+            ],
+            essay: {
+                question: "Current infrastructure: single VPS with Magento, MySQL, Redis, Elasticsearch all on one machine. Revenue £3M heading to £10M. Propose a cloud architecture migration plan covering: current risks, target architecture, migration approach, new capabilities, and cost implications.",
+                guidance: "Cover: single point of failure, no scaling; target with separate RDS, ElastiCache, managed ES, containerized app behind ALB with CDN; migration with parallel setup, database replication, low-TTL DNS cutover; new capabilities of scaling and automated backups; costs of £2-5K/month vs £200 now but includes operational value."
+            }
         },
         {
             day: 4,
-            title: "Database Systems: SQL Deep Dive",
+            title: "SQL Databases Deep Dive",
             desc: "Relational databases, queries, indexing, and performance",
-            tags: ["theory", "hands-on"],
-            duration: "50 min",
-            content: `<h2>Sample lesson content - Day 4</h2><p>This is a placeholder for the full SQL content.</p>`,
+            duration: "55 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Databases are the heart of ecommerce—every product, customer, and order lives there. Today covers relational database concepts for conversations about migrations, performance, and architecture.</p>
+
+<h2>1. Tables, Keys, and Relationships</h2>
+
+<div class="code-block" data-lang="SQL">
+<code>CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    sku VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    price_pence INTEGER NOT NULL,
+    category_id INTEGER REFERENCES categories(id)
+);</code>
+</div>
+
+<p><strong>Primary Key:</strong> Unique identifier. <strong>Foreign Key:</strong> References another table, establishing relationships.</p>
+
+<h2>2. SQL Query Fundamentals</h2>
+
+<div class="code-block" data-lang="SQL">
+<code>-- Basic queries
+SELECT name, price_pence FROM products WHERE is_active = true;
+
+-- JOINs
+SELECT p.name, c.name as category
+FROM products p
+JOIN categories c ON p.category_id = c.id;
+
+-- Aggregations
+SELECT category_id, COUNT(*), AVG(price_pence)
+FROM products
+GROUP BY category_id;</code>
+</div>
+
+<h2>3. Indexing</h2>
+
+<p>Indexes speed up reads but slow writes. Create indexes on columns used in WHERE, JOIN, and ORDER BY.</p>
+
+<div class="code-block" data-lang="SQL">
+<code>CREATE INDEX idx_products_category ON products(category_id);
+CREATE INDEX idx_orders_customer ON orders(customer_id);
+
+-- Composite index for common query patterns
+CREATE INDEX idx_products_active_category ON products(is_active, category_id);</code>
+</div>
+
+<h2>4. Transactions and ACID</h2>
+
+<div class="code-block" data-lang="SQL">
+<code>BEGIN;
+INSERT INTO orders (customer_id, total) VALUES (123, 4999);
+UPDATE products SET stock = stock - 1 WHERE id = 456;
+COMMIT;  -- Both succeed or both fail</code>
+</div>
+
+<p><strong>ACID:</strong> Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent safety), Durability (committed = permanent).</p>
+
+<h2>5. Common Performance Issues</h2>
+
+<p><strong>N+1 queries:</strong> Loading products then separately loading each product's images = 100 queries instead of 2.</p>
+
+<p><strong>Missing indexes on foreign keys:</strong> Foreign keys don't automatically get indexes!</p>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>Check slow query logs—what queries take longest?</li>
+        <li>Are foreign keys indexed?</li>
+        <li>Run EXPLAIN on your slowest query</li>
+    </ol>
+</div>
+`,
             questions: [
-                { q: "What does ACID stand for in database transactions?", options: ["Automatic, Consistent, Indexed, Durable", "Atomicity, Consistency, Isolation, Durability", "Asynchronous, Cached, Isolated, Distributed", "None of the above"], correct: 1, explanation: "ACID properties ensure reliable transactions: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent safety), Durability (committed = permanent)." }
-            ]
+                { q: "Product listing takes 3 seconds, running 200 queries. Most likely problem?", options: ["Database too slow", "N+1 problem—loading products then separately loading related data for each. Fix with JOINs or eager loading.", "Need more indexes", "Too many products"], correct: 1, explanation: "200 queries for one page is classic N+1. One query gets products, 199 get related data individually. Fix with JOINs or ORM eager loading." },
+                { q: "Query filters WHERE status='active' AND created_at > '2024-01-01'. You have separate indexes on both columns. How to improve?", options: ["Remove status index", "Create composite index on (status, created_at)—covers both conditions in one lookup", "Run ANALYZE", "Already optimal"], correct: 1, explanation: "Composite index on (status, created_at) lets database satisfy both conditions in one index lookup. Order matters: equality condition first." },
+                { q: "'Customers who bought this also bought' is slow on 10M order items. Best approach?", options: ["More indexes", "Pre-compute relationships into a lookup table updated periodically—don't calculate live on every request", "Query read replica", "Limit to 30 days"], correct: 1, explanation: "Complex analytical queries shouldn't run on every page view. Pre-compute (materialize) results nightly into a simple lookup table." },
+                { q: "Checkout creates order, adds items, decrements inventory. Sometimes orders have no items or inventory goes negative. Solution?", options: ["Database triggers", "Wrap operations in a transaction—all succeed or all fail together", "Stored procedures", "More backups"], correct: 1, explanation: "Transactions provide atomicity. Wrap all checkout operations in BEGIN/COMMIT. Add CHECK constraints to prevent negative inventory." },
+                { q: "Reporting queries slow down production during business hours. DBA suggests 'use read replica.' What does this mean?", options: ["Backup database", "Read replicas are real-time copies handling read queries, offloading the primary. Complex reports run without affecting production writes.", "Cache instead", "Different SQL syntax"], correct: 1, explanation: "Read replicas sync from primary and handle their own reads. Heavy SELECT queries don't compete with production INSERTs/UPDATEs." }
+            ],
+            essay: {
+                question: "Database has grown to 50GB with 5M orders and 20M line items. Load times increased from 200ms to 2 seconds over the past year. Write a diagnostic and improvement plan covering: identifying causes, quick wins, architectural improvements, and preventing future degradation.",
+                guidance: "Cover: diagnostics with slow query logs, EXPLAIN, index usage; quick wins adding indexes, fixing N+1s, query caching; architecture with read replicas, connection pooling, archiving old data; monitoring with slow query alerts, query count tracking, regular EXPLAIN review."
+            }
         },
         {
             day: 5,
-            title: "NoSQL & Caching Systems",
+            title: "NoSQL, Caching & Search Systems",
             desc: "Redis, MongoDB, Elasticsearch and when to use each",
-            tags: ["theory", "practical"],
-            duration: "45 min",
-            content: `<h2>Sample lesson content - Day 5</h2><p>This is a placeholder for the full NoSQL content.</p>`,
+            duration: "50 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Not every problem is best solved by SQL. Today covers when to use document stores, key-value caches, and search engines—and critically, when NOT to.</p>
+
+<h2>1. Redis: In-Memory Data Store</h2>
+
+<p>Redis stores data in memory for sub-millisecond operations. Use cases:</p>
+
+<div class="code-block" data-lang="Redis">
+<code># Sessions
+SET session:abc123 '{"user_id": 456}' EX 86400
+
+# Caching
+SET cache:product:456 '{"name": "Ring"...}' EX 3600
+
+# Rate limiting
+INCR rate:user:456:minute
+EXPIRE rate:user:456:minute 60
+
+# Queues
+LPUSH queue:emails '{"type": "order_confirmation"}'</code>
+</div>
+
+<div class="info-box warning">
+    <div class="info-box-title">⚠️ Redis Data Loss</div>
+    <p>Redis is in-memory. Data can be lost on restart. Never store data you can't regenerate. Configure persistence (RDB/AOF) for important data.</p>
+</div>
+
+<h2>2. Document Databases (MongoDB)</h2>
+
+<p>When documents make sense: varying attributes across products (rings have sizes, necklaces have lengths).</p>
+
+<div class="code-block" data-lang="MongoDB">
+<code>{
+    "_id": "prod_456",
+    "name": "Luna Ring",
+    "attributes": {
+        "material": "Silver",
+        "sizes": ["K", "L", "M"]
+    }
+}</code>
+</div>
+
+<p><strong>Don't use MongoDB for:</strong> Multi-document transactions, heavy relational data, complex reporting.</p>
+
+<h2>3. Elasticsearch: Full-Text Search</h2>
+
+<p>Why not SQL LIKE? It's slow (can't use indexes), has no relevance ranking, no fuzzy matching, no synonyms.</p>
+
+<div class="code-block" data-lang="Elasticsearch">
+<code>GET /products/_search
+{
+    "query": {
+        "multi_match": {
+            "query": "silver ring size M",
+            "fields": ["name^3", "description"],
+            "fuzziness": "AUTO"
+        }
+    }
+}</code>
+</div>
+
+<p><strong>Key insight:</strong> Elasticsearch is a search INDEX, not a database. Keep your SQL database as source of truth, sync to Elasticsearch.</p>
+
+<h2>4. Caching Strategies</h2>
+
+<div class="code-block" data-lang="Cache-Aside">
+<code>function getProduct(id) {
+    cached = redis.get("product:" + id)
+    if (cached) return cached
+    
+    product = database.query(id)
+    redis.set("product:" + id, product, "EX", 3600)
+    return product
+}
+
+function updateProduct(id, data) {
+    database.update(id, data)
+    redis.del("product:" + id)  // Invalidate
+}</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>What caches does your platform use?</li>
+        <li>How does site search work? SQL or dedicated engine?</li>
+        <li>If you have Redis access, check cache hit rate: INFO stats</li>
+    </ol>
+</div>
+`,
             questions: [
-                { q: "Redis is primarily used for:", options: ["Long-term data storage", "In-memory caching and fast data structures", "File storage", "Email"], correct: 1, explanation: "Redis is an in-memory data store used for caching, session storage, rate limiting, queues, and real-time features requiring sub-millisecond latency." }
-            ]
+                { q: "Sessions stored in app server memory. Users get logged out on deployments and when hitting different servers. Solution?", options: ["Sticky sessions", "Move sessions to Redis—any server can access any session, enabling stateless servers", "Cookie sessions", "Longer timeout"], correct: 1, explanation: "Externalizing sessions to Redis makes servers truly stateless. Any server handles any request, enabling scaling and zero-downtime deployments." },
+                { q: "Developer suggests MongoDB because products have 'different fields.' What else should you consider?", options: ["Approve immediately", "Do you need transactions? Complex reporting? What's the team's MongoDB expertise? PostgreSQL JSONB might work too.", "Reject MongoDB", "Only for 1M+ products"], correct: 1, explanation: "Schema flexibility isn't the only factor. Consider transactions, reporting needs, team expertise. PostgreSQL JSONB offers document flexibility within SQL." },
+                { q: "CTO asks why you can't just add a SQL index for better search. How do you explain?", options: ["SQL indexes work fine", "SQL LIKE can't use indexes effectively, doesn't rank by relevance, can't handle typos or synonyms. Elasticsearch is purpose-built for text search.", "Elasticsearch is faster", "SQL can do everything ES can"], correct: 1, explanation: "SQL and Elasticsearch solve different problems. SQL LIKE requires table scans, returns unranked results, can't handle fuzzy matching or synonyms." },
+                { q: "Cache hit rate only 20%. What causes this?", options: ["Redis too slow", "TTLs too short, cache keys too specific (including timestamps/user IDs), or high-cardinality data (unique queries)", "Need more memory", "20% is good"], correct: 1, explanation: "Low hit rates indicate: short TTLs, keys too specific (each request unique), high cardinality queries, or over-invalidation. Aim for 80%+." },
+                { q: "Product price updated in database but Elasticsearch shows old price. What's happening?", options: ["ES is buggy", "ES is a separate index that must be synced. Sync is delayed (eventual consistency). Either sync immediately or accept brief inconsistency.", "Clear ES cache", "Customer needs refresh"], correct: 1, explanation: "Elasticsearch isn't your database—it's a search index that must be kept in sync. Accept eventual consistency or implement synchronous updates." }
+            ],
+            essay: {
+                question: "Current platform uses only PostgreSQL for everything: products, orders, sessions, search (LIKE queries). Traffic growing, database at 80% CPU, search is slow, session bugs during deployments. Design a data architecture with appropriate specialized systems for each concern.",
+                guidance: "Cover: sessions to Redis (enables scaling), caching with Redis (reduces DB load), search with Elasticsearch (relevance ranking, fuzzy matching), PostgreSQL remains source of truth for orders/customers. Address sync strategies and operational considerations."
+            }
         },
         {
             day: 6,
             title: "API Design & REST Principles",
-            desc: "Designing and evaluating web APIs",
-            tags: ["theory", "practical"],
-            duration: "45 min",
-            content: `<h2>Sample lesson content - Day 6</h2><p>This is a placeholder for the full API design content.</p>`,
+            desc: "Designing, consuming, and evaluating web APIs",
+            duration: "50 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>APIs connect every system in ecommerce: payments, shipping, marketplaces, email. Today covers how to evaluate APIs, design internal ones, and debug integrations.</p>
+
+<h2>1. REST Fundamentals</h2>
+
+<p>REST uses <strong>resources</strong> (nouns) with HTTP methods:</p>
+
+<div class="code-block" data-lang="REST">
+<code>GET /products           # List
+GET /products/456       # Read
+POST /products          # Create
+PUT /products/456       # Replace
+PATCH /products/456     # Partial update
+DELETE /products/456    # Delete
+
+GET /orders/789/items   # Nested resources</code>
+</div>
+
+<h2>2. Authentication</h2>
+
+<div class="code-block" data-lang="Auth">
+<code># API Keys
+Authorization: Bearer sk_live_abc123
+
+# OAuth flow for user authorization
+1. Redirect to provider
+2. User grants permission
+3. Receive authorization code
+4. Exchange for access token
+5. Use token for API calls</code>
+</div>
+
+<h2>3. Webhooks</h2>
+
+<div class="code-block" data-lang="Webhooks">
+<code># Stripe POSTs to your endpoint
+POST /webhooks/stripe
+{ "type": "payment_intent.succeeded", "data": {...} }
+
+# Always:
+1. Verify signature (HMAC)
+2. Return 200 quickly
+3. Process asynchronously
+4. Handle retries idempotently</code>
+</div>
+
+<h2>4. Rate Limiting</h2>
+
+<div class="code-block" data-lang="Rate Limits">
+<code>X-RateLimit-Remaining: 98
+Retry-After: 60
+
+# On 429: wait Retry-After seconds
+# Use exponential backoff
+# Queue requests, don't drop</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>List all third-party APIs your platform uses</li>
+        <li>Find rate limits for each—are you at risk?</li>
+        <li>How do you verify webhook signatures?</li>
+    </ol>
+</div>
+`,
             questions: [
-                { q: "REST APIs should be:", options: ["Stateful", "Stateless - each request contains all info needed", "Session-based", "Single endpoint only"], correct: 1, explanation: "REST is stateless - each request must contain all information needed. Server doesn't store client state between requests." }
-            ]
+                { q: "GET /searchProducts?name=ring—what's the REST issue?", options: ["GET can't have params", "Nothing", "Verb 'search' shouldn't be in URL. Use GET /products?name=ring", "Should use POST"], correct: 2, explanation: "REST URLs represent resources (nouns). Use GET /products with query params for filtering." },
+                { q: "API returns 200 OK with {success: false, error: 'Not found'}. Problem?", options: ["JSON wrong", "200 should mean success. Use 404 so caching, monitoring, clients work correctly.", "Success should be true", "Message too short"], correct: 1, explanation: "Status codes drive infrastructure behavior. 200 gets cached, doesn't trigger alerts. Return appropriate 4xx/5xx for errors." },
+                { q: "Getting 429 responses with Retry-After: 60. What should code do?", options: ["Retry immediately", "Switch providers", "Wait 60+ seconds, use exponential backoff, queue requests", "Increase quota"], correct: 2, explanation: "429 = rate limited. Respect Retry-After, use exponential backoff, queue rather than hammer the API." },
+                { q: "Processing Stripe webhook without verifying signature. Risk?", options: ["None", "Attackers can send fake webhooks to mark orders as paid", "No signatures on webhooks", "Duplicate processing"], correct: 1, explanation: "Webhook endpoints are public. Without signature verification, attackers craft fake payloads. Always verify HMAC signatures." },
+                { q: "Mobile app makes 3 API calls per product page. Better approach?", options: ["Parallel calls", "Support ?include=images,reviews to return all in one request", "Cache responses", "Already optimal"], correct: 1, explanation: "Multiple requests add latency, especially mobile. APIs should support including related resources in single request." }
+            ],
+            essay: {
+                question: "Design a REST API for Click & Collect: list stores with stock, create/check/cancel reservations, mark as collected. Include URLs, methods, status codes, error scenarios, and webhooks for store systems.",
+                guidance: "Cover: resource URLs (/stores, /reservations), proper methods, 201 Created with Location, error codes (409 out of stock, 404 store not found), webhooks (reservation.created, .collected, .expired)."
+            }
         },
         {
             day: 7,
             title: "Week 1 Review & Architecture Exercise",
-            desc: "Synthesise infrastructure knowledge",
-            tags: ["review", "hands-on"],
+            desc: "Synthesize infrastructure knowledge",
             duration: "60 min",
-            content: `<h2>Week 1 Synthesis</h2><p>Review HTTP, DNS, hosting, databases, and APIs. Complete an architecture diagramming exercise for your own platform.</p>`,
+            content: `
+<h2>Week 1 Synthesis</h2>
+
+<p>This week covered the complete technical stack from HTTP to databases. Let's bring it together.</p>
+
+<h2>The Complete Request Journey</h2>
+
+<div class="code-block" data-lang="Flow">
+<code>1. Customer types URL
+2. Browser checks DNS cache, then resolver
+3. DNS returns IP (or CDN edge IP)
+4. Browser connects via HTTPS/TLS
+5. CDN: Cache HIT → return immediately
+6. CDN: MISS → forward to origin
+7. Load balancer routes to healthy server
+8. Web server (Nginx) handles request
+9. Static file → serve directly
+10. Dynamic → forward to app server
+11. App server processes, queries database
+12. Response flows back: app → web → CDN → browser</code>
+</div>
+
+<h2>Key Vocabulary</h2>
+
+<ul>
+    <li><strong>TTL:</strong> Time To Live—how long before cache expires</li>
+    <li><strong>Idempotent:</strong> Same result whether done once or many times</li>
+    <li><strong>Stateless:</strong> No memory between requests</li>
+    <li><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability</li>
+    <li><strong>CDN:</strong> Content Delivery Network—edge caching</li>
+    <li><strong>Load balancer:</strong> Distributes traffic across servers</li>
+    <li><strong>Read replica:</strong> Database copy for read queries</li>
+</ul>
+
+<h2>Architecture Exercise</h2>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Week 1 Capstone</div>
+    <p>Draw your platform's architecture diagram showing:</p>
+    <ol>
+        <li>DNS provider and configuration</li>
+        <li>CDN and caching strategy</li>
+        <li>Load balancing setup</li>
+        <li>Web and application servers</li>
+        <li>Databases and caches</li>
+        <li>External integrations (payments, shipping)</li>
+    </ol>
+    <p>Identify: single points of failure, scaling limitations, disaster recovery gaps.</p>
+</div>
+`,
             questions: [
-                { q: "Complete infrastructure review quiz covering all Week 1 topics", options: ["Ready to proceed", "Need more review", "Skip", "Retake week"], correct: 0, explanation: "Week 1 complete. You now understand the infrastructure layer." }
-            ]
+                { q: "Customer complains site is slow in Australia. Your servers are in London. What's the primary cause and solution?", options: ["Slow servers", "Geographic latency—light takes 150ms each way. Solution: CDN with Australian edge or regional deployment.", "Customer's internet", "Database"], correct: 1, explanation: "Physics: London to Sydney is ~300ms round trip minimum. CDN edges in Australia serve cached content locally. For dynamic content, consider regional deployment." },
+                { q: "During sale, database CPU hits 100% and site crashes. Quick investigation reveals lots of identical queries. First action?", options: ["Upgrade database", "Add caching layer (Redis) for repeated queries", "Add read replica", "Optimize queries"], correct: 1, explanation: "Identical queries indicate missing cache. Redis caching of common queries provides immediate relief. Then investigate query optimization and read replicas for longer-term." },
+                { q: "New payment integration times out randomly. Vendor says their API is fine. What should you investigate first?", options: ["Blame vendor", "Check your timeout settings, network path, and whether their API is in a different region adding latency", "Switch providers", "Add retry"], correct: 1, explanation: "Timeouts have many causes: your timeout too short, network issues, geographic latency, or intermittent vendor issues. Investigate systematically before blaming vendor." },
+                { q: "Developer proposes moving from monolith to microservices for a team of 3. Your response?", options: ["Approve—microservices are modern", "For 3 people, microservices likely adds complexity without benefit. Monolith can scale far. Discuss specific pain points first.", "Reject", "Need more servers"], correct: 1, explanation: "Microservices add operational complexity (deployment, debugging, networking). For small teams, a well-structured monolith is often better. Address specific scaling pain points." },
+                { q: "Site went down. Post-mortem reveals a config change that wasn't reviewed. How to prevent?", options: ["Better training", "Infrastructure as Code with pull request reviews—all changes reviewed before applying", "Manual checklist", "More documentation"], correct: 1, explanation: "IaC with PR reviews ensures all changes are reviewed by others before applying. Manual processes fail. Code review catches mistakes." }
+            ],
+            essay: {
+                question: "Write a technical brief for your CEO explaining why you need to invest in infrastructure improvements. Cover current risks, proposed changes, business benefits (uptime, performance, development speed), and rough cost estimates. Assume non-technical audience.",
+                guidance: "Translate technical concepts to business impact: single point of failure = risk of extended downtime and lost revenue; poor performance = reduced conversion rates; manual infrastructure = slow feature delivery and incident recovery. Quantify where possible."
+            }
         }
     ],
     week2: [
-        { day: 8, title: "HTML5 Semantics & Accessibility", desc: "Semantic markup, ARIA, and accessibility standards", tags: ["practical"], duration: "40 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 9, title: "CSS Architecture & Methodologies", desc: "BEM, CSS Modules, utility-first", tags: ["practical"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 10, title: "Responsive Design & Performance", desc: "Mobile-first, Core Web Vitals", tags: ["practical"], duration: "50 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 11, title: "JavaScript Fundamentals & ES6+", desc: "Modern JavaScript features", tags: ["practical"], duration: "50 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 12, title: "DOM Manipulation & Events", desc: "Browser APIs and event handling", tags: ["practical"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 13, title: "Frontend Build Tools & Bundlers", desc: "Webpack, Vite, npm", tags: ["practical"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 14, title: "Frontend Frameworks Overview", desc: "React, Vue, and when to use frameworks", tags: ["theory"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
+        { day: 8, title: "HTML5 Semantics & Accessibility", desc: "Semantic markup, ARIA, and inclusive design", duration: "45 min", content: `<p>Full content for Day 8 covering semantic HTML, WCAG, ARIA, and accessibility testing. To be expanded with 1500+ words.</p>`, questions: [{ q: "Placeholder question", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay question", guidance: "Guidance" } },
+        { day: 9, title: "CSS Architecture & Methodologies", desc: "BEM, CSS Modules, and managing stylesheets", duration: "45 min", content: `<p>Full content for Day 9 covering CSS organization, BEM naming, specificity, and CSS variables.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 10, title: "Core Web Vitals & Performance", desc: "LCP, INP, CLS and optimization strategies", duration: "50 min", content: `<p>Full content for Day 10 covering performance metrics, image optimization, and measurement tools.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 11, title: "JavaScript Fundamentals", desc: "JS for non-developers: reading and debugging", duration: "50 min", content: `<p>Full content for Day 11 covering variables, functions, DOM, events, and debugging.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 12, title: "DOM & Event Handling", desc: "How JavaScript interacts with pages", duration: "45 min", content: `<p>Full content for Day 12 covering DOM manipulation, event delegation, and common patterns.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 13, title: "Frontend Build Tools", desc: "Webpack, Vite, npm, and the build pipeline", duration: "45 min", content: `<p>Full content for Day 13 covering module bundling, transpilation, and development workflows.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 14, title: "Frontend Frameworks Overview", desc: "React, Vue, and when to use frameworks", duration: "45 min", content: `<p>Full content for Day 14 covering component models, state management, and SSR vs SPA.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
     ],
     week3: [
-        { day: 15, title: "Server-Side Rendering & Hydration", desc: "SSR, SSG, ISR", tags: ["theory"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 16, title: "Authentication & Authorization", desc: "Sessions, JWTs, OAuth", tags: ["practical"], duration: "50 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 17, title: "Payment Integration Patterns", desc: "Stripe, PayPal, PCI compliance", tags: ["practical"], duration: "50 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 18, title: "Webhooks & Event-Driven Architecture", desc: "Designing reliable event systems", tags: ["practical"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 19, title: "Message Queues & Background Jobs", desc: "Redis queues, SQS", tags: ["practical"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 20, title: "Search Implementation", desc: "Elasticsearch, Algolia", tags: ["practical"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 21, title: "Week 3 Review", desc: "Integration architecture", tags: ["review"], duration: "60 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
+        { day: 15, title: "Server-Side Rendering", desc: "SSR, SSG, ISR and rendering patterns", duration: "45 min", content: `<p>Full content for Day 15.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 16, title: "Authentication & Authorization", desc: "Sessions, JWTs, OAuth patterns", duration: "50 min", content: `<p>Full content for Day 16.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 17, title: "Payment Integration", desc: "Stripe, PCI compliance, payment flows", duration: "50 min", content: `<p>Full content for Day 17.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 18, title: "Webhooks & Event Architecture", desc: "Designing reliable event systems", duration: "45 min", content: `<p>Full content for Day 18.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 19, title: "Message Queues & Background Jobs", desc: "Async processing patterns", duration: "45 min", content: `<p>Full content for Day 19.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 20, title: "Search Implementation", desc: "Elasticsearch, Algolia, search UX", duration: "45 min", content: `<p>Full content for Day 20.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 21, title: "Week 3 Review", desc: "Integration architecture exercise", duration: "60 min", content: `<p>Week 3 synthesis.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
     ],
     week4: [
-        { day: 22, title: "Ecommerce Platform Architecture", desc: "Monolith vs microservices", tags: ["theory"], duration: "50 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 23, title: "Performance Monitoring & APM", desc: "New Relic, DataDog", tags: ["practical"], duration: "45 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 24, title: "Security Best Practices", desc: "OWASP Top 10", tags: ["practical"], duration: "50 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 25, title: "CI/CD & Deployment Pipelines", desc: "GitHub Actions, blue-green deployments", tags: ["practical"], duration: "50 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 26, title: "Incident Management & On-Call", desc: "Runbooks and post-mortems", tags: ["practical"], duration: "45 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 27, title: "Cost Optimisation & FinOps", desc: "Cloud cost management", tags: ["practical"], duration: "45 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 28, title: "Week 4 Review", desc: "Operations assessment", tags: ["review"], duration: "60 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
+        { day: 22, title: "Ecommerce Platform Architecture", desc: "Monolith vs microservices, headless", duration: "50 min", content: `<p>Full content for Day 22.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 23, title: "Performance Monitoring & APM", desc: "New Relic, DataDog, observability", duration: "45 min", content: `<p>Full content for Day 23.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 24, title: "Security Best Practices", desc: "OWASP Top 10, security headers", duration: "50 min", content: `<p>Full content for Day 24.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 25, title: "CI/CD & Deployment", desc: "GitHub Actions, deployment strategies", duration: "50 min", content: `<p>Full content for Day 25.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 26, title: "Incident Management", desc: "Runbooks, on-call, post-mortems", duration: "45 min", content: `<p>Full content for Day 26.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 27, title: "Cost Optimization", desc: "Cloud cost management, FinOps", duration: "45 min", content: `<p>Full content for Day 27.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 28, title: "Week 4 Review", desc: "Operations deep dive", duration: "60 min", content: `<p>Week 4 synthesis.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
     ],
     bonus: [
-        { day: 29, title: "Technical Leadership & Vendor Management", desc: "Managing agencies and technical hiring", tags: ["strategy"], duration: "45 min", content: `<p>Bonus week placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
-        { day: 30, title: "Technical Roadmapping & Strategy", desc: "Building technical roadmaps", tags: ["strategy"], duration: "50 min", content: `<h2>Course Complete</h2><p>You now have the technical foundation for ecommerce director-level conversations.</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
+        { day: 29, title: "Technical Leadership", desc: "Vendor management, technical hiring", duration: "45 min", content: `<p>Full content for Day 29.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
+        { day: 30, title: "Technical Roadmapping", desc: "Strategy and presenting to executives", duration: "50 min", content: `<h2>Congratulations!</h2><p>You've completed 30 days of intensive technical training. You now have the foundation for director-level technical conversations and decisions.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
     ]
 };
 
 // Application Code
-let completedDays = JSON.parse(localStorage.getItem('advCompletedDays') || '[]');
+let completedDays = JSON.parse(localStorage.getItem('techFluencyCompleted') || '[]');
 let currentDay = null;
 let currentQuizIndex = 0;
 let quizAnswers = [];
@@ -349,29 +967,19 @@ function renderDashboard() {
     weeks.forEach(week => {
         const grid = document.getElementById(week.id);
         if (grid && week.data) {
-            grid.innerHTML = week.data.map(day => createDayCard(day)).join('');
+            grid.innerHTML = week.data.map(day => {
+                const isCompleted = completedDays.includes(day.day);
+                const isUnlocked = day.day === 1 || completedDays.includes(day.day - 1) || isCompleted;
+                const statusClass = isCompleted ? 'completed' : (!isUnlocked ? 'locked' : (isUnlocked && !isCompleted ? 'current' : ''));
+                const statusIcon = isCompleted ? '✓' : (!isUnlocked ? '🔒' : '→');
+                return `<div class="day-card ${statusClass}" onclick="${isUnlocked ? `openLesson(${day.day})` : ''}">
+                    <div class="day-header"><span class="day-number">DAY ${day.day}</span><span>${statusIcon}</span></div>
+                    <h3 class="day-title">${day.title}</h3>
+                    <p class="day-desc">${day.desc}</p>
+                </div>`;
+            }).join('');
         }
     });
-}
-
-function createDayCard(day) {
-    const isCompleted = completedDays.includes(day.day);
-    const isUnlocked = day.day === 1 || completedDays.includes(day.day - 1) || isCompleted;
-    const isCurrent = isUnlocked && !isCompleted;
-    let statusClass = isCompleted ? 'completed' : (isCurrent ? 'current' : (!isUnlocked ? 'locked' : ''));
-    let statusIcon = isCompleted ? '✓' : (isCurrent ? '→' : (!isUnlocked ? '🔒' : ''));
-    const tags = day.tags.map(t => `<span class="tag ${t}">${t}</span>`).join('');
-    return `
-        <div class="day-card ${statusClass}" onclick="${isUnlocked ? `openLesson(${day.day})` : ''}">
-            <div class="day-header">
-                <span class="day-number">DAY ${day.day}</span>
-                <span class="day-status">${statusIcon}</span>
-            </div>
-            <h3 class="day-title">${day.title}</h3>
-            <p class="day-desc">${day.desc}</p>
-            <div class="day-tags">${tags}<span class="tag">${day.duration}</span></div>
-        </div>
-    `;
 }
 
 function findDay(dayNum) {
@@ -387,92 +995,71 @@ function openLesson(dayNum) {
     quizAnswers = [];
     quizScore = 0;
     document.getElementById('dashboardView').style.display = 'none';
-    const lessonView = document.getElementById('lessonView');
-    lessonView.classList.add('active');
-
-    lessonView.innerHTML = `
+    const lv = document.getElementById('lessonView');
+    lv.classList.add('active');
+    lv.innerHTML = `
         <div class="lesson-header">
             <button class="back-btn" onclick="closeLesson()">← Back to Dashboard</button>
             <h1 class="lesson-title">Day ${day.day}: ${day.title}</h1>
-            <div class="lesson-meta">
-                <span>⏱ ${day.duration}</span>
-                <span>📝 ${day.questions ? day.questions.length : 0} questions</span>
-            </div>
+            <div class="lesson-meta">⏱ ${day.duration} | 📝 ${day.questions.length} questions + essay</div>
         </div>
         <div class="lesson-content">${day.content}</div>
         <div id="quizContainer"></div>
+        <div id="essayContainer"></div>
         <div class="btn-group" id="lessonActions">
-            <button class="btn btn-primary" onclick="startQuiz()">Start Quiz (${day.questions ? day.questions.length : 0} Questions)</button>
+            <button class="btn btn-primary" onclick="startQuiz()">Start Quiz (${day.questions.length} Questions)</button>
             <button class="btn btn-secondary" onclick="closeLesson()">Back to Dashboard</button>
-        </div>
-    `;
+        </div>`;
     window.scrollTo(0, 0);
 }
 
 function startQuiz() {
-    const day = findDay(currentDay);
-    if (!day || !day.questions || day.questions.length === 0) {
-        completeDay(currentDay);
-        return;
-    }
     document.getElementById('lessonActions').style.display = 'none';
     currentQuizIndex = 0;
-    quizAnswers = new Array(day.questions.length).fill(null);
+    quizAnswers = new Array(findDay(currentDay).questions.length).fill(null);
+    quizScore = 0;
     renderQuizQuestion();
 }
 
 function renderQuizQuestion() {
     const day = findDay(currentDay);
-    const questions = day.questions;
-    const q = questions[currentQuizIndex];
+    const q = day.questions[currentQuizIndex];
     const container = document.getElementById('quizContainer');
-
-    const optionsHtml = q.options.map((opt, i) => `
-        <div class="quiz-option" onclick="selectQuizOption(${i})">
-            <span class="option-letter">${String.fromCharCode(65 + i)}</span>
-            <span>${opt}</span>
-        </div>
-    `).join('');
-
     container.innerHTML = `
         <div class="quiz-section">
-            <div class="quiz-header">Quiz: Day ${currentDay}</div>
-            <div class="quiz-progress">Question ${currentQuizIndex + 1} of ${questions.length}</div>
+            <div class="quiz-progress">Question ${currentQuizIndex + 1} of ${day.questions.length}</div>
             <div class="quiz-question">${q.q}</div>
-            <div class="quiz-options" id="quizOptions">${optionsHtml}</div>
+            <div class="quiz-options">${q.options.map((opt, i) => `
+                <div class="quiz-option" onclick="selectOption(${i})">
+                    <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+                    <span>${opt}</span>
+                </div>`).join('')}</div>
             <div class="quiz-feedback" id="quizFeedback"></div>
             <div class="quiz-nav">
-                <button class="btn btn-secondary btn-small" onclick="prevQuestion()" ${currentQuizIndex === 0 ? 'disabled' : ''}>← Previous</button>
-                <button class="btn btn-primary btn-small" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+                <button class="btn btn-secondary" onclick="prevQuestion()" ${currentQuizIndex === 0 ? 'disabled' : ''}>← Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
             </div>
-        </div>
-    `;
+        </div>`;
     container.scrollIntoView({ behavior: 'smooth' });
 }
 
-function selectQuizOption(index) {
+function selectOption(index) {
     const day = findDay(currentDay);
     const q = day.questions[currentQuizIndex];
-    const options = document.querySelectorAll('#quizOptions .quiz-option');
-    const feedback = document.getElementById('quizFeedback');
-
-    options.forEach((opt, i) => {
+    document.querySelectorAll('#quizContainer .quiz-option').forEach((opt, i) => {
         opt.classList.remove('selected', 'correct', 'incorrect');
         opt.style.pointerEvents = 'none';
         if (i === q.correct) opt.classList.add('correct');
         if (i === index && i !== q.correct) opt.classList.add('incorrect');
         if (i === index) opt.classList.add('selected');
     });
-
     quizAnswers[currentQuizIndex] = index;
-    const isCorrect = index === q.correct;
-    if (isCorrect) quizScore++;
-
-    feedback.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong><br>${q.explanation}`;
-    feedback.className = `quiz-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
-
+    if (index === q.correct) quizScore++;
+    const fb = document.getElementById('quizFeedback');
+    fb.innerHTML = `<strong>${index === q.correct ? '✓ Correct!' : '✗ Incorrect'}</strong><br>${q.explanation}`;
+    fb.className = `quiz-feedback show ${index === q.correct ? 'correct' : 'incorrect'}`;
     document.getElementById('nextBtn').disabled = false;
-    document.getElementById('nextBtn').textContent = currentQuizIndex === day.questions.length - 1 ? 'See Results' : 'Next →';
+    document.getElementById('nextBtn').textContent = currentQuizIndex === day.questions.length - 1 ? 'Continue to Essay' : 'Next →';
 }
 
 function nextQuestion() {
@@ -481,43 +1068,43 @@ function nextQuestion() {
         currentQuizIndex++;
         renderQuizQuestion();
     } else {
-        showQuizResults();
+        showEssay();
     }
 }
 
 function prevQuestion() {
-    if (currentQuizIndex > 0) {
-        currentQuizIndex--;
-        renderQuizQuestion();
-    }
+    if (currentQuizIndex > 0) { currentQuizIndex--; renderQuizQuestion(); }
 }
 
-function showQuizResults() {
+function showEssay() {
     const day = findDay(currentDay);
-    const total = day.questions.length;
-    const percent = Math.round((quizScore / total) * 100);
-    const passed = percent >= 70;
-
     document.getElementById('quizContainer').innerHTML = `
-        <div class="quiz-score">
-            <div class="score-value">${quizScore}/${total}</div>
-            <div class="score-label">${percent}% - ${passed ? 'Passed!' : 'Review and retry'}</div>
+        <div class="quiz-results">
+            <div class="score-display">${quizScore}/${day.questions.length}</div>
+            <p>Quiz Complete - ${Math.round(quizScore/day.questions.length*100)}%</p>
+        </div>`;
+    document.getElementById('essayContainer').innerHTML = `
+        <div class="essay-section">
+            <div class="essay-header">📝 Essay Question</div>
+            <div class="essay-question">${day.essay.question}</div>
+            <textarea class="essay-textarea" id="essayAnswer" placeholder="Write your response here..."></textarea>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;"><strong>Guidance:</strong> ${day.essay.guidance}</p>
         </div>
-        <div class="btn-group" style="justify-content: center;">
-            ${passed ? `<button class="btn btn-primary" onclick="completeDay(${currentDay})">Complete Day ${currentDay}</button>` : ''}
-            <button class="btn btn-secondary" onclick="retryQuiz()">Retry Quiz</button>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="completeDay(${currentDay})">Complete Day ${currentDay}</button>
             <button class="btn btn-secondary" onclick="closeLesson()">Back to Dashboard</button>
-        </div>
-    `;
+        </div>`;
+    document.getElementById('essayContainer').scrollIntoView({ behavior: 'smooth' });
 }
 
-function retryQuiz() {
-    currentQuizIndex = 0;
-    quizAnswers = [];
-    quizScore = 0;
-    document.getElementById('lessonActions').style.display = 'flex';
-    document.getElementById('quizContainer').innerHTML = '';
-    window.scrollTo(0, 0);
+function completeDay(dayNum) {
+    if (!completedDays.includes(dayNum)) {
+        completedDays.push(dayNum);
+        localStorage.setItem('techFluencyCompleted', JSON.stringify(completedDays));
+    }
+    const next = dayNum + 1;
+    if (next <= 30 && findDay(next)) openLesson(next);
+    else closeLesson();
 }
 
 function closeLesson() {
@@ -528,41 +1115,14 @@ function closeLesson() {
     updateProgress();
 }
 
-function completeDay(dayNum) {
-    if (!completedDays.includes(dayNum)) {
-        completedDays.push(dayNum);
-        localStorage.setItem('advCompletedDays', JSON.stringify(completedDays));
-    }
-    const nextDay = dayNum + 1;
-    if (nextDay <= 30 && findDay(nextDay)) {
-        openLesson(nextDay);
-    } else {
-        closeLesson();
-    }
-}
-
 function updateProgress() {
-    const total = 30;
-    const completed = completedDays.length;
-    document.getElementById('progressFill').style.width = (completed / total * 100) + '%';
-    document.getElementById('completedCount').textContent = completed;
-    let streak = parseInt(localStorage.getItem('advStreak') || '0');
-    const today = new Date().toDateString();
-    const lastActive = localStorage.getItem('advLastActive');
-    if (lastActive !== today && completed > 0) {
-        const yesterday = new Date(Date.now() - 86400000).toDateString();
-        streak = lastActive === yesterday ? streak + 1 : 1;
-        localStorage.setItem('advStreak', streak);
-        localStorage.setItem('advLastActive', today);
-    }
-    document.getElementById('streakCount').textContent = streak;
+    document.getElementById('progressFill').style.width = (completedDays.length / 30 * 100) + '%';
+    document.getElementById('completedCount').textContent = completedDays.length;
 }
 
 function resetProgress() {
-    if (confirm('Reset all progress? This cannot be undone.')) {
-        localStorage.removeItem('advCompletedDays');
-        localStorage.removeItem('advStreak');
-        localStorage.removeItem('advLastActive');
+    if (confirm('Reset all progress?')) {
+        localStorage.removeItem('techFluencyCompleted');
         completedDays = [];
         renderDashboard();
         updateProgress();
