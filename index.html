@@ -8,110 +8,160 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
+        /* Base Design System Variables */
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-card-hover: #1a1a25;
-            --accent-primary: #00d4aa;
-            --accent-secondary: #ff6b35;
-            --accent-tertiary: #7c3aed;
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --text-muted: #606060;
-            --success: #00d4aa;
-            --warning: #ffb800;
-            --error: #ff4757;
-            --border: #2a2a35;
+            --bg: #F7F8FA;
+            --card: #FFFFFF;
+            --text: #111318;
+            --muted: #3B4048;
+            --border: #E6E8EE;
+            --accent: #2563EB;
+            --danger: #B42318;
+            --radius: 14px;
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 32px;
+            --max-reading: 65ch;
+
+            /* Extended variables for existing functionality */
+            --bg-dark: var(--bg);
+            --bg-card: var(--card);
+            --bg-card-hover: #F1F2F4;
+            --accent-primary: var(--accent);
+            --accent-secondary: #EA580C;
+            --accent-tertiary: #7C3AED;
+            --text-primary: var(--text);
+            --text-secondary: var(--muted);
+            --text-muted: #6B7280;
+            --success: #059669;
+            --warning: #D97706;
+            --error: var(--danger);
         }
+
+        /* Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Atkinson Hyperlegible', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.8; letter-spacing: 0.02em; }
-        code, .code-block { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+
+        html {
+            font-size: 17px;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.55;
+        }
+
+        code, .code-block {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 0.92em;
+        }
+
         .container { max-width: 900px; margin: 0 auto; padding: 80px 1.5rem 3rem; }
-        .nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { font-weight: 700; color: var(--accent-primary); }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand { font-weight: 700; color: var(--accent); }
         .progress-bar { height: 3px; background: var(--border); position: fixed; top: 60px; left: 0; right: 0; z-index: 999; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary)); width: 0%; transition: width 0.5s; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-tertiary)); width: 0%; transition: width 0.5s; }
         .hero { text-align: center; padding: 2rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
-        .hero h1 { font-size: 2rem; background: linear-gradient(135deg, var(--text-primary), var(--accent-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
-        .hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        .hero h1 { font-size: 2rem; background: linear-gradient(135deg, var(--text), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+        .hero p { color: var(--muted); max-width: 600px; margin: 0 auto; }
         .week-section { margin-bottom: 2rem; }
         .week-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
-        .week-number { background: var(--bg-card); border: 2px solid var(--accent-tertiary); color: var(--accent-tertiary); width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .week-number { background: var(--card); border: 2px solid var(--accent-tertiary); color: var(--accent-tertiary); width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
         .week-info h2 { font-size: 1.2rem; }
-        .week-desc { color: var(--text-secondary); font-size: 0.9rem; }
+        .week-desc { color: var(--muted); font-size: 0.9rem; }
         .day-grid { display: grid; gap: 0.75rem; }
-        .day-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.2s; position: relative; }
-        .day-card:hover { background: var(--bg-card-hover); border-color: var(--accent-primary); transform: translateX(4px); }
+        .day-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; cursor: pointer; transition: all 0.2s; position: relative; }
+        .day-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateX(4px); }
         .day-card.locked { opacity: 0.5; cursor: not-allowed; }
         .day-card.locked:hover { transform: none; border-color: var(--border); }
         .day-card.completed { border-left: 4px solid var(--success); }
         .day-card.current { border-left: 4px solid var(--accent-secondary); }
         .day-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
-        .day-number { font-weight: 700; color: var(--accent-primary); font-size: 0.85rem; }
+        .day-number { font-weight: 700; color: var(--accent); font-size: 0.85rem; }
         .day-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
-        .day-desc { color: var(--text-secondary); font-size: 0.9rem; }
+        .day-desc { color: var(--muted); font-size: 0.9rem; }
         .lesson-view { display: none; }
         .lesson-view.active { display: block; }
         .lesson-header { padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
-        .back-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-family: inherit; font-size: 0.95rem; padding: 0; margin-bottom: 1rem; display: block; }
-        .back-btn:hover { color: var(--accent-primary); }
+        .back-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-family: inherit; font-size: 0.95rem; padding: 0; margin-bottom: 1rem; display: block; }
+        .back-btn:hover { color: var(--accent); }
         .lesson-title { font-size: 1.75rem; margin-bottom: 0.5rem; }
-        .lesson-meta { color: var(--text-secondary); font-size: 0.9rem; }
+        .lesson-meta { color: var(--muted); font-size: 0.9rem; }
         .lesson-content { font-size: 1.05rem; }
-        .lesson-content h2 { color: var(--accent-primary); font-size: 1.4rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-        .lesson-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: var(--text-primary); }
+        .lesson-content h2 { color: var(--accent); font-size: 1.4rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+        .lesson-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
         .lesson-content h4 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; color: var(--accent-secondary); }
-        .lesson-content p { margin-bottom: 1rem; color: var(--text-secondary); }
-        .lesson-content ul, .lesson-content ol { margin-bottom: 1rem; padding-left: 1.5rem; color: var(--text-secondary); }
+        .lesson-content p { margin-bottom: 1rem; color: var(--muted); }
+        .lesson-content ul, .lesson-content ol { margin-bottom: 1rem; padding-left: 1.5rem; color: var(--muted); }
         .lesson-content li { margin-bottom: 0.4rem; }
-        .lesson-content strong { color: var(--text-primary); }
-        .code-block { background: #1a1a24; border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin: 1rem 0; overflow-x: auto; position: relative; }
+        .lesson-content strong { color: var(--text); }
+        .code-block { background: #F9FAFB; border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin: 1rem 0; overflow-x: auto; position: relative; }
         .code-block::before { content: attr(data-lang); position: absolute; top: 0; right: 0; background: var(--accent-tertiary); color: white; padding: 0.2rem 0.6rem; font-size: 0.7rem; border-radius: 0 10px 0 6px; }
-        .code-block code { white-space: pre; display: block; line-height: 1.5; }
-        .info-box { border-left: 4px solid var(--accent-tertiary); padding: 1rem; margin: 1.5rem 0; background: rgba(124,58,237,0.1); border-radius: 0 10px 10px 0; }
-        .info-box.warning { border-color: var(--warning); background: rgba(255,184,0,0.1); }
-        .info-box.critical { border-color: var(--error); background: rgba(255,71,87,0.1); }
-        .info-box.success { border-color: var(--success); background: rgba(0,212,170,0.1); }
+        .code-block code { white-space: pre; display: block; line-height: 1.5; color: var(--text); }
+        .info-box { border-left: 4px solid var(--accent); padding: 1rem; margin: 1.5rem 0; background: #EEF4FF; border-radius: 0 10px 10px 0; }
+        .info-box.warning { border-color: var(--warning); background: #FEF3C7; }
+        .info-box.critical { border-color: var(--error); background: #FEE2E2; }
+        .info-box.success { border-color: var(--success); background: #D1FAE5; }
         .info-box-title { font-weight: 700; margin-bottom: 0.5rem; }
-        .exercise { background: var(--bg-card); border: 2px solid var(--warning); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; }
+        .exercise { background: var(--card); border: 2px solid var(--warning); border-radius: var(--radius); padding: 1.25rem; margin: 1.5rem 0; }
         .exercise-header { color: var(--warning); font-weight: 700; margin-bottom: 0.75rem; }
-        .quiz-section { background: var(--bg-card); border: 2px solid var(--accent-tertiary); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .quiz-section { background: var(--card); border: 2px solid var(--accent-tertiary); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; }
         .quiz-progress { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
-        .quiz-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; padding: 1rem; background: var(--bg-dark); border-radius: 8px; }
+        .quiz-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; padding: 1rem; background: var(--bg); border-radius: 8px; }
         .quiz-options { display: grid; gap: 0.6rem; }
-        .quiz-option { background: var(--bg-dark); border: 2px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; display: flex; align-items: flex-start; gap: 0.75rem; transition: all 0.2s; }
+        .quiz-option { background: var(--bg); border: 2px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; display: flex; align-items: flex-start; gap: 0.75rem; transition: all 0.2s; }
         .quiz-option:hover { border-color: var(--accent-tertiary); }
-        .quiz-option.selected { border-color: var(--accent-primary); background: rgba(0,212,170,0.1); }
-        .quiz-option.correct { border-color: var(--success); background: rgba(0,212,170,0.15); }
-        .quiz-option.incorrect { border-color: var(--error); background: rgba(255,71,87,0.15); }
+        .quiz-option.selected { border-color: var(--accent); background: #EEF4FF; }
+        .quiz-option.correct { border-color: var(--success); background: #D1FAE5; }
+        .quiz-option.incorrect { border-color: var(--error); background: #FEE2E2; }
         .option-letter { min-width: 26px; height: 26px; border-radius: 5px; background: var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
-        .quiz-option.correct .option-letter { background: var(--success); color: var(--bg-dark); }
+        .quiz-option.correct .option-letter { background: var(--success); color: white; }
         .quiz-option.incorrect .option-letter { background: var(--error); color: white; }
         .quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none; }
         .quiz-feedback.show { display: block; }
-        .quiz-feedback.correct { background: rgba(0,212,170,0.15); border: 1px solid var(--success); }
-        .quiz-feedback.incorrect { background: rgba(255,71,87,0.15); border: 1px solid var(--error); }
+        .quiz-feedback.correct { background: #D1FAE5; border: 1px solid var(--success); }
+        .quiz-feedback.incorrect { background: #FEE2E2; border: 1px solid var(--error); }
         .quiz-nav { display: flex; justify-content: space-between; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
         .btn { padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; font-family: inherit; transition: all 0.2s; }
-        .btn-primary { background: var(--accent-primary); color: var(--bg-dark); }
+        .btn-primary { background: var(--accent); color: white; }
         .btn-primary:hover { transform: translateY(-2px); }
         .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-        .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--accent-primary); }
-        .essay-section { background: var(--bg-card); border: 2px solid var(--accent-secondary); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .btn-secondary { background: transparent; color: var(--text); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--accent); }
+        .essay-section { background: var(--card); border: 2px solid var(--accent-secondary); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; }
         .essay-header { color: var(--accent-secondary); font-weight: 700; margin-bottom: 1rem; }
         .essay-question { margin-bottom: 1rem; }
-        .essay-textarea { width: 100%; min-height: 200px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; color: var(--text-primary); font-family: inherit; font-size: 1rem; resize: vertical; }
-        .essay-textarea:focus { outline: 2px solid var(--accent-primary); border-color: transparent; }
+        .essay-textarea { width: 100%; min-height: 200px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; color: var(--text); font-family: inherit; font-size: 1rem; resize: vertical; }
+        .essay-textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
         .quiz-results { text-align: center; padding: 2rem; }
-        .score-display { font-size: 2.5rem; font-weight: 700; color: var(--accent-primary); }
+        .score-display { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
         .btn-group { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-        .reset-btn { position: fixed; bottom: 1rem; right: 1rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
-        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
-        .toc-title { font-weight: 700; color: var(--accent-primary); margin-bottom: 0.75rem; }
+        .reset-btn { position: fixed; bottom: 1rem; right: 1rem; background: var(--card); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
+        .toc { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
+        .toc-title { font-weight: 700; color: var(--accent); margin-bottom: 0.75rem; }
         .toc-list { list-style: none; padding: 0; }
-        .toc-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 0.95rem; }
+        .toc-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 0.95rem; }
         .toc-list li:last-child { border: none; }
         @media (max-width: 600px) {
             .container { padding: 70px 1rem 2rem; }
