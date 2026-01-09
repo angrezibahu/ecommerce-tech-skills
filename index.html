@@ -122,7 +122,7 @@
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-brand">TECH FLUENCY: DIRECTOR LEVEL</div>
+        <div class="nav-brand">TECH FLUENCY: Legend LEVEL</div>
         <div style="color: var(--text-secondary); font-size: 0.9rem;"><span id="completedCount">0</span>/30 Complete</div>
     </nav>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -2316,7 +2316,7 @@ React.createElement(Button, { onClick: handleClick }, "Buy Now")</code>
 
 Production build:
 1. npm run build
-2. Clean output directory
+2. Clean output Legendy
 3. Compile TypeScript/JSX → JavaScript
 4. Bundle all modules together
 5. Tree shake (remove unused exports)
@@ -2478,13 +2478,1319 @@ ISR (Incremental Static): Static + scheduled rebuilds
         }
     ],
     week3: [
-        { day: 15, title: "Server-Side Rendering", desc: "SSR, SSG, ISR and rendering patterns", duration: "45 min", content: `<p>Full content for Day 15.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 16, title: "Authentication & Authorization", desc: "Sessions, JWTs, OAuth patterns", duration: "50 min", content: `<p>Full content for Day 16.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 17, title: "Payment Integration", desc: "Stripe, PCI compliance, payment flows", duration: "50 min", content: `<p>Full content for Day 17.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 18, title: "Webhooks & Event Architecture", desc: "Designing reliable event systems", duration: "45 min", content: `<p>Full content for Day 18.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 19, title: "Message Queues & Background Jobs", desc: "Async processing patterns", duration: "45 min", content: `<p>Full content for Day 19.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 20, title: "Search Implementation", desc: "Elasticsearch, Algolia, search UX", duration: "45 min", content: `<p>Full content for Day 20.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 21, title: "Week 3 Review", desc: "Integration architecture exercise", duration: "60 min", content: `<p>Week 3 synthesis.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
+        {
+            day: 15,
+            title: "Server-Side Rendering Patterns",
+            desc: "SSR, SSG, ISR and hydration explained",
+            duration: "45 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Modern web applications use various rendering strategies. Understanding these helps you evaluate platform choices, diagnose performance issues, and make informed architectural decisions.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. The Rendering Spectrum</li>
+        <li>2. Server-Side Rendering (SSR)</li>
+        <li>3. Static Site Generation (SSG)</li>
+        <li>4. Incremental Static Regeneration (ISR)</li>
+        <li>5. Hydration Explained</li>
+        <li>6. Choosing the Right Strategy</li>
+    </ul>
+</div>
+
+<h2>1. The Rendering Spectrum</h2>
+
+<p>Web pages can be rendered in different places and times:</p>
+
+<div class="code-block" data-lang="Rendering Spectrum">
+<code>Build Time          Request Time          Browser
+    │                     │                    │
+    ▼                     ▼                    ▼
+   SSG                   SSR                  CSR
+(Static Site       (Server-Side          (Client-Side
+Generation)         Rendering)            Rendering)
+
+Pre-built HTML → Generated per request → JS builds HTML
+
+Fastest delivery    Personalized content   Interactive SPAs
+Great for stable    Good SEO              Poor initial SEO
+content             More server load       Needs JS to work</code>
+</div>
+
+<h2>2. Server-Side Rendering (SSR)</h2>
+
+<p>The server generates HTML for each request. The browser receives complete HTML.</p>
+
+<div class="code-block" data-lang="SSR Flow">
+<code>1. User requests /products/luna-ring
+2. Server runs application code
+3. Fetches data from database/APIs
+4. Renders HTML with product data
+5. Sends complete HTML to browser
+6. Browser displays immediately
+7. JavaScript "hydrates" for interactivity
+
+Benefits:
+- Fast First Contentful Paint
+- Good SEO (crawlers see content)
+- Works without JavaScript (mostly)
+- Personalized content per request
+
+Drawbacks:
+- Server load per request
+- Time To First Byte depends on server speed
+- More infrastructure complexity</code>
+</div>
+
+<div class="code-block" data-lang="Next.js SSR">
+<code>// Next.js: getServerSideProps runs on every request
+export async function getServerSideProps(context) {
+    const product = await fetchProduct(context.params.id);
+    
+    return {
+        props: { product }  // Passed to page component
+    };
+}
+
+export default function ProductPage({ product }) {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;{product.name}&lt;/h1&gt;
+            &lt;p&gt;£{product.price}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}</code>
+</div>
+
+<h2>3. Static Site Generation (SSG)</h2>
+
+<p>Pages are pre-rendered at build time. Served as static files from CDN.</p>
+
+<div class="code-block" data-lang="SSG Flow">
+<code>Build Time:
+1. Build process runs
+2. Fetches all data needed
+3. Generates HTML for every page
+4. Outputs static files
+
+Request Time:
+1. User requests /products/luna-ring
+2. CDN serves pre-built HTML instantly
+3. No server processing needed
+
+Benefits:
+- Fastest possible delivery (just files)
+- Infinitely scalable (CDN)
+- Cheapest to host
+- Most secure (no server to hack)
+
+Drawbacks:
+- Content is frozen at build time
+- Full rebuild for any change
+- Not suitable for personalized content</code>
+</div>
+
+<h2>4. Incremental Static Regeneration (ISR)</h2>
+
+<p>ISR combines static speed with ability to update without full rebuild:</p>
+
+<div class="code-block" data-lang="ISR">
+<code>// Next.js ISR
+export async function getStaticProps() {
+    const product = await fetchProduct();
+    
+    return {
+        props: { product },
+        revalidate: 60  // Regenerate after 60 seconds
+    };
+}
+
+Flow:
+1. First request: Serve static page (fast)
+2. In background: Check if page is stale (>60 sec)
+3. If stale: Regenerate page with fresh data
+4. Next request gets fresh version
+5. No downtime, no full rebuild
+
+Perfect for:
+- Product pages (prices update periodically)
+- Blog posts (occasional edits)
+- Any content that changes but not real-time</code>
+</div>
+
+<h2>5. Hydration Explained</h2>
+
+<p>Hydration is the process where JavaScript takes over a server-rendered page:</p>
+
+<div class="code-block" data-lang="Hydration">
+<code>Server sends:
+&lt;button class="add-to-cart"&gt;Add to Cart&lt;/button&gt;
+(HTML only - button visible but not interactive)
+
+JavaScript loads and "hydrates":
+1. Finds existing DOM elements
+2. Attaches event listeners
+3. Sets up React/Vue state
+4. Now button actually works!
+
+Problems:
+- Hydration takes time (delayed interactivity)
+- "Uncanny valley" - looks ready but isn't
+- Hydration mismatch errors if server/client differ</code>
+</div>
+
+<div class="info-box warning">
+    <div class="info-box-title">⚠️ Time To Interactive</div>
+    <p>Users see content quickly (good LCP) but can't interact until hydration completes. If hydration is slow, users click buttons that don't work. Monitor Time To Interactive, not just First Paint.</p>
+</div>
+
+<h2>6. Choosing the Right Strategy</h2>
+
+<div class="code-block" data-lang="Decision Guide">
+<code>Homepage
+→ SSG or ISR (content changes infrequently)
+
+Product Listing Page
+→ ISR with short revalidation (prices/stock change)
+
+Product Detail Page
+→ ISR (product data relatively stable)
+
+Cart/Checkout
+→ CSR or SSR (personalized, real-time)
+
+Search Results
+→ SSR or CSR (dynamic, query-dependent)
+
+Blog/Content
+→ SSG (rebuild on publish)
+
+User Dashboard
+→ CSR (fully personalized)
+
+Mix strategies! Most sites use multiple approaches.</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>View source on your homepage—is it SSR/SSG or CSR?</li>
+        <li>How does your product page get its data?</li>
+        <li>If you update a product price, how long until it shows?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Your product page takes 3 seconds to load. View source shows complete HTML. The issue is likely:", options: ["CSR problem", "SSR problem—server is slow generating the page. Check database queries, API calls, or server capacity.", "CDN misconfiguration", "Browser issue"], correct: 1, explanation: "Complete HTML in source means server-rendered. Slow load = slow server. Investigate: database queries taking too long, slow API calls, insufficient server resources, or missing caching." },
+                { q: "Marketing wants to update a banner immediately without waiting for developers. Best rendering strategy?", options: ["SSG with full rebuild", "ISR with short revalidation period, or CMS integration that triggers targeted rebuild", "Always CSR", "Manual server restart"], correct: 1, explanation: "ISR can revalidate specific pages quickly. Better yet: headless CMS with webhook triggering rebuild of just that content. Full SSG rebuild for a banner is overkill." },
+                { q: "Hydration explained simply:", options: ["Drinking water", "JavaScript taking over server-rendered HTML to add interactivity—attaching event listeners and setting up state", "Database connection pooling", "CSS loading"], correct: 1, explanation: "Hydration is when JavaScript 'wakes up' static HTML. The server sends visible content, then JS makes it interactive by attaching event handlers and initializing state." },
+                { q: "User complains they click 'Add to Cart' but nothing happens for 2 seconds after page appears. Problem?", options: ["Button is broken", "Hydration delay—page looks ready but JavaScript hasn't finished attaching event listeners yet", "Database slow", "Network latency"], correct: 1, explanation: "Classic hydration issue: HTML renders quickly (button visible) but JS takes time to load and attach click handlers. During this gap, clicks don't work. Improve by reducing JS bundle or using streaming." },
+                { q: "Best strategy for user account dashboard showing orders and preferences:", options: ["SSG", "CSR—content is personalized per user, can't pre-render at build time", "ISR", "SSR only"], correct: 1, explanation: "Dashboards are fully personalized and authenticated. CSR makes sense: fast shell loads, then fetch user data via API. SSR works too but adds server load for every page view." }
+            ],
+            essay: {
+                question: "Your ecommerce site currently uses pure SSR for all pages. During Black Friday, server CPU hits 100% and response times spike. Propose a hybrid rendering strategy: which pages should use SSG, ISR, or SSR, and why? Include estimated infrastructure impact.",
+                guidance: "Cover: homepage/landing pages to SSG (massive traffic, stable content); product listings to ISR with 5-min revalidation (stock updates); product detail pages to ISR with 1-hour revalidation (stable); cart/checkout stays SSR (personalized); search stays SSR but add Redis caching. Impact: 80%+ reduction in server requests as most traffic hits CDN. Only personalized pages need server rendering."
+            }
+        },
+        {
+            day: 16,
+            title: "Authentication & Authorization",
+            desc: "Sessions, JWTs, OAuth, and security patterns",
+            duration: "50 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Authentication (who are you?) and authorization (what can you do?) are critical for ecommerce. Today you'll understand the patterns, tradeoffs, and security considerations.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Authentication vs Authorization</li>
+        <li>2. Session-Based Authentication</li>
+        <li>3. Token-Based Authentication (JWT)</li>
+        <li>4. OAuth 2.0 and Social Login</li>
+        <li>5. Security Best Practices</li>
+    </ul>
+</div>
+
+<h2>1. Authentication vs Authorization</h2>
+
+<div class="code-block" data-lang="Concepts">
+<code>Authentication (AuthN): "Who are you?"
+- Login with email/password
+- Verify identity
+- Result: Confirmed identity
+
+Authorization (AuthZ): "What can you do?"
+- Can this user view this order?
+- Can this user access admin panel?
+- Result: Permitted or denied action
+
+Flow:
+1. User logs in (authentication)
+2. System confirms identity
+3. User tries to access resource
+4. System checks permissions (authorization)
+5. Allow or deny</code>
+</div>
+
+<h2>2. Session-Based Authentication</h2>
+
+<p>Traditional approach: server stores session state, client gets a session ID cookie.</p>
+
+<div class="code-block" data-lang="Session Flow">
+<code>Login:
+1. User submits email/password
+2. Server validates credentials
+3. Server creates session in database/Redis:
+   { id: "abc123", user_id: 456, created: "...", expires: "..." }
+4. Server sends Set-Cookie: session_id=abc123; HttpOnly; Secure
+5. Browser stores cookie
+
+Subsequent Requests:
+1. Browser automatically sends Cookie: session_id=abc123
+2. Server looks up session in store
+3. If valid, request proceeds as user 456
+4. If invalid/expired, redirect to login
+
+Logout:
+1. Server deletes session from store
+2. Server sends Set-Cookie with past expiry (clears cookie)</code>
+</div>
+
+<p><strong>Session cookie security attributes:</strong></p>
+
+<div class="code-block" data-lang="Cookie Attributes">
+<code>Set-Cookie: session_id=abc123;
+    HttpOnly;     // Can't access via JavaScript (XSS protection)
+    Secure;       // Only sent over HTTPS
+    SameSite=Lax; // CSRF protection
+    Path=/;       // Sent for all paths
+    Max-Age=86400 // Expires in 24 hours</code>
+</div>
+
+<h2>3. Token-Based Authentication (JWT)</h2>
+
+<p>JSON Web Tokens are self-contained—they carry user info in the token itself.</p>
+
+<div class="code-block" data-lang="JWT Structure">
+<code>JWT: xxxxx.yyyyy.zzzzz (header.payload.signature)
+
+Header: { "alg": "HS256", "typ": "JWT" }
+Payload: { 
+    "user_id": 456, 
+    "email": "user@example.com",
+    "role": "customer",
+    "exp": 1701345600  // Expiration timestamp
+}
+Signature: HMAC-SHA256(header + payload, secret)
+
+// Token is base64 encoded, NOT encrypted!
+// Anyone can read the payload
+// Signature prevents tampering</code>
+</div>
+
+<div class="code-block" data-lang="JWT Flow">
+<code>Login:
+1. User submits credentials
+2. Server validates
+3. Server creates JWT with user claims
+4. Server sends JWT to client
+5. Client stores in localStorage or cookie
+
+Subsequent Requests:
+1. Client sends: Authorization: Bearer eyJhbG...
+2. Server validates signature
+3. Server reads claims from token
+4. No database lookup needed!
+
+Benefits:
+- Stateless (no session store)
+- Scalable (any server can validate)
+- Cross-domain friendly
+
+Drawbacks:
+- Can't invalidate before expiry (without blacklist)
+- Larger than session IDs
+- If stolen, valid until expiry</code>
+</div>
+
+<div class="info-box warning">
+    <div class="info-box-title">⚠️ JWT Storage</div>
+    <p><strong>localStorage:</strong> Vulnerable to XSS (any script can read it). Never store sensitive tokens here.</p>
+    <p><strong>HttpOnly cookie:</strong> Safe from XSS but needs CSRF protection. Preferred for web apps.</p>
+    <p><strong>Memory only:</strong> Safest but lost on refresh. Use with refresh tokens.</p>
+</div>
+
+<h2>4. OAuth 2.0 and Social Login</h2>
+
+<p>OAuth lets users log in with existing accounts (Google, Facebook, Apple):</p>
+
+<div class="code-block" data-lang="OAuth Flow">
+<code>1. User clicks "Sign in with Google"
+
+2. Redirect to Google:
+   https://accounts.google.com/oauth/authorize?
+   client_id=YOUR_APP_ID&
+   redirect_uri=https://yourstore.com/callback&
+   scope=email%20profile&
+   response_type=code
+
+3. User logs into Google, approves access
+
+4. Google redirects back:
+   https://yourstore.com/callback?code=AUTHORIZATION_CODE
+
+5. Your server exchanges code for tokens:
+   POST https://oauth2.googleapis.com/token
+   { client_id, client_secret, code, grant_type: "authorization_code" }
+
+6. Receive access_token and id_token
+
+7. Use id_token to get user info (email, name)
+
+8. Create or link user account in your system</code>
+</div>
+
+<h2>5. Security Best Practices</h2>
+
+<div class="code-block" data-lang="Security Checklist">
+<code>Password Storage:
+✓ Hash with bcrypt/Argon2 (never plain text!)
+✓ Salt automatically included in bcrypt
+✗ Never use MD5 or SHA1 for passwords
+
+Session Security:
+✓ HttpOnly cookies
+✓ Secure flag (HTTPS only)
+✓ SameSite attribute
+✓ Regenerate session ID after login
+✓ Absolute timeout (e.g., 24 hours max)
+
+Rate Limiting:
+✓ Limit login attempts (5 per minute)
+✓ Account lockout after failures
+✓ CAPTCHA after repeated failures
+
+Multi-Factor Authentication:
+✓ TOTP (Google Authenticator)
+✓ SMS (less secure but better than nothing)
+✓ Require for admin accounts</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>Log into your site and check DevTools → Application → Cookies</li>
+        <li>What session cookies exist? Do they have HttpOnly and Secure?</li>
+        <li>Does your site offer social login? Which providers?</li>
+        <li>What happens after 5 failed login attempts?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Session cookie is missing HttpOnly flag. Risk?", options: ["None", "XSS attacks can steal the session via JavaScript—attacker can hijack user accounts", "Cookie won't work", "Performance issue"], correct: 1, explanation: "Without HttpOnly, JavaScript can read document.cookie. If attacker injects script (XSS), they steal session IDs and impersonate users. HttpOnly prevents JavaScript access." },
+                { q: "JWT advantage over sessions for microservices:", options: ["More secure", "Stateless validation—any service can verify the token without hitting a central session store", "Smaller size", "Never expires"], correct: 1, explanation: "JWTs are self-contained. Any service with the secret can validate them. No need to check a central session database. Great for distributed systems." },
+                { q: "Developer stores JWT in localStorage. Security concern?", options: ["None—that's standard", "Vulnerable to XSS—any JavaScript on the page can read localStorage and steal the token", "Won't work in Safari", "Too slow"], correct: 1, explanation: "localStorage is accessible to all JavaScript on the page. If attacker injects script (XSS), they steal the JWT. HttpOnly cookies are safer—JavaScript can't access them." },
+                { q: "User reports they're logged out randomly. Sessions are in Redis. What to check?", options: ["User's browser", "Redis eviction policy, session TTL, Redis memory limits, or cluster failover issues", "JavaScript errors", "DNS problems"], correct: 1, explanation: "Sessions in Redis can be lost if: Redis runs out of memory and evicts keys, TTL is too short, Redis restarts, or cluster failover drops sessions. Check Redis configuration and monitoring." },
+                { q: "OAuth 'scope' parameter purpose:", options: ["Security token", "Defines what data/permissions your app is requesting from the provider (email, profile, etc.)", "Session timeout", "Encryption level"], correct: 1, explanation: "Scope tells the OAuth provider what access you're requesting. 'email profile' means you want the user's email and basic profile. Users see and approve these permissions." }
+            ],
+            essay: {
+                question: "Your ecommerce site currently uses session-based auth with sessions in the application server's memory. You're planning to scale to multiple servers. Outline a migration plan covering: current limitations, two possible solutions (sticky sessions vs. external session store), your recommendation, and implementation steps.",
+                guidance: "Cover: current problem (sessions lost when hitting different server); sticky sessions (simple but limits scaling, server failure loses sessions); external store like Redis (any server can access, survives server restarts, enables true horizontal scaling). Recommend Redis. Steps: set up Redis, configure session library to use Redis, test with multiple servers, deploy, monitor for issues."
+            }
+        },
+        {
+            day: 17,
+            title: "Payment Integration",
+            desc: "Stripe, PCI compliance, and payment flows",
+            duration: "50 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Payment processing is critical and heavily regulated. Today you'll understand how payment integrations work, what PCI compliance means for you, and how to evaluate payment solutions.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Payment Flow Overview</li>
+        <li>2. PCI Compliance Explained</li>
+        <li>3. Stripe Integration Patterns</li>
+        <li>4. Handling Payment Failures</li>
+        <li>5. Subscriptions and Recurring Payments</li>
+    </ul>
+</div>
+
+<h2>1. Payment Flow Overview</h2>
+
+<div class="code-block" data-lang="Payment Flow">
+<code>Customer → Your Site → Payment Gateway → Card Network → Bank
+
+1. CHECKOUT: Customer enters card details
+2. TOKENIZE: Card details sent directly to payment provider
+   (Your server never sees full card number!)
+3. TOKEN: You receive a token representing the card
+4. CHARGE: Your server sends token + amount to provider
+5. AUTHORIZE: Provider checks with card network/bank
+6. CAPTURE: Funds reserved (auth) or moved (capture)
+7. CONFIRM: You receive success/failure webhook
+8. FULFILL: Ship the order
+
+Key insight: Card details go directly to payment provider
+Your PCI burden is minimized by never handling card numbers</code>
+</div>
+
+<h2>2. PCI Compliance Explained</h2>
+
+<p>PCI DSS (Payment Card Industry Data Security Standard) has levels based on transaction volume:</p>
+
+<div class="code-block" data-lang="PCI Levels">
+<code>Level 1: 6M+ transactions/year
+- Annual on-site audit by QSA
+- Quarterly network scans
+- Most rigorous
+
+Level 2: 1-6M transactions/year
+- Annual self-assessment (SAQ)
+- Quarterly network scans
+
+Level 3: 20K-1M e-commerce transactions/year
+- Annual SAQ
+- Quarterly scans
+
+Level 4: Under 20K e-commerce transactions/year
+- Annual SAQ
+- Scans recommended
+
+Using Stripe/PayPal with hosted forms = SAQ A (simplest)
+You never touch card data, minimal requirements</code>
+</div>
+
+<div class="info-box success">
+    <div class="info-box-title">✓ SAQ A: Easiest Compliance Path</div>
+    <p>By using Stripe Elements, PayPal buttons, or other hosted payment forms, card data never touches your servers. You qualify for SAQ A—the simplest self-assessment questionnaire. ~22 questions vs ~300+ for SAQ D.</p>
+</div>
+
+<h2>3. Stripe Integration Patterns</h2>
+
+<h3>Stripe Checkout (Hosted)</h3>
+
+<div class="code-block" data-lang="Stripe Checkout">
+<code>// Server: Create checkout session
+const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [{
+        price_data: {
+            currency: 'gbp',
+            product_data: { name: 'Luna Ring' },
+            unit_amount: 2499,  // £24.99 in pence
+        },
+        quantity: 1,
+    }],
+    mode: 'payment',
+    success_url: 'https://yourstore.com/success?session_id={CHECKOUT_SESSION_ID}',
+    cancel_url: 'https://yourstore.com/cart',
+});
+
+// Redirect customer to Stripe's hosted page
+res.redirect(session.url);
+
+// Stripe hosts the entire checkout form
+// Maximum security, minimum PCI scope
+// Less customization</code>
+</div>
+
+<h3>Stripe Elements (Embedded)</h3>
+
+<div class="code-block" data-lang="Stripe Elements">
+<code>// Client: Mount card element in your page
+const elements = stripe.elements();
+const cardElement = elements.create('card');
+cardElement.mount('#card-element');
+
+// On submit: Create payment method
+const { paymentMethod, error } = await stripe.createPaymentMethod({
+    type: 'card',
+    card: cardElement,
+});
+
+// Send paymentMethod.id to your server (not card details!)
+// Server creates PaymentIntent with this ID
+
+// Your checkout design, Stripe handles card input
+// Still SAQ A compliant</code>
+</div>
+
+<h2>4. Handling Payment Failures</h2>
+
+<div class="code-block" data-lang="Error Handling">
+<code>Common failure reasons:
+- card_declined: Generic decline
+- insufficient_funds: Not enough money
+- expired_card: Card expired
+- incorrect_cvc: Wrong security code
+- processing_error: Try again
+
+Idempotency Keys (CRITICAL):
+// Include unique key with each payment attempt
+const charge = await stripe.paymentIntents.create({
+    amount: 2499,
+    currency: 'gbp',
+    payment_method: 'pm_xxx',
+}, {
+    idempotencyKey: 'order_123_attempt_1'
+});
+
+// If you retry with same key, Stripe returns original result
+// Prevents double charges on timeout/retry!</code>
+</div>
+
+<div class="info-box critical">
+    <div class="info-box-title">🔴 Critical: Webhook Reliability</div>
+    <p>Never rely solely on the redirect. Network issues can prevent the customer reaching your success page. Always use webhooks for order confirmation:</p>
+    <ol>
+        <li>Payment succeeds at Stripe</li>
+        <li>Stripe sends webhook to your server</li>
+        <li>You verify signature and fulfill order</li>
+        <li>Redirect is just for user experience</li>
+    </ol>
+</div>
+
+<h2>5. Subscriptions</h2>
+
+<div class="code-block" data-lang="Subscriptions">
+<code>// Create subscription
+const subscription = await stripe.subscriptions.create({
+    customer: 'cus_xxx',
+    items: [{ price: 'price_monthly_box' }],
+    payment_behavior: 'default_incomplete',
+    expand: ['latest_invoice.payment_intent'],
+});
+
+Webhook events to handle:
+- invoice.paid: Payment succeeded, fulfill
+- invoice.payment_failed: Payment failed, notify customer
+- customer.subscription.deleted: Cancelled
+- customer.subscription.updated: Plan changed
+
+Dunning (failed payment recovery):
+- Stripe Smart Retries
+- Customer emails for card update
+- Grace period before cancellation</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>What payment provider does your site use?</li>
+        <li>Is the card form hosted (redirect) or embedded?</li>
+        <li>Check if idempotency keys are used in payment code</li>
+        <li>How are failed webhooks retried?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Customer's card was charged but your site shows 'payment failed'. Most likely cause?", options: ["Card wasn't really charged", "Payment succeeded but webhook failed or your redirect handling has a bug—always use webhooks as source of truth", "Stripe bug", "Customer lying"], correct: 1, explanation: "Payments can succeed at Stripe while your site fails to record it (webhook failed, redirect interrupted, server error). Always use webhooks as authoritative source. Check Stripe dashboard for actual payment status." },
+                { q: "Using Stripe Checkout redirect means for PCI:", options: ["Full PCI audit required", "SAQ A (simplest)—card data never touches your servers", "No compliance needed", "SAQ D required"], correct: 1, explanation: "Stripe Checkout is fully hosted. Card numbers never touch your servers, so you qualify for SAQ A—the simplest compliance path with ~22 questions." },
+                { q: "Payment times out (504). You retry without idempotency key. Risk?", options: ["None", "Double charge—original payment may have succeeded, retry creates second charge", "Payment will fail", "Session expires"], correct: 1, explanation: "504 timeout means you don't know if payment succeeded. Without idempotency key, retrying can create duplicate charges. Always use idempotency keys for payment requests." },
+                { q: "Webhook endpoint returns 500 error. What happens?", options: ["Payment reversed", "Stripe retries the webhook with exponential backoff over hours/days", "Customer charged twice", "Nothing"], correct: 1, explanation: "Stripe retries failed webhooks with exponential backoff for up to 3 days. Your endpoint should return 200 quickly, process asynchronously, and be idempotent (handle receiving same webhook twice)." },
+                { q: "Subscription invoice fails 3 times. Then what?", options: ["Immediately cancelled", "Depends on your dunning settings—Stripe can retry, email customer, then eventually cancel after grace period", "Stripe covers the cost", "Nothing happens"], correct: 1, explanation: "Dunning management handles failed subscription payments. Configure: retry schedule, customer notification emails, grace period, and when to finally cancel. Stripe Smart Retries optimize retry timing." }
+            ],
+            essay: {
+                question: "Your CFO asks why you use Stripe (2.9% + 30p per transaction) instead of a cheaper payment processor. Write a brief explaining: what Stripe provides beyond basic payment processing, the true cost of a cheaper processor (integration, maintenance, PCI), and the business value of Stripe's reliability and features.",
+                guidance: "Cover: Stripe provides (fraud protection, dispute handling, hosted checkout, recurring billing, reporting, dashboard, international payments, webhooks); cheaper processor hidden costs (integration time, PCI scope increase, maintaining security, no fraud tools, limited support); reliability value (payment failures = lost revenue, Stripe's uptime and smart routing); features (Apple/Google Pay, Klarna, subscriptions out of box). Total cost of ownership favors Stripe for most."
+            }
+        },
+        {
+            day: 18,
+            title: "Webhooks & Event Architecture",
+            desc: "Designing reliable event-driven systems",
+            duration: "45 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Webhooks are how external services notify you of events. Today you'll understand how to design reliable webhook handlers and event-driven architectures.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Webhooks Explained</li>
+        <li>2. Reliable Webhook Handling</li>
+        <li>3. Signature Verification</li>
+        <li>4. Event-Driven Architecture</li>
+        <li>5. Common Patterns</li>
+    </ul>
+</div>
+
+<h2>1. Webhooks Explained</h2>
+
+<p>Webhooks invert the typical request pattern. Instead of you polling "did anything happen?", services POST to your endpoint when events occur.</p>
+
+<div class="code-block" data-lang="Webhook Flow">
+<code>Without Webhooks (Polling):
+Every 5 seconds:
+Your Server → "Any new orders?" → Shopify
+Your Server → "Any new orders?" → Shopify
+Your Server → "Any new orders?" → Shopify
+(Wasteful, slow to detect changes)
+
+With Webhooks:
+Order placed → Shopify POSTs to your endpoint
+You process immediately
+(Efficient, real-time)</code>
+</div>
+
+<h2>2. Reliable Webhook Handling</h2>
+
+<div class="code-block" data-lang="Webhook Handler">
+<code>// CRITICAL: Return 200 quickly!
+app.post('/webhooks/stripe', async (req, res) => {
+    // 1. Verify signature first
+    const sig = req.headers['stripe-signature'];
+    let event;
+    
+    try {
+        event = stripe.webhooks.constructEvent(
+            req.body, sig, webhookSecret
+        );
+    } catch (err) {
+        return res.status(400).send('Invalid signature');
+    }
+    
+    // 2. Return 200 immediately
+    res.status(200).send('Received');
+    
+    // 3. Process asynchronously (queue the work)
+    await queue.add('processWebhook', { event });
+});
+
+// Stripe expects 200 within seconds
+// If you do heavy processing before responding,
+// Stripe thinks it failed and retries</code>
+</div>
+
+<h3>Idempotency in Webhook Handlers</h3>
+
+<div class="code-block" data-lang="Idempotency">
+<code>// Webhooks can be delivered multiple times!
+// Your handler must be idempotent
+
+app.post('/webhooks/orders', async (req, res) => {
+    const eventId = req.body.id;
+    
+    // Check if already processed
+    const processed = await db.query(
+        'SELECT 1 FROM processed_events WHERE event_id = ?',
+        [eventId]
+    );
+    
+    if (processed) {
+        return res.status(200).send('Already processed');
+    }
+    
+    // Process the event
+    await processOrder(req.body);
+    
+    // Mark as processed
+    await db.query(
+        'INSERT INTO processed_events (event_id) VALUES (?)',
+        [eventId]
+    );
+    
+    res.status(200).send('OK');
+});</code>
+</div>
+
+<h2>3. Signature Verification</h2>
+
+<div class="code-block" data-lang="Verification">
+<code>// WHY: Anyone can POST to your webhook URL
+// Signatures prove the request is from the claimed sender
+
+Stripe signature header:
+Stripe-Signature: t=1701345600,v1=abc123...
+
+Verification:
+1. Extract timestamp and signature from header
+2. Compute expected signature:
+   HMAC-SHA256(timestamp + "." + rawBody, webhookSecret)
+3. Compare with provided signature
+4. Check timestamp is recent (prevent replay)
+
+// Using Stripe's SDK (recommended)
+const event = stripe.webhooks.constructEvent(
+    rawBody,
+    signatureHeader,
+    webhookSecret  // Get from Stripe dashboard
+);
+
+// NEVER skip verification in production!</code>
+</div>
+
+<h2>4. Event-Driven Architecture</h2>
+
+<div class="code-block" data-lang="Event Architecture">
+<code>Traditional (Synchronous):
+Order Created
+├→ Save to database
+├→ Send confirmation email
+├→ Update inventory
+├→ Notify warehouse
+└→ Update analytics
+(All in one request - slow, fragile)
+
+Event-Driven:
+Order Created
+└→ Publish "order.created" event
+    
+Subscribers react independently:
+├→ Email Service: Send confirmation
+├→ Inventory Service: Decrement stock
+├→ Warehouse Service: Create pick list
+└→ Analytics: Record conversion
+
+Benefits:
+- Loose coupling (services independent)
+- Resilience (one failure doesn't block others)
+- Scalability (add subscribers without changes)
+- Audit trail (events are logged)</code>
+</div>
+
+<h2>5. Common Patterns</h2>
+
+<div class="code-block" data-lang="Patterns">
+<code>Fan-Out: One event triggers multiple actions
+order.created → email + inventory + shipping + analytics
+
+Event Sourcing: Store events, derive state
+Events: [ItemAdded, ItemRemoved, CheckedOut]
+Cart state computed from replaying events
+
+Saga Pattern: Multi-step processes with compensation
+1. Reserve inventory
+2. Charge payment
+3. If payment fails → Release inventory
+
+Dead Letter Queue: Failed events for investigation
+Webhook fails 5 times → Move to DLQ
+Investigate and replay later</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>List all webhooks your platform receives</li>
+        <li>Do your handlers verify signatures?</li>
+        <li>Are handlers idempotent (safe to receive twice)?</li>
+        <li>How do you monitor failed webhooks?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Webhook handler does 30 seconds of processing before returning 200. Problem?", options: ["None", "Sender times out and retries, causing duplicate processing. Return 200 immediately, process asynchronously.", "Too fast", "Uses too much memory"], correct: 1, explanation: "Webhook senders expect quick responses (typically 5-30 seconds). Slow handlers cause retries. Pattern: return 200 immediately, queue the work for async processing." },
+                { q: "You receive same webhook twice. Your handler creates duplicate orders. Fix?", options: ["Tell sender to fix", "Make handler idempotent—check event ID before processing, skip if already handled", "Ignore second one", "Faster processing"], correct: 1, explanation: "Webhooks can be delivered multiple times (sender retries, network issues). Your handler must be idempotent: store processed event IDs and skip duplicates." },
+                { q: "Webhook processing fails. What's the ideal recovery pattern?", options: ["Ignore it", "Queue to retry with backoff. After max retries, move to dead letter queue for investigation.", "Alert immediately", "Reprocess all webhooks"], correct: 1, explanation: "Ideal pattern: automatic retries with exponential backoff, after max attempts move to dead letter queue. DLQ lets you investigate and manually replay failed events." },
+                { q: "Verifying webhook signatures prevents:", options: ["Slow processing", "Attackers sending fake webhooks to your endpoint, triggering unintended actions", "Duplicate delivery", "Timeout errors"], correct: 1, explanation: "Your webhook URL is public. Without signature verification, attackers can POST fake events (fake payments, fake orders). Signatures prove the webhook is from the legitimate sender." },
+                { q: "Event-driven architecture main benefit:", options: ["Faster", "Loose coupling—services react to events independently, one failure doesn't cascade, easy to add new subscribers", "Less code", "Cheaper"], correct: 1, explanation: "Event-driven decouples systems. Order service publishes 'order.created', doesn't know or care who subscribes. Add new subscriber (analytics) without changing order service." }
+            ],
+            essay: {
+                question: "Your order processing is synchronous: create order → charge payment → send email → update inventory → notify warehouse. It takes 8 seconds and sometimes fails partway through, leaving inconsistent state. Redesign using event-driven architecture. Cover: event flow, how each step subscribes, handling partial failures, and ensuring consistency.",
+                guidance: "Cover: order service publishes OrderCreated event and returns; email service subscribes and sends (can fail/retry independently); inventory service subscribes and decrements (idempotent); warehouse service subscribes and creates pick list; payment can be saga pattern (reserve → confirm or release). Partial failures handled by: idempotent handlers, retries with backoff, dead letter queue, compensation actions if needed. Eventual consistency is OK for most steps."
+            }
+        },
+        {
+            day: 19,
+            title: "Message Queues & Background Jobs",
+            desc: "Async processing with Redis, RabbitMQ, SQS",
+            duration: "45 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Not everything should happen in the web request. Today you'll understand when and how to use message queues and background jobs for better performance and reliability.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Why Async Processing</li>
+        <li>2. Message Queue Concepts</li>
+        <li>3. Common Queue Technologies</li>
+        <li>4. Job Processing Patterns</li>
+        <li>5. Monitoring and Failure Handling</li>
+    </ul>
+</div>
+
+<h2>1. Why Async Processing</h2>
+
+<div class="code-block" data-lang="Sync vs Async">
+<code>Synchronous (Blocking):
+POST /orders
+├→ Validate order (50ms)
+├→ Charge payment (2000ms)
+├→ Send email (500ms)
+├→ Generate PDF invoice (1000ms)
+├→ Update inventory (100ms)
+└→ Return response (3650ms total!)
+
+User waits 3.6 seconds. If email service is down,
+entire order fails.
+
+Asynchronous (Non-Blocking):
+POST /orders
+├→ Validate order (50ms)
+├→ Charge payment (2000ms)
+├→ Queue: send email
+├→ Queue: generate PDF
+├→ Queue: update inventory
+└→ Return response (2100ms)
+
+Background workers process queued jobs.
+User gets response in 2.1 seconds.
+Email failure doesn't block order.</code>
+</div>
+
+<h2>2. Message Queue Concepts</h2>
+
+<div class="code-block" data-lang="Queue Concepts">
+<code>Producer → Queue → Consumer
+
+Producer: Adds messages to queue
+Queue: Stores messages reliably
+Consumer: Processes messages
+
+Key Properties:
+- Persistence: Messages survive restarts
+- Acknowledgment: Consumer confirms processing
+- Retry: Failed messages retry automatically
+- Dead Letter: Failed messages after max retries
+
+Message Lifecycle:
+1. Producer publishes message
+2. Message stored in queue
+3. Consumer receives message
+4. Consumer processes
+5. Consumer acknowledges (ACK)
+6. Message removed from queue
+
+If consumer crashes before ACK:
+Message returns to queue, reprocessed by another consumer</code>
+</div>
+
+<h2>3. Common Queue Technologies</h2>
+
+<div class="code-block" data-lang="Technologies">
+<code>Redis + Sidekiq/BullMQ:
+- Simple, fast, good for most use cases
+- Jobs stored in Redis
+- Good ecosystem (Sidekiq for Ruby, BullMQ for Node)
+- May lose jobs if Redis crashes without persistence
+
+RabbitMQ:
+- Purpose-built message broker
+- Durable, feature-rich
+- Complex routing (exchanges, bindings)
+- Good for complex workflows
+
+AWS SQS:
+- Fully managed, serverless
+- Scales automatically
+- Pay per message
+- Good for AWS-heavy architectures
+
+AWS SQS + Lambda:
+- Messages trigger Lambda functions
+- No servers to manage
+- Scales to zero when idle</code>
+</div>
+
+<h2>4. Job Processing Patterns</h2>
+
+<div class="code-block" data-lang="Patterns">
+<code>// Simple job
+queue.add('sendEmail', {
+    to: 'customer@example.com',
+    template: 'order_confirmation',
+    orderId: 123
+});
+
+// Delayed job
+queue.add('sendFollowUp', { orderId: 123 }, {
+    delay: 7 * 24 * 60 * 60 * 1000  // 7 days
+});
+
+// Scheduled/recurring job
+queue.add('generateReport', {}, {
+    repeat: { cron: '0 9 * * MON' }  // Every Monday 9am
+});
+
+// Priority queues
+queue.add('urgent', data, { priority: 1 });  // Process first
+queue.add('normal', data, { priority: 5 });
+
+// Job batching
+queue.addBulk([
+    { name: 'sendEmail', data: { to: 'a@x.com' } },
+    { name: 'sendEmail', data: { to: 'b@x.com' } },
+    { name: 'sendEmail', data: { to: 'c@x.com' } },
+]);</code>
+</div>
+
+<h2>5. Monitoring and Failure Handling</h2>
+
+<div class="code-block" data-lang="Monitoring">
+<code>Key Metrics:
+- Queue depth: How many messages waiting?
+- Processing time: How long per job?
+- Failure rate: What percentage fail?
+- Consumer count: Enough workers?
+
+Alerting:
+- Queue depth > 1000 for 5 minutes
+- Failure rate > 5%
+- No consumers running
+
+Failure Handling:
+// Retry with exponential backoff
+attempts: 5,
+backoff: {
+    type: 'exponential',
+    delay: 1000  // 1s, 2s, 4s, 8s, 16s
+}
+
+// Dead letter queue after max retries
+// Investigate and replay manually</code>
+</div>
+
+<div class="info-box">
+    <div class="info-box-title">💡 What to Queue</div>
+    <ul>
+        <li><strong>Emails:</strong> Don't block user for email sending</li>
+        <li><strong>PDF generation:</strong> Slow, do async</li>
+        <li><strong>Image processing:</strong> Thumbnails, optimization</li>
+        <li><strong>Analytics:</strong> Track events in background</li>
+        <li><strong>Third-party syncs:</strong> Push to CRM, marketing tools</li>
+        <li><strong>Reports:</strong> Generate on schedule</li>
+    </ul>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>What job queue does your platform use?</li>
+        <li>What tasks are processed asynchronously?</li>
+        <li>How are failed jobs handled?</li>
+        <li>Is there monitoring for queue depth?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Order confirmation email takes 2 seconds to send. Currently done synchronously. Impact?", options: ["None", "User waits extra 2 seconds for checkout to complete. If email service is down, checkout fails.", "Email arrives faster", "More reliable"], correct: 1, explanation: "Synchronous email sending blocks the user and creates a failure dependency. Queue the email—user gets response immediately, email sends in background, and email failure doesn't break checkout." },
+                { q: "Queue has 50,000 messages, normally has 100. What's happening?", options: ["Normal variation", "Either producers spiking (traffic surge) or consumers failing/too slow. Check consumer health and processing time.", "More efficient", "Should delete messages"], correct: 1, explanation: "Message buildup means production rate exceeds consumption rate. Either unexpected traffic spike (add consumers) or consumers are failing/slow (check errors, processing time)." },
+                { q: "Job fails, retries 5 times, still fails. Best practice?", options: ["Keep retrying forever", "Move to dead letter queue for manual investigation, alert ops team", "Delete the job", "Retry faster"], correct: 1, explanation: "After max retries, move to dead letter queue. Don't retry forever (wastes resources), don't delete (lose data). DLQ preserves the job for investigation and manual replay once fixed." },
+                { q: "Consumer crashes while processing message but before ACK. What happens?", options: ["Message lost", "Message returns to queue and is reprocessed by another consumer (requires ACK-based queue)", "Automatic retry", "System crashes"], correct: 1, explanation: "With acknowledgment-based queues, unacknowledged messages return to the queue if consumer crashes. This provides at-least-once delivery. Your handler must be idempotent." },
+                { q: "When NOT to use a queue:", options: ["Never", "When the result is needed immediately in the response—queues are for fire-and-forget or delayed processing", "For emails", "For reports"], correct: 1, explanation: "Queues are for async work where you don't need the result immediately. Payment validation, reading data for display, login—these need immediate results, don't queue." }
+            ],
+            essay: {
+                question: "Your ecommerce platform processes orders synchronously: payment, email, inventory, warehouse notification, analytics—all in the order request. Checkout takes 8 seconds and fails completely if any step fails. Design an async architecture using queues. Cover: what stays synchronous, what gets queued, handling failures in each queue, and monitoring approach.",
+                guidance: "Keep synchronous: order validation, payment (need to know if it worked). Queue: email (retry on failure), inventory update (idempotent, can retry), warehouse notification (retry), analytics (can be lossy). Each queue: retry with backoff, DLQ after max retries, monitoring for depth and failure rate. Result: checkout in 2-3 seconds, resilient to downstream failures."
+            }
+        },
+        {
+            day: 20,
+            title: "Search Implementation",
+            desc: "Elasticsearch, Algolia, and search UX",
+            duration: "45 min",
+            content: `
+<h2>Today's Learning Objectives</h2>
+<p>Search is critical for ecommerce—customers who search are 2-3x more likely to convert. Today you'll understand how search systems work and how to evaluate search solutions.</p>
+
+<div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+        <li>1. Why Dedicated Search</li>
+        <li>2. How Search Engines Work</li>
+        <li>3. Elasticsearch vs Algolia</li>
+        <li>4. Search UX Best Practices</li>
+        <li>5. Measuring Search Quality</li>
+    </ul>
+</div>
+
+<h2>1. Why Dedicated Search</h2>
+
+<div class="code-block" data-lang="SQL vs Search Engine">
+<code>SQL LIKE Query:
+SELECT * FROM products 
+WHERE name LIKE '%silver ring%' 
+   OR description LIKE '%silver ring%';
+
+Problems:
+✗ Can't use indexes (full table scan)
+✗ No relevance ranking
+✗ "silver" doesn't match "925 silver"
+✗ "ring" doesn't match "rings"
+✗ "silvr" (typo) returns nothing
+✗ No faceted search
+
+Search Engine Query:
+GET /products/_search
+{
+    "query": {
+        "multi_match": {
+            "query": "silver ring",
+            "fields": ["name^3", "description"],
+            "fuzziness": "AUTO"
+        }
+    }
+}
+
+Benefits:
+✓ Sub-second on millions of products
+✓ Relevance-ranked results
+✓ Handles typos, synonyms
+✓ Stemming (ring/rings)
+✓ Faceted filtering</code>
+</div>
+
+<h2>2. How Search Engines Work</h2>
+
+<div class="code-block" data-lang="Inverted Index">
+<code>Products:
+1: "Luna Silver Ring - Beautiful 925 sterling silver"
+2: "Aurora Gold Necklace - Elegant pendant"
+3: "Stella Silver Bracelet - Delicate chain design"
+
+Inverted Index (simplified):
+"silver"   → [1, 3]
+"ring"     → [1]
+"gold"     → [2]
+"necklace" → [2]
+"bracelet" → [3]
+"925"      → [1]
+
+Search "silver ring":
+- "silver" → [1, 3]
+- "ring" → [1]
+- Intersection/union with scoring
+- Result: 1 (matches both), then 3 (matches silver)
+
+This is why search engines are fast:
+Instead of scanning all products,
+look up terms in the index.</code>
+</div>
+
+<h2>3. Elasticsearch vs Algolia</h2>
+
+<div class="code-block" data-lang="Comparison">
+<code>Elasticsearch:
+✓ Open source, self-hostable
+✓ Extremely flexible and powerful
+✓ Full control over ranking, analysis
+✓ Part of larger observability stack
+✗ Requires ops expertise
+✗ Tuning relevance is complex
+✗ You manage infrastructure
+
+Algolia:
+✓ Fully managed SaaS
+✓ Excellent out-of-box relevance
+✓ Beautiful instant search UI components
+✓ Analytics included
+✓ Easy to implement
+✗ Expensive at scale
+✗ Less flexibility
+✗ Vendor lock-in
+
+Recommendation:
+- Algolia: Fast to implement, smaller catalogs, limited ops capacity
+- Elasticsearch: Large catalogs, specific requirements, ops expertise</code>
+</div>
+
+<h2>4. Search UX Best Practices</h2>
+
+<div class="code-block" data-lang="UX Patterns">
+<code>Autocomplete/Suggestions:
+- Show suggestions after 2-3 characters
+- Include product images in suggestions
+- Show categories: "Silver" in Rings, in Necklaces
+- Recent searches for logged-in users
+
+Instant Search:
+- Results update as user types
+- No submit button needed
+- Debounce requests (wait 200ms after typing stops)
+
+Faceted Navigation:
+- Filter by: Category, Price range, Size, Material
+- Show counts: "Silver (45)"
+- Allow multiple selections
+- Clear all filters option
+
+No Results:
+- Suggest corrections: "Did you mean 'silver'?"
+- Show popular products
+- Offer category browsing
+- Never dead-end the user</code>
+</div>
+
+<h2>5. Measuring Search Quality</h2>
+
+<div class="code-block" data-lang="Metrics">
+<code>Click-Through Rate (CTR):
+Searches that result in a click / Total searches
+Target: 40-60%
+
+Conversion Rate:
+Searches that result in purchase / Total searches
+Compare to non-search conversion
+
+Zero Results Rate:
+Searches with no results / Total searches
+Target: < 5%
+
+Search Exit Rate:
+Users who leave after seeing results
+High = poor relevance
+
+Average Position of Clicked Result:
+Lower is better (they found it quickly)
+
+Top Searches with Low CTR:
+These need attention - what are people searching
+for that you're not serving well?</code>
+</div>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Practical Exercise</div>
+    <ol>
+        <li>Search your site for a product with a typo—does it handle it?</li>
+        <li>Search for "ring" vs "rings"—same results?</li>
+        <li>What happens when you search for something that doesn't exist?</li>
+        <li>Check your search analytics (if available)—top queries? Zero result queries?</li>
+    </ol>
+</div>
+`,
+            questions: [
+                { q: "Search for 'silvr ring' returns nothing. Fix?", options: ["Users should spell correctly", "Enable fuzzy matching—search engine matches 'silvr' to 'silver' within edit distance", "Add 'silvr' to product names", "Not possible"], correct: 1, explanation: "Fuzzy matching allows for typos by matching terms within an edit distance. 'silvr' is one character away from 'silver'. Elasticsearch and Algolia both support fuzziness configuration." },
+                { q: "Zero results rate is 15%. What does this indicate?", options: ["Normal", "Many searches fail to find products—need to add synonyms, fix data quality, or expand catalog", "Good performance", "Too many products"], correct: 1, explanation: "15% zero results is high (target <5%). Users are searching for things you're not matching. Investigate top zero-result queries: add synonyms, improve product data, or identify missing products." },
+                { q: "Search shows exact match 'Luna Ring' below partial match 'Luna Silver Collection'. Issue?", options: ["Normal", "Relevance ranking is off—exact matches should score higher. Adjust field boosting and match scoring.", "User problem", "Too many products"], correct: 1, explanation: "Exact name matches should rank highest. Tune relevance: boost exact matches, increase name field weight (^3), consider phrase matching. Test with common searches." },
+                { q: "Algolia vs self-hosted Elasticsearch. Key tradeoff?", options: ["Speed vs accuracy", "Algolia: fast setup, managed, expensive at scale. Elasticsearch: more work, more control, cheaper at scale.", "Same thing", "Algolia is always better"], correct: 1, explanation: "Algolia is SaaS—quick to implement, excellent defaults, but expensive as searches/records grow. Elasticsearch requires ops expertise but gives more control and lower costs at scale." },
+                { q: "High search CTR but low conversion from search. Possible cause?", options: ["CTR is wrong", "Results are relevant enough to click but products don't meet expectations—check product pages, pricing, availability", "Search is too good", "Need more products"], correct: 1, explanation: "High CTR means search results are attractive to click. Low conversion after clicking suggests product pages don't convert—could be price, out of stock, poor descriptions, or search results set wrong expectations." }
+            ],
+            essay: {
+                question: "Your site's search uses SQL LIKE queries. It's slow (2+ seconds), doesn't handle typos, and has a 20% zero results rate. Propose a search improvement project covering: technology choice (Elasticsearch vs Algolia), implementation approach, expected improvements, and how you'd measure success.",
+                guidance: "Technology: Algolia for faster implementation if budget allows, Elasticsearch for more control. Implementation: index products with name, description, attributes; configure analyzers for stemming, synonyms; implement autocomplete; add faceted filters. Expected improvements: <200ms response, <5% zero results, better relevance. Success metrics: conversion rate from search, zero results rate, search CTR, qualitative feedback."
+            }
+        },
+        {
+            day: 21,
+            title: "Week 3 Review & Integration Exercise",
+            desc: "Synthesize backend and integration knowledge",
+            duration: "60 min",
+            content: `
+<h2>Week 3 Synthesis</h2>
+
+<p>This week covered the backend systems that power ecommerce: rendering patterns, authentication, payments, events, queues, and search. Let's bring it together.</p>
+
+<h2>The Integration Landscape</h2>
+
+<div class="code-block" data-lang="Ecommerce Integrations">
+<code>Customer Journey Integrations:
+
+BROWSE:
+→ Search Engine (Elasticsearch/Algolia)
+→ CDN (images, static assets)
+→ Personalization (recommendations)
+
+ADD TO CART:
+→ Session/Auth system
+→ Inventory check (real-time)
+→ Price engine (promotions)
+
+CHECKOUT:
+→ Payment gateway (Stripe)
+→ Tax calculation (TaxJar)
+→ Shipping rates (carriers)
+→ Fraud detection
+
+POST-PURCHASE:
+→ Email service (transactional)
+→ SMS notifications
+→ Warehouse/fulfillment
+→ Analytics/reporting
+→ CRM sync
+→ Returns system</code>
+</div>
+
+<h2>Data Flow Architecture</h2>
+
+<div class="code-block" data-lang="Data Flow">
+<code>Synchronous (User Waits):
+┌─────────────────────────────────────┐
+│  Checkout Request                    │
+│  ├→ Validate cart                   │
+│  ├→ Calculate totals + tax          │
+│  ├→ Process payment (Stripe)        │
+│  └→ Return order confirmation       │
+└─────────────────────────────────────┘
+               │
+               ▼
+Asynchronous (Background):
+┌─────────────────────────────────────┐
+│  Event: order.created               │
+│  Subscribers:                       │
+│  ├→ Email service: confirmation     │
+│  ├→ Inventory: decrement stock      │
+│  ├→ Warehouse: create pick list     │
+│  ├→ Analytics: track conversion     │
+│  ├→ CRM: update customer record     │
+│  └→ Search: update product stock    │
+└─────────────────────────────────────┘</code>
+</div>
+
+<h2>Key Integration Patterns</h2>
+
+<ul>
+    <li><strong>Webhooks:</strong> Receive events from external services (payments, shipping updates)</li>
+    <li><strong>Message Queues:</strong> Decouple internal services, handle spikes, ensure delivery</li>
+    <li><strong>API Polling:</strong> When webhooks aren't available, poll with backoff</li>
+    <li><strong>Batch Sync:</strong> Nightly jobs for full data reconciliation</li>
+    <li><strong>Event Sourcing:</strong> Store events as source of truth, derive current state</li>
+</ul>
+
+<h2>Week 3 Capstone Exercise</h2>
+
+<div class="exercise">
+    <div class="exercise-header">🔧 Integration Architecture Exercise</div>
+    <p>Map your platform's integration architecture:</p>
+    <ol>
+        <li>List all external services your platform integrates with</li>
+        <li>For each, identify: sync vs async, webhook vs polling, criticality</li>
+        <li>Draw the data flow for an order from placement to fulfillment</li>
+        <li>Identify single points of failure in integrations</li>
+        <li>What happens if Stripe is down for 10 minutes?</li>
+    </ol>
+</div>
+
+<h2>Key Vocabulary</h2>
+
+<ul>
+    <li><strong>Hydration:</strong> JavaScript taking over server-rendered HTML</li>
+    <li><strong>ISR:</strong> Incremental Static Regeneration</li>
+    <li><strong>JWT:</strong> JSON Web Token for stateless auth</li>
+    <li><strong>PCI DSS:</strong> Payment card security standard</li>
+    <li><strong>Idempotent:</strong> Safe to retry multiple times</li>
+    <li><strong>Dead Letter Queue:</strong> Where failed messages go</li>
+    <li><strong>Inverted Index:</strong> How search engines work</li>
+</ul>
+`,
+            questions: [
+                { q: "Order flow: payment → email → inventory → warehouse. Email service is down. Impact in synchronous vs async architecture?", options: ["Same impact", "Sync: entire order fails. Async: order completes, email queued for retry when service recovers.", "Async is worse", "Neither works"], correct: 1, explanation: "Synchronous chains fail entirely on any step failure. Async/event-driven isolates failures—order completes, email retries independently. This is why we decouple non-critical steps." },
+                { q: "Stripe webhook fails to reach your server. What happens to the customer's order?", options: ["Payment fails", "Payment succeeds at Stripe but your system doesn't know. Must reconcile via Stripe API or dashboard.", "Automatic refund", "Stripe retries"], correct: 1, explanation: "Stripe processes the payment regardless of webhook delivery. If webhook fails, your system is out of sync. Stripe retries webhooks, but you should also have reconciliation jobs to catch discrepancies." },
+                { q: "Choosing between Stripe Checkout (hosted) and Stripe Elements (embedded). Key factors?", options: ["Price difference", "Checkout: faster, simpler, less customization. Elements: branded experience, more work, same PCI level (SAQ A).", "Elements is more secure", "Checkout doesn't work on mobile"], correct: 1, explanation: "Both are SAQ A compliant. Checkout is Stripe-hosted (fast to implement, limited customization). Elements embeds in your page (your design, more implementation work). Choose based on customization needs vs. implementation speed." },
+                { q: "Search conversion rate dropped after implementing new search. What to investigate?", options: ["Server performance", "Relevance ranking, zero results rate, whether results match user intent—compare top queries before/after", "CSS styling", "Payment issues"], correct: 1, explanation: "Search conversion depends on relevance. Investigate: are the right products appearing? Check zero results rate, top query performance, click-through rate. Compare query analysis before and after change." },
+                { q: "You need real-time inventory across 3 sales channels (website, marketplace, store). Architecture approach?", options: ["Sync each sale immediately to all channels", "Central inventory service as source of truth, each channel queries before checkout, events propagate changes", "Separate inventory per channel", "Nightly batch sync"], correct: 1, explanation: "Central inventory service is source of truth. Channels query before committing sales. Sales events propagate to update all channels. Eventual consistency is OK; double-selling is handled by the central service rejecting oversells." }
+            ],
+            essay: {
+                question: "You're joining a company as Head of Ecommerce. During your first week, you discover: checkout is synchronous with 5-second waits, search uses SQL LIKE, there's no webhook signature verification, and failed jobs just disappear. Write a 90-day technical improvement plan prioritizing these issues. Cover: assessment approach, priority order with justification, quick wins, and how you'd communicate the plan to leadership.",
+                guidance: "Assessment: audit current architecture, measure actual impact (checkout abandonment, search conversion, order discrepancies). Priority: 1) Webhook verification (security risk), 2) Failed job visibility (losing orders?), 3) Checkout async (user experience), 4) Search upgrade (conversion). Quick wins: add signature verification, set up dead letter queue and alerts, move email to async. Communication: frame as risk reduction and revenue impact, quantify where possible (checkout abandonment, search conversion), propose phased approach with milestones."
+            }
+        }
     ],
     week4: [
         { day: 22, title: "Ecommerce Platform Architecture", desc: "Monolith vs microservices, headless", duration: "50 min", content: `<p>Full content for Day 22.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
@@ -2497,7 +3803,7 @@ ISR (Incremental Static): Static + scheduled rebuilds
     ],
     bonus: [
         { day: 29, title: "Technical Leadership", desc: "Vendor management, technical hiring", duration: "45 min", content: `<p>Full content for Day 29.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } },
-        { day: 30, title: "Technical Roadmapping", desc: "Strategy and presenting to executives", duration: "50 min", content: `<h2>Congratulations!</h2><p>You've completed 30 days of intensive technical training. You now have the foundation for director-level technical conversations and decisions.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
+        { day: 30, title: "Technical Roadmapping", desc: "Strategy and presenting to executives", duration: "50 min", content: `<h2>Congratulations!</h2><p>You've completed 30 days of intensive technical training. You now have the foundation for Legend-level technical conversations and decisions.</p>`, questions: [{ q: "Placeholder", options: ["A", "B", "C", "D"], correct: 0, explanation: "Explanation" }], essay: { question: "Essay", guidance: "Guidance" } }
     ]
 };
 
