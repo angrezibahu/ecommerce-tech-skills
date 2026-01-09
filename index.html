@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tech Fluency for Ecom Leaders | 30-Day Course</title>
+    <title>Tech Fluency for Ecom Directors | Advanced 30-Day Programme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
             font-family: 'Atkinson Hyperlegible', sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
-            line-height: 1.7;
+            line-height: 1.8;
             letter-spacing: 0.02em;
             min-height: 100vh;
         }
@@ -43,7 +43,7 @@
             z-index: -1;
         }
         p, li, label, button { font-size: 1.1rem; }
-        code, pre, .code-block { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; }
+        code, pre, .code-block { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
         .nav {
             position: fixed; top: 0; left: 0; right: 0;
             background: rgba(10, 10, 15, 0.95);
@@ -59,15 +59,15 @@
         .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary)); width: 0%; transition: width 0.5s ease; }
         .nav-stats { display: flex; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary); }
         .stat-value { color: var(--accent-primary); font-weight: 700; }
-        .container { max-width: 800px; margin: 0 auto; padding: 80px 1.5rem 3rem; }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 1.5rem 3rem; }
         .hero { text-align: center; padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
         .hero-tag { display: inline-block; background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary)); color: var(--bg-dark); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
         .hero h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-subtitle { color: var(--text-secondary); font-size: 1.15rem; max-width: 500px; margin: 0 auto 2rem; }
+        .hero-subtitle { color: var(--text-secondary); font-size: 1.15rem; max-width: 600px; margin: 0 auto 2rem; }
         .hero-meta { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; color: var(--text-muted); font-size: 0.95rem; }
         .week-section { margin-bottom: 2.5rem; }
         .week-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
-        .week-number { background: var(--bg-card); border: 2px solid var(--accent-tertiary); color: var(--accent-tertiary); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+        .week-number { background: var(--bg-card); border: 2px solid var(--accent-tertiary); color: var(--accent-tertiary); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
         .week-info h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
         .week-desc { color: var(--text-secondary); font-size: 0.95rem; }
         .day-grid { display: grid; gap: 1rem; }
@@ -89,6 +89,7 @@
         .tag { background: rgba(124, 58, 237, 0.15); color: var(--accent-tertiary); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
         .tag.practical { background: rgba(0, 212, 170, 0.15); color: var(--accent-primary); }
         .tag.theory { background: rgba(255, 107, 53, 0.15); color: var(--accent-secondary); }
+        .tag.hands-on { background: rgba(255, 184, 0, 0.15); color: var(--warning); }
         .lesson-view { display: none; animation: fadeIn 0.3s ease; }
         .lesson-view.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -97,45 +98,59 @@
         .back-btn:hover { color: var(--accent-primary); }
         .lesson-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 1rem; }
         .lesson-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.95rem; }
-        .lesson-content h2 { color: var(--accent-primary); font-size: 1.4rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-        .lesson-content h3 { color: var(--text-primary); font-size: 1.2rem; margin: 2rem 0 0.75rem; }
+        .lesson-content { font-size: 1.1rem; }
+        .lesson-content h2 { color: var(--accent-primary); font-size: 1.5rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+        .lesson-content h3 { color: var(--text-primary); font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+        .lesson-content h4 { color: var(--accent-secondary); font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
         .lesson-content p { margin-bottom: 1.25rem; color: var(--text-secondary); }
+        .lesson-content ul, .lesson-content ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .lesson-content li { margin-bottom: 0.5rem; color: var(--text-secondary); }
         .lesson-content strong { color: var(--text-primary); }
         .code-block { background: #1a1a24; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; position: relative; }
         .code-block::before { content: attr(data-lang); position: absolute; top: 0; right: 0; background: var(--accent-tertiary); color: white; padding: 0.25rem 0.75rem; font-size: 0.75rem; border-radius: 0 12px 0 8px; text-transform: uppercase; font-weight: 600; }
-        .code-block code { color: var(--text-primary); white-space: pre; display: block; }
-        .code-comment { color: var(--text-muted); }
-        .code-tag { color: var(--accent-secondary); }
-        .code-attr { color: var(--accent-tertiary); }
-        .code-string { color: var(--accent-primary); }
-        .code-keyword { color: #ff79c6; }
+        .code-block code { color: var(--text-primary); white-space: pre; display: block; line-height: 1.6; }
         .info-box { background: rgba(124, 58, 237, 0.1); border-left: 4px solid var(--accent-tertiary); padding: 1.25rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
         .info-box.warning { background: rgba(255, 184, 0, 0.1); border-color: var(--warning); }
         .info-box.success { background: rgba(0, 212, 170, 0.1); border-color: var(--success); }
+        .info-box.critical { background: rgba(255, 71, 87, 0.1); border-color: var(--error); }
         .info-box-title { font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
-        .info-box p { margin-bottom: 0; font-size: 1rem; }
+        .info-box p { margin-bottom: 0.5rem; font-size: 1rem; }
+        .info-box p:last-child { margin-bottom: 0; }
         .scenario { background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(124, 58, 237, 0.05)); border: 1px solid var(--accent-secondary); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
-        .scenario-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--accent-secondary); font-weight: 700; }
-        .quiz { background: var(--bg-card); border: 2px solid var(--accent-tertiary); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
-        .quiz-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem; }
-        .quiz-options { display: grid; gap: 0.75rem; }
-        .quiz-option { background: var(--bg-dark); border: 2px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.75rem; }
+        .scenario-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--accent-secondary); font-weight: 700; font-size: 1.1rem; }
+        .exercise { background: var(--bg-card); border: 2px solid var(--warning); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
+        .exercise-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--warning); font-weight: 700; font-size: 1.1rem; }
+        .exercise ol { margin-top: 1rem; }
+        .quiz-section { background: var(--bg-card); border: 2px solid var(--accent-tertiary); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
+        .quiz-header { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-primary); }
+        .quiz-progress { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .quiz-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem; padding: 1rem; background: var(--bg-dark); border-radius: 10px; }
+        .quiz-options { display: grid; gap: 0.75rem; margin-bottom: 1rem; }
+        .quiz-option { background: var(--bg-dark); border: 2px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: flex-start; gap: 0.75rem; }
         .quiz-option:hover { border-color: var(--accent-tertiary); }
         .quiz-option.selected { border-color: var(--accent-primary); background: rgba(0, 212, 170, 0.1); }
         .quiz-option.correct { border-color: var(--success); background: rgba(0, 212, 170, 0.15); }
         .quiz-option.incorrect { border-color: var(--error); background: rgba(255, 71, 87, 0.15); }
-        .option-letter { width: 28px; height: 28px; border-radius: 6px; background: var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .option-letter { min-width: 28px; height: 28px; border-radius: 6px; background: var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
         .quiz-option.selected .option-letter { background: var(--accent-primary); color: var(--bg-dark); }
+        .quiz-option.correct .option-letter { background: var(--success); color: var(--bg-dark); }
+        .quiz-option.incorrect .option-letter { background: var(--error); color: white; }
         .quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: 10px; display: none; }
         .quiz-feedback.show { display: block; }
         .quiz-feedback.correct { background: rgba(0, 212, 170, 0.15); border: 1px solid var(--success); }
         .quiz-feedback.incorrect { background: rgba(255, 71, 87, 0.15); border: 1px solid var(--error); }
+        .quiz-nav { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.2s ease; border: none; font-family: inherit; }
         .btn-primary { background: var(--accent-primary); color: var(--bg-dark); }
         .btn-primary:hover { background: #00eabb; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border); }
         .btn-secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+        .btn-small { padding: 0.5rem 1rem; font-size: 0.9rem; }
         .btn-group { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+        .quiz-score { text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(124, 58, 237, 0.1)); border-radius: 16px; margin-top: 2rem; }
+        .score-value { font-size: 3rem; font-weight: 700; color: var(--accent-primary); }
+        .score-label { color: var(--text-secondary); margin-top: 0.5rem; }
         .lesson-completion { background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(124, 58, 237, 0.1)); border: 2px solid var(--success); border-radius: 16px; padding: 2rem; text-align: center; margin-top: 3rem; }
         .completion-icon { font-size: 3rem; margin-bottom: 1rem; }
         .completion-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -143,6 +158,13 @@
         .footer { text-align: center; padding: 3rem 0; margin-top: 3rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
         .reset-btn { position: fixed; bottom: 1rem; right: 1rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; z-index: 1000; }
         .reset-btn:hover { border-color: var(--error); color: var(--error); }
+        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .toc-title { font-weight: 700; margin-bottom: 1rem; color: var(--accent-primary); }
+        .toc-list { list-style: none; padding: 0; }
+        .toc-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .toc-list li:last-child { border-bottom: none; }
+        .toc-list a { color: var(--text-secondary); text-decoration: none; }
+        .toc-list a:hover { color: var(--accent-primary); }
         @media (max-width: 600px) {
             .container { padding: 80px 1rem 2rem; }
             .hero { padding: 2rem 0 1.5rem; }
@@ -151,378 +173,165 @@
             .nav-stats { display: none; }
             .btn-group { flex-direction: column; }
             .btn { width: 100%; }
+            .quiz-nav { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-brand">TECH FLUENCY</div>
+        <div class="nav-brand">TECH FLUENCY: ADVANCED</div>
         <div class="nav-stats">
             <div class="stat"><span class="stat-value" id="completedCount">0</span>/30</div>
             <div class="stat"><span class="stat-value" id="streakCount">0</span>🔥</div>
         </div>
     </nav>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    
+
     <div class="container">
         <div id="dashboardView">
             <header class="hero">
-                <span class="hero-tag">30-Day Course</span>
-                <h1>Tech Fluency for Ecommerce Leaders</h1>
-                <p class="hero-subtitle">From marketplace expert to technically confident director. No fluff, real skills.</p>
+                <span class="hero-tag">Advanced 30-Day Programme</span>
+                <h1>Technical Fluency for Ecommerce Directors</h1>
+                <p class="hero-subtitle">Deep technical knowledge, hands-on exercises, and the understanding to lead technical teams and make architecture decisions.</p>
                 <div class="hero-meta">
-                    <span>⏱ 20-30 min/day</span>
-                    <span>📱 Mobile-first</span>
-                    <span>🎯 Practical focus</span>
+                    <span>📚 1000+ words/day</span>
+                    <span>🧪 20 questions/lesson</span>
+                    <span>🔧 Hands-on exercises</span>
                 </div>
             </header>
-            <section class="week-section"><div class="week-header"><div class="week-number">W1</div><div class="week-info"><h2>Foundation: How The Web Works</h2><p class="week-desc">Before you write code, understand what you're building on</p></div></div><div class="day-grid" id="week1Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">W2</div><div class="week-info"><h2>HTML & CSS: Building Blocks</h2><p class="week-desc">Structure and style - the visible layer</p></div></div><div class="day-grid" id="week2Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">W3</div><div class="week-info"><h2>JavaScript & Interactivity</h2><p class="week-desc">Making things happen - the logic layer</p></div></div><div class="day-grid" id="week3Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">W4</div><div class="week-info"><h2>APIs, Data & Architecture</h2><p class="week-desc">How systems talk to each other</p></div></div><div class="day-grid" id="week4Grid"></div></section>
-            <section class="week-section"><div class="week-header"><div class="week-number">+</div><div class="week-info"><h2>Capstone: Putting It Together</h2><p class="week-desc">Apply everything to director-level scenarios</p></div></div><div class="day-grid" id="bonusGrid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W1</div><div class="week-info"><h2>Infrastructure & Architecture</h2><p class="week-desc">Deep dive into how web systems work at scale</p></div></div><div class="day-grid" id="week1Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W2</div><div class="week-info"><h2>Frontend Engineering</h2><p class="week-desc">HTML, CSS, JavaScript and modern frameworks</p></div></div><div class="day-grid" id="week2Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W3</div><div class="week-info"><h2>Backend & Data Systems</h2><p class="week-desc">Servers, databases, APIs and integrations</p></div></div><div class="day-grid" id="week3Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">W4</div><div class="week-info"><h2>Ecommerce Architecture & Operations</h2><p class="week-desc">Platform architecture, performance, security and DevOps</p></div></div><div class="day-grid" id="week4Grid"></div></section>
+            <section class="week-section"><div class="week-header"><div class="week-number">+</div><div class="week-info"><h2>Leadership & Strategy</h2><p class="week-desc">Technical leadership, vendor management and roadmapping</p></div></div><div class="day-grid" id="bonusGrid"></div></section>
         </div>
         <div id="lessonView" class="lesson-view"></div>
     </div>
     <button class="reset-btn" onclick="resetProgress()">Reset Progress</button>
-    <footer class="footer"><p>Built for ambitious ecom professionals who want to speak tech fluently</p></footer>
+    <footer class="footer"><p>Advanced technical training for ecommerce leadership</p></footer>
 
 <script>
 const courseData = {
     week1: [
-        { day: 1, title: "The Request-Response Cycle", desc: "What happens when someone visits your website", tags: ["theory"], duration: "20 min",
-          content: `<h2>What You'll Learn</h2><p>Every time a customer clicks "Add to Cart," a request-response cycle happens.</p><div class="info-box"><div class="info-box-title">🔄 The Cycle</div><p><strong>1. Browser REQUEST</strong> → "Give me this page"<br><strong>2. Server processes</strong> → Queries database<br><strong>3. Server RESPONSE</strong> → Returns HTML/CSS/JS<br><strong>4. Browser renders</strong> → Shows the page</p></div><h3>HTTP Methods</h3><div class="code-block" data-lang="HTTP"><code>GET    → Retrieve data (loading pages)
-POST   → Send new data (orders)
-PUT    → Update data (prices)
-DELETE → Remove data</code></div><h3>Status Codes</h3><div class="code-block" data-lang="Status"><code>200 → Success
-301 → Permanent redirect
-404 → Not found
-500 → Server error
-503 → Service unavailable (overloaded)</code></div><div class="info-box warning"><div class="info-box-title">⚠️ Director Insight</div><p>When told "server error," ask: "Is it 500 (code) or 503 (capacity)?" This determines if you need better code or more resources.</p></div>`,
-          quiz: { question: "Blank checkout pages during peak with '503 errors' means:", options: [{letter:"A",text:"Bug in checkout code",correct:false},{letter:"B",text:"Server can't handle traffic",correct:true},{letter:"C",text:"Wrong customer details",correct:false},{letter:"D",text:"Page doesn't exist",correct:false}], explanation: "503 = Service Unavailable. The server is overwhelmed. Need more capacity or caching." }
+        {
+            day: 1,
+            title: "The HTTP Protocol Deep Dive",
+            desc: "Understanding the foundation of all web communication",
+            tags: ["theory", "hands-on"],
+            duration: "45 min",
+            content: `<h2>Sample lesson content - Day 1</h2><p>This is a placeholder for the full HTTP deep dive content.</p>`,
+            questions: [
+                { q: "What does 'stateless' mean in HTTP?", options: ["Server maintains connection forever", "Each request is independent - server doesn't remember previous requests", "Requests don't have status codes", "Only GET requests are allowed"], correct: 1, explanation: "Stateless means each request is independent. The server doesn't inherently remember previous requests, which is why we need cookies/sessions/tokens to maintain state like login status." },
+                { q: "Which HTTP method should be used to partially update a resource?", options: ["POST", "PUT", "PATCH", "UPDATE"], correct: 2, explanation: "PATCH is for partial updates. PUT replaces the entire resource. There is no UPDATE method in HTTP." }
+            ]
         },
-        { day: 2, title: "DNS, Domains & Hosting", desc: "Where your code lives", tags: ["theory"], duration: "25 min",
-          content: `<h2>The Internet's Address Book</h2><p>Domains (yourstore.com) connect to IP addresses (192.168.1.1) via DNS.</p><h3>DNS Records</h3><div class="code-block" data-lang="DNS"><code>A Record  → Domain to IP
-CNAME     → Domain to domain
-MX Record → Email routing
-TXT       → Verification</code></div><h3>Hosting Types</h3><p><strong>Shared</strong> (£5-20/mo) - Risky for ecommerce<br><strong>VPS</strong> (£30-100/mo) - Good balance<br><strong>Cloud</strong> (AWS) - Scales automatically<br><strong>Platform</strong> (Shopify) - They handle everything</p><div class="info-box success"><div class="info-box-title">💡 Decision Framework</div><p>Under £1m: Shopify/BigCommerce<br>£1-10m: Shopify Plus or Magento<br>£10m+: Full architectural review</p></div>`,
-          quiz: { question: "Magento crashes during sales, 'out of memory' on £80 VPS. First step?", options: [{letter:"A",text:"Dedicated server",correct:false},{letter:"B",text:"Upgrade VPS + add Cloudflare",correct:true},{letter:"C",text:"Rebuild on Shopify",correct:false},{letter:"D",text:"Add more images",correct:false}], explanation: "Upgrading VPS tests if it's capacity. Cloudflare reduces load. Quick wins before major changes." }
+        {
+            day: 2,
+            title: "DNS, Load Balancing & CDN Architecture",
+            desc: "How traffic finds your servers and scales globally",
+            tags: ["theory", "hands-on"],
+            duration: "45 min",
+            content: `<h2>Sample lesson content - Day 2</h2><p>This is a placeholder for the full DNS and CDN content.</p>`,
+            questions: [
+                { q: "What prevents you from using a CNAME record on a naked domain?", options: ["Security restrictions", "DNS specification limitation", "Registrar policy", "Cost"], correct: 1, explanation: "The DNS RFC specifies CNAME cannot coexist with other records. Since apex must have SOA and NS records, CNAME is prohibited there." }
+            ]
         },
-        { day: 3, title: "Reading Developer Tools", desc: "Your debugging superpower", tags: ["practical"], duration: "30 min",
-          content: `<h2>Browser Dev Tools</h2><p>F12 or Ctrl+Shift+I opens the developer console.</p><h3>Network Tab</h3><div class="info-box"><div class="info-box-title">📊 Look For</div><p><strong>Status:</strong> Red = errors<br><strong>Time:</strong> Slow requests<br><strong>Size:</strong> Large files</p></div><h3>Console Tab</h3><div class="code-block" data-lang="Errors"><code>TypeError → Using undefined
-404 → File missing
-CORS error → Cross-domain block</code></div><div class="info-box success"><div class="info-box-title">💡 Power Move</div><p>Screenshot errors before meetings. You'll be taken more seriously.</p></div>`,
-          quiz: { question: "Images not loading, Network shows '403' in red. This means:", options: [{letter:"A",text:"Images don't exist",correct:false},{letter:"B",text:"Server blocking access",correct:true},{letter:"C",text:"Images too large",correct:false},{letter:"D",text:"Clear cache needed",correct:false}], explanation: "403 = Forbidden. Files exist but access denied. Check permissions or CDN config." }
+        {
+            day: 3,
+            title: "Cloud Hosting & Infrastructure as Code",
+            desc: "AWS, containers, and modern deployment",
+            tags: ["theory", "practical"],
+            duration: "50 min",
+            content: `<h2>Sample lesson content - Day 3</h2><p>This is a placeholder for the full cloud hosting content.</p>`,
+            questions: [
+                { q: "Infrastructure as Code tools like Terraform allow:", options: ["Only AWS", "Defining infrastructure in version-controlled config files", "Manual server setup", "Database design"], correct: 1, explanation: "IaC tools define infrastructure declaratively in config files, enabling version control, peer review, reproducible environments, and disaster recovery." },
+                { q: "RDS Read Replica is used for:", options: ["Backup only", "Offloading read traffic from primary database", "Writing data faster", "DNS"], correct: 1, explanation: "Read replicas handle SELECT queries, offloading the primary database. Reporting, search indexing, and read-heavy workloads use replicas." }
+            ]
         },
-        { day: 4, title: "Git & Version Control", desc: "How devs track changes", tags: ["practical"], duration: "25 min",
-          content: `<h2>Version Control</h2><p>Git tracks changes across thousands of files.</p><h3>Key Concepts</h3><p><strong>Repository:</strong> Project folder<br><strong>Commit:</strong> Snapshot with message<br><strong>Branch:</strong> Parallel version<br><strong>Pull Request:</strong> Request to merge</p><div class="code-block" data-lang="Flow"><code>main → live site
-develop → testing
-feature/xyz → individual work</code></div><div class="scenario"><div class="scenario-header"><span>📍</span><span>Investigating Bugs</span></div><p>Sales dropped? Check GitHub commits from last 24 hours. Ask to revert suspicious changes.</p></div>`,
-          quiz: { question: "'Feature stuck in code review' means:", options: [{letter:"A",text:"Code is broken",correct:false},{letter:"B",text:"Another dev must approve",correct:true},{letter:"C",text:"Server rejected it",correct:false},{letter:"D",text:"Git crashed",correct:false}], explanation: "Code review = other devs checking before merge. Normal quality process." }
+        {
+            day: 4,
+            title: "Database Systems: SQL Deep Dive",
+            desc: "Relational databases, queries, indexing, and performance",
+            tags: ["theory", "hands-on"],
+            duration: "50 min",
+            content: `<h2>Sample lesson content - Day 4</h2><p>This is a placeholder for the full SQL content.</p>`,
+            questions: [
+                { q: "What does ACID stand for in database transactions?", options: ["Automatic, Consistent, Indexed, Durable", "Atomicity, Consistency, Isolation, Durability", "Asynchronous, Cached, Isolated, Distributed", "None of the above"], correct: 1, explanation: "ACID properties ensure reliable transactions: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent safety), Durability (committed = permanent)." }
+            ]
         },
-        { day: 5, title: "The Command Line", desc: "That scary black screen", tags: ["practical"], duration: "25 min",
-          content: `<h2>Why Terminal Matters</h2><p>Tasks taking 20 clicks take one command.</p><h3>Navigation</h3><div class="code-block" data-lang="Terminal"><code>pwd  → Where am I?
-ls   → List files
-cd   → Change directory</code></div><h3>Useful Commands</h3><div class="code-block" data-lang="Terminal"><code>grep "error" file → Search text
-tail -f log → Watch file live
-npm install → JS packages</code></div><div class="info-box warning"><div class="info-box-title">⚠️ Danger</div><p>Never run: rm -rf /<br>Be careful with: sudo</p></div>`,
-          quiz: { question: "Dev ran 'grep -r \"out of stock\" ./products/' - what did they do?", options: [{letter:"A",text:"Searched for that text recursively",correct:true},{letter:"B",text:"Deleted products",correct:false},{letter:"C",text:"Created a file",correct:false},{letter:"D",text:"Sent an email",correct:false}], explanation: "grep searches text. -r = recursive through subfolders." }
+        {
+            day: 5,
+            title: "NoSQL & Caching Systems",
+            desc: "Redis, MongoDB, Elasticsearch and when to use each",
+            tags: ["theory", "practical"],
+            duration: "45 min",
+            content: `<h2>Sample lesson content - Day 5</h2><p>This is a placeholder for the full NoSQL content.</p>`,
+            questions: [
+                { q: "Redis is primarily used for:", options: ["Long-term data storage", "In-memory caching and fast data structures", "File storage", "Email"], correct: 1, explanation: "Redis is an in-memory data store used for caching, session storage, rate limiting, queues, and real-time features requiring sub-millisecond latency." }
+            ]
         },
-        { day: 6, title: "Databases Explained", desc: "Where data lives", tags: ["theory"], duration: "30 min",
-          content: `<h2>Database Fundamentals</h2><p>Products, customers, orders - all in databases.</p><h3>SQL Databases</h3><div class="code-block" data-lang="SQL"><code>SELECT * FROM products WHERE price < 30;
-UPDATE products SET price = 29.99 WHERE id = 1;</code></div><h3>NoSQL Options</h3><p><strong>MongoDB:</strong> Flexible documents<br><strong>Redis:</strong> Fast caching<br><strong>Elasticsearch:</strong> Search engine</p><div class="scenario"><div class="scenario-header"><span>📍</span><span>Slow Search</span></div><p>4-second search? If querying MySQL directly, add Elasticsearch or Algolia.</p></div>`,
-          quiz: { question: "Black Friday prep: 'Redis + read replica' solves:", options: [{letter:"A",text:"Site appearance",correct:false},{letter:"B",text:"Database load during traffic",correct:true},{letter:"C",text:"SEO",correct:false},{letter:"D",text:"Categories",correct:false}], explanation: "Redis caches data in memory. Read replicas separate read/write load." }
+        {
+            day: 6,
+            title: "API Design & REST Principles",
+            desc: "Designing and evaluating web APIs",
+            tags: ["theory", "practical"],
+            duration: "45 min",
+            content: `<h2>Sample lesson content - Day 6</h2><p>This is a placeholder for the full API design content.</p>`,
+            questions: [
+                { q: "REST APIs should be:", options: ["Stateful", "Stateless - each request contains all info needed", "Session-based", "Single endpoint only"], correct: 1, explanation: "REST is stateless - each request must contain all information needed. Server doesn't store client state between requests." }
+            ]
         },
-        { day: 7, title: "Week 1 Review", desc: "Connect the dots", tags: ["review"], duration: "35 min",
-          content: `<h2>The Complete Flow</h2><div class="info-box"><div class="info-box-title">🔄 Connected</div><p>URL → DNS → Server → Database → Response → Browser<br>All tracked in Git, managed via terminal.</p></div><h3>Director Vocabulary</h3><p><strong>Deployment:</strong> Pushing code live<br><strong>Staging:</strong> Test environment<br><strong>Rollback:</strong> Undo changes<br><strong>Technical debt:</strong> Shortcuts causing problems<br><strong>Scalability:</strong> Handle 10x traffic?</p>`,
-          quiz: { question: "Site slow for new visitors, fast for returning. Why?", options: [{letter:"A",text:"Slower internet",correct:false},{letter:"B",text:"Browser caching working",correct:true},{letter:"C",text:"Database difference",correct:false},{letter:"D",text:"Login bug",correct:false}], explanation: "Browser caches files after first visit. Return visitors load locally." }
+        {
+            day: 7,
+            title: "Week 1 Review & Architecture Exercise",
+            desc: "Synthesise infrastructure knowledge",
+            tags: ["review", "hands-on"],
+            duration: "60 min",
+            content: `<h2>Week 1 Synthesis</h2><p>Review HTTP, DNS, hosting, databases, and APIs. Complete an architecture diagramming exercise for your own platform.</p>`,
+            questions: [
+                { q: "Complete infrastructure review quiz covering all Week 1 topics", options: ["Ready to proceed", "Need more review", "Skip", "Retake week"], correct: 0, explanation: "Week 1 complete. You now understand the infrastructure layer." }
+            ]
         }
     ],
     week2: [
-        { day: 8, title: "HTML: The Skeleton", desc: "Document structure", tags: ["practical"], duration: "30 min",
-          content: `<h2>HTML Basics</h2><p>HTML structures content for browsers.</p><div class="code-block" data-lang="HTML"><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;Page&lt;/title&gt;&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Heading&lt;/h1&gt;
-  &lt;p&gt;Paragraph&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></div><h3>Key Tags</h3><p>&lt;h1-h6&gt; Headings, &lt;p&gt; Paragraph, &lt;a&gt; Link, &lt;img&gt; Image, &lt;div&gt; Container</p><h3>Semantic HTML</h3><p>Use &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;footer&gt; instead of divs. Better for SEO.</p>`,
-          quiz: { question: "Multiple H1 tags flagged by SEO audit. Problem?", options: [{letter:"A",text:"Slows page",correct:false},{letter:"B",text:"Google can't find main topic",correct:true},{letter:"C",text:"Mobile issue",correct:false},{letter:"D",text:"Not a problem",correct:false}], explanation: "One H1 per page tells search engines what's most important." }
-        },
-        { day: 9, title: "HTML Forms", desc: "Capturing data", tags: ["practical"], duration: "30 min",
-          content: `<h2>Forms = Conversions</h2><div class="code-block" data-lang="HTML"><code>&lt;form action="/submit" method="POST"&gt;
-  &lt;label for="email"&gt;Email&lt;/label&gt;
-  &lt;input type="email" id="email" required&gt;
-  &lt;button type="submit"&gt;Send&lt;/button&gt;
-&lt;/form&gt;</code></div><h3>Input Types</h3><p>text, email, password, tel, number - each triggers different mobile keyboards.</p><div class="info-box warning"><div class="info-box-title">⚠️ Conversion Killers</div><p>Missing 'required' = incomplete submissions<br>Missing 'autocomplete' = manual entry</p></div>`,
-          quiz: { question: "Phone field uses type='text'. Better for mobile?", options: [{letter:"A",text:"type='postcode'",correct:false},{letter:"B",text:"type='tel' or inputmode='numeric'",correct:true},{letter:"C",text:"Make it larger",correct:false},{letter:"D",text:"Remove it",correct:false}], explanation: "type='tel' shows number pad on mobile, easier entry." }
-        },
-        { day: 10, title: "CSS Fundamentals", desc: "Making things pretty", tags: ["practical"], duration: "35 min",
-          content: `<h2>CSS Styling</h2><div class="code-block" data-lang="CSS"><code>selector { property: value; }
-
-.product-card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-}</code></div><h3>Box Model</h3><p>Content → Padding → Border → Margin</p><div class="code-block" data-lang="CSS"><code>* { box-sizing: border-box; }
-/* Width now includes padding/border */</code></div>`,
-          quiz: { question: "Button: padding 10px, border 2px, margin 5px, width 100px. Total width?",options: [{letter:"A",text:"100px",correct:false},{letter:"B",text:"124px",correct:false},{letter:"C",text:"134px",correct:true},{letter:"D",text:"117px",correct:false}], explanation: "100 + 20 padding + 4 border + 10 margin = 134px" }
-        },
-        { day: 11, title: "CSS Layout: Flexbox & Grid", desc: "Modern layouts", tags: ["practical"], duration: "35 min",
-          content: `<h2>Layout Tools</h2><h3>Flexbox (1D)</h3><div class="code-block" data-lang="CSS"><code>.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}</code></div><h3>Grid (2D)</h3><div class="code-block" data-lang="CSS"><code>.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-}</code></div><p><strong>Flexbox:</strong> Nav bars, centering<br><strong>Grid:</strong> Product grids, layouts</p>`,
-          quiz: { question: "4 products desktop, 2 tablet, 1 mobile. Most efficient?", options: [{letter:"A",text:"3 CSS files",correct:false},{letter:"B",text:"auto-fit minmax",correct:true},{letter:"C",text:"JavaScript",correct:false},{letter:"D",text:"Fixed widths",correct:false}], explanation: "auto-fit minmax is inherently responsive, no media queries needed." }
-        },
-        { day: 12, title: "Responsive Design", desc: "Every screen size", tags: ["practical"], duration: "30 min",
-          content: `<h2>Mobile First</h2><p>60%+ of ecommerce is mobile.</p><div class="code-block" data-lang="HTML"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></div><h3>Media Queries</h3><div class="code-block" data-lang="CSS"><code>.title { font-size: 18px; }
-
-@media (min-width: 768px) {
-  .title { font-size: 22px; }
-}</code></div><div class="info-box warning"><div class="info-box-title">⚠️ Testing</div><p>Use Chrome DevTools device mode (Ctrl+Shift+M), not just browser resize.</p></div>`,
-          quiz: { question: "Works in Chrome resize, breaks on actual iPhones. Issue?", options: [{letter:"A",text:"iPhones don't support CSS",correct:false},{letter:"B",text:"Missing viewport meta",correct:true},{letter:"C",text:"Customers lying",correct:false},{letter:"D",text:"Need separate site",correct:false}], explanation: "Without viewport meta, mobile renders at desktop width then scales. Desktop browsers ignore it." }
-        },
-        { day: 13, title: "CSS Variables", desc: "Professional patterns", tags: ["practical"], duration: "25 min",
-          content: `<h2>Modern CSS</h2><div class="code-block" data-lang="CSS"><code>:root {
-  --brand-primary: #00d4aa;
-  --spacing: 16px;
-}
-
-.button {
-  background: var(--brand-primary);
-  padding: var(--spacing);
-}</code></div><h3>Transitions</h3><div class="code-block" data-lang="CSS"><code>.card {
-  transition: transform 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
-}</code></div>`,
-          quiz: { question: "#00d4aa used 47 places, marketing wants change. Best approach?", options: [{letter:"A",text:"Find replace",correct:false},{letter:"B",text:"Override stylesheet",correct:false},{letter:"C",text:"CSS variable, change once",correct:true},{letter:"D",text:"Tell them no",correct:false}], explanation: "CSS variables: one change to --brand-primary updates all 47 instances." }
-        },
-        { day: 14, title: "Week 2 Review", desc: "Build a product card", tags: ["review"], duration: "40 min",
-          content: `<h2>Apply It</h2><div class="code-block" data-lang="HTML"><code>&lt;article class="product-card"&gt;
-  &lt;img src="ring.jpg" alt="Silver ring"&gt;
-  &lt;h2&gt;Luna Ring&lt;/h2&gt;
-  &lt;p class="price"&gt;£24.99&lt;/p&gt;
-  &lt;button&gt;Add to Cart&lt;/button&gt;
-&lt;/article&gt;</code></div><div class="code-block" data-lang="CSS"><code>.product-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  transition: transform 0.2s;
-}
-.product-card:hover {
-  transform: translateY(-4px);
-}</code></div>`,
-          quiz: { question: "Using div class='product' - more semantic option?", options: [{letter:"A",text:"span",correct:false},{letter:"B",text:"article",correct:true},{letter:"C",text:"p",correct:false},{letter:"D",text:"div is fine",correct:false}], explanation: "article = self-contained content. Perfect for product cards. Better SEO/accessibility." }
-        }
+        { day: 8, title: "HTML5 Semantics & Accessibility", desc: "Semantic markup, ARIA, and accessibility standards", tags: ["practical"], duration: "40 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 9, title: "CSS Architecture & Methodologies", desc: "BEM, CSS Modules, utility-first", tags: ["practical"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 10, title: "Responsive Design & Performance", desc: "Mobile-first, Core Web Vitals", tags: ["practical"], duration: "50 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 11, title: "JavaScript Fundamentals & ES6+", desc: "Modern JavaScript features", tags: ["practical"], duration: "50 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 12, title: "DOM Manipulation & Events", desc: "Browser APIs and event handling", tags: ["practical"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 13, title: "Frontend Build Tools & Bundlers", desc: "Webpack, Vite, npm", tags: ["practical"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 14, title: "Frontend Frameworks Overview", desc: "React, Vue, and when to use frameworks", tags: ["theory"], duration: "45 min", content: `<p>Week 2 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
     ],
     week3: [
-        { day: 15, title: "JavaScript Basics", desc: "Making things interactive", tags: ["practical"], duration: "35 min",
-          content: `<h2>The Logic Layer</h2><p>JavaScript makes pages interactive.</p><div class="code-block" data-lang="JS"><code>// Variables
-let count = 0;
-const MAX = 100;
-
-// Functions
-function addToCart(productId) {
-  console.log('Added:', productId);
-}
-
-// Events
-button.addEventListener('click', () => {
-  count++;
-});</code></div><h3>Data Types</h3><p>string, number, boolean, array, object, null, undefined</p>`,
-          quiz: { question: "'const' vs 'let' - when use const?", options: [{letter:"A",text:"Always use let",correct:false},{letter:"B",text:"Value won't change",correct:true},{letter:"C",text:"For numbers only",correct:false},{letter:"D",text:"They're the same",correct:false}], explanation: "const for values that won't be reassigned. let when value will change." }
-        },
-        { day: 16, title: "DOM Manipulation", desc: "Changing the page", tags: ["practical"], duration: "30 min",
-          content: `<h2>Document Object Model</h2><p>JavaScript accesses and modifies HTML elements.</p><div class="code-block" data-lang="JS"><code>// Select elements
-const btn = document.querySelector('.add-btn');
-const items = document.querySelectorAll('.item');
-
-// Modify
-element.textContent = 'New text';
-element.classList.add('active');
-element.style.color = 'red';
-
-// Create
-const div = document.createElement('div');
-parent.appendChild(div);</code></div>`,
-          quiz: { question: "querySelector vs getElementById - difference?", options: [{letter:"A",text:"No difference",correct:false},{letter:"B",text:"querySelector uses CSS selectors",correct:true},{letter:"C",text:"getElementById is faster",correct:false},{letter:"D",text:"querySelector is deprecated",correct:false}], explanation: "querySelector('.class') or ('#id') uses CSS selector syntax. More flexible than getElementById." }
-        },
-        { day: 17, title: "Events & User Interaction", desc: "Responding to actions", tags: ["practical"], duration: "30 min",
-          content: `<h2>Event Handling</h2><div class="code-block" data-lang="JS"><code>// Click handler
-button.addEventListener('click', (e) => {
-  e.preventDefault();
-  console.log('Clicked!');
-});
-
-// Form submission
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-});
-
-// Common events
-// click, submit, change, input, keydown, scroll, load</code></div>`,
-          quiz: { question: "e.preventDefault() in form submit does what?", options: [{letter:"A",text:"Deletes the form",correct:false},{letter:"B",text:"Stops page refresh, lets JS handle",correct:true},{letter:"C",text:"Validates input",correct:false},{letter:"D",text:"Sends to server",correct:false}], explanation: "preventDefault stops the default browser action (page refresh), letting JavaScript handle the submission." }
-        },
-        { day: 18, title: "Async JavaScript & Fetch", desc: "Getting data from servers", tags: ["practical"], duration: "35 min",
-          content: `<h2>Asynchronous Operations</h2><p>JavaScript can request data without refreshing.</p><div class="code-block" data-lang="JS"><code>// Fetch API
-async function getProducts() {
-  const response = await fetch('/api/products');
-  const data = await response.json();
-  return data;
-}
-
-// With error handling
-try {
-  const products = await getProducts();
-} catch (error) {
-  console.error('Failed:', error);
-}</code></div>`,
-          quiz: { question: "async/await purpose?", options: [{letter:"A",text:"Make code faster",correct:false},{letter:"B",text:"Handle operations that take time",correct:true},{letter:"C",text:"Create animations",correct:false},{letter:"D",text:"Style elements",correct:false}], explanation: "async/await handles operations that take time (API calls, file loading) without blocking the page." }
-        },
-        { day: 19, title: "Error Handling & Debugging", desc: "When things go wrong", tags: ["practical"], duration: "30 min",
-          content: `<h2>Debugging JavaScript</h2><div class="code-block" data-lang="JS"><code>// Console methods
-console.log('Info');
-console.error('Error');
-console.table(array);
-
-// Try-catch
-try {
-  riskyOperation();
-} catch (error) {
-  console.error(error.message);
-  showUserFriendlyError();
-}
-
-// Debugger
-debugger; // Pauses execution</code></div><div class="info-box success"><div class="info-box-title">💡 Dev Tools</div><p>Sources tab → Set breakpoints → Step through code</p></div>`,
-          quiz: { question: "Console shows 'undefined is not a function'. What happened?", options: [{letter:"A",text:"Server error",correct:false},{letter:"B",text:"Calling something that isn't a function",correct:true},{letter:"C",text:"Network issue",correct:false},{letter:"D",text:"CSS problem",correct:false}], explanation: "Trying to call undefined as a function. Usually means the function doesn't exist or isn't loaded yet." }
-        },
-        { day: 20, title: "Modern JavaScript", desc: "ES6+ features", tags: ["practical"], duration: "30 min",
-          content: `<h2>Modern Syntax</h2><div class="code-block" data-lang="JS"><code>// Arrow functions
-const add = (a, b) => a + b;
-
-// Destructuring
-const { name, price } = product;
-const [first, ...rest] = items;
-
-// Template literals
-const msg = \`Hello \${name}, total: £\${price}\`;
-
-// Spread operator
-const newArray = [...oldArray, newItem];
-const newObj = { ...oldObj, updated: true };</code></div>`,
-          quiz: { question: "const { name } = product does what?", options: [{letter:"A",text:"Creates new product",correct:false},{letter:"B",text:"Extracts name property into variable",correct:true},{letter:"C",text:"Renames the product",correct:false},{letter:"D",text:"Deletes name",correct:false}], explanation: "Destructuring extracts properties into variables. const { name } = product is same as const name = product.name" }
-        },
-        { day: 21, title: "Week 3 Review", desc: "Interactive features", tags: ["review"], duration: "40 min",
-          content: `<h2>JavaScript in Ecommerce</h2><p>Real use cases you'll encounter:</p><div class="code-block" data-lang="JS"><code>// Add to cart
-async function addToCart(productId, qty) {
-  const response = await fetch('/cart/add', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ productId, qty })
-  });
-  
-  if (response.ok) {
-    updateCartIcon();
-  }
-}</code></div><div class="info-box"><div class="info-box-title">💡 What You Can Now Understand</div><p>Why checkout forms behave certain ways, how product filters work, what's happening with AJAX cart updates, why some features need page refresh and others don't.</p></div>`,
-          quiz: { question: "Add-to-cart without page refresh uses:", options: [{letter:"A",text:"HTML only",correct:false},{letter:"B",text:"JavaScript fetch/AJAX",correct:true},{letter:"C",text:"CSS animations",correct:false},{letter:"D",text:"Server redirect",correct:false}], explanation: "JavaScript fetch (or older AJAX) sends data to server and updates page without refresh." }
-        }
+        { day: 15, title: "Server-Side Rendering & Hydration", desc: "SSR, SSG, ISR", tags: ["theory"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 16, title: "Authentication & Authorization", desc: "Sessions, JWTs, OAuth", tags: ["practical"], duration: "50 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 17, title: "Payment Integration Patterns", desc: "Stripe, PayPal, PCI compliance", tags: ["practical"], duration: "50 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 18, title: "Webhooks & Event-Driven Architecture", desc: "Designing reliable event systems", tags: ["practical"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 19, title: "Message Queues & Background Jobs", desc: "Redis queues, SQS", tags: ["practical"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 20, title: "Search Implementation", desc: "Elasticsearch, Algolia", tags: ["practical"], duration: "45 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 21, title: "Week 3 Review", desc: "Integration architecture", tags: ["review"], duration: "60 min", content: `<p>Week 3 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
     ],
     week4: [
-        { day: 22, title: "APIs Explained", desc: "How systems communicate", tags: ["theory"], duration: "35 min",
-          content: `<h2>Application Programming Interfaces</h2><p>APIs let different systems talk to each other.</p><div class="code-block" data-lang="API"><code>REST API Endpoints:
-GET /products        → List products
-GET /products/123    → Single product
-POST /orders         → Create order
-PUT /products/123    → Update product
-DELETE /products/123 → Delete product</code></div><h3>What You See Daily</h3><p>Shopify ↔ Amazon sync, Payment processing, Shipping rates, Email marketing integrations</p>`,
-          quiz: { question: "REST API 'endpoint' means:", options: [{letter:"A",text:"Final customer",correct:false},{letter:"B",text:"URL that accepts requests",correct:true},{letter:"C",text:"Server location",correct:false},{letter:"D",text:"Database table",correct:false}], explanation: "Endpoint = specific URL like /api/products that accepts requests and returns data." }
-        },
-        { day: 23, title: "JSON & Data Formats", desc: "How data is structured", tags: ["practical"], duration: "25 min",
-          content: `<h2>JSON: JavaScript Object Notation</h2><p>The universal data format for APIs.</p><div class="code-block" data-lang="JSON"><code>{
-  "id": 123,
-  "name": "Luna Ring",
-  "price": 24.99,
-  "inStock": true,
-  "variants": [
-    {"size": "S", "sku": "LR-S"},
-    {"size": "M", "sku": "LR-M"}
-  ]
-}</code></div><h3>Common Issues</h3><p>Missing quotes, trailing commas, wrong brackets - all break JSON parsing.</p>`,
-          quiz: { question: "API returns 'JSON parse error'. Most likely cause?", options: [{letter:"A",text:"Network down",correct:false},{letter:"B",text:"Malformed JSON (bad syntax)",correct:true},{letter:"C",text:"Wrong password",correct:false},{letter:"D",text:"Too much data",correct:false}], explanation: "Parse error = JSON syntax is wrong. Missing quotes, extra commas, mismatched brackets." }
-        },
-        { day: 24, title: "Authentication & Security", desc: "Keeping things safe", tags: ["theory"], duration: "30 min",
-          content: `<h2>API Security</h2><h3>Auth Methods</h3><p><strong>API Keys:</strong> Simple secret string<br><strong>OAuth:</strong> Token-based (used by Google, Facebook)<br><strong>JWT:</strong> Encoded tokens with expiry</p><div class="code-block" data-lang="HTTP"><code>// API Key in header
-Authorization: Bearer sk_live_abc123
-
-// Or in URL (less secure)
-/api/products?api_key=abc123</code></div><div class="info-box warning"><div class="info-box-title">⚠️ Security Rules</div><p>Never expose API keys in frontend code. Use environment variables. Rotate keys regularly.</p></div>`,
-          quiz: { question: "API key visible in browser JavaScript. Problem?", options: [{letter:"A",text:"No problem",correct:false},{letter:"B",text:"Anyone can steal and use it",correct:true},{letter:"C",text:"Only works for you",correct:false},{letter:"D",text:"Keys can't be stolen",correct:false}], explanation: "Frontend code is visible to everyone. API keys there can be stolen and misused." }
-        },
-        { day: 25, title: "Webhooks & Events", desc: "Real-time integrations", tags: ["theory"], duration: "25 min",
-          content: `<h2>Webhooks: Push vs Pull</h2><p><strong>Polling:</strong> Your system asks "any updates?" repeatedly<br><strong>Webhooks:</strong> Other system tells you when something happens</p><div class="code-block" data-lang="Webhook"><code>// Stripe sends when payment succeeds
-POST /webhooks/stripe
-{
-  "type": "payment_intent.succeeded",
-  "data": { "amount": 2499 }
-}
-
-// Your system processes it
-→ Mark order paid
-→ Send confirmation email
-→ Update inventory</code></div>`,
-          quiz: { question: "Webhook vs API polling - webhook advantage?", options: [{letter:"A",text:"More secure",correct:false},{letter:"B",text:"Real-time, no wasted requests",correct:true},{letter:"C",text:"Easier to set up",correct:false},{letter:"D",text:"Works offline",correct:false}], explanation: "Webhooks push data immediately when events happen. No wasted polling requests." }
-        },
-        { day: 26, title: "Ecommerce Architecture", desc: "How systems connect", tags: ["theory"], duration: "35 min",
-          content: `<h2>The Tech Stack</h2><div class="code-block" data-lang="Architecture"><code>Customer Journey:
-Browser → CDN → Load Balancer → Web Servers
-                               → Database
-                               → Cache (Redis)
-                               → Search (Elasticsearch)
-
-Integrations:
-Platform → Payment Gateway (Stripe)
-        → Shipping (DPD API)
-        → Email (Klaviyo)
-        → ERP (stock sync)
-        → Marketplaces (Amazon)</code></div><h3>Headless Commerce</h3><p>Frontend separated from backend. Custom UI, same data.</p>`,
-          quiz: { question: "'Headless commerce' means:", options: [{letter:"A",text:"No website",correct:false},{letter:"B",text:"Frontend separate from backend",correct:true},{letter:"C",text:"No database",correct:false},{letter:"D",text:"Mobile only",correct:false}], explanation: "Headless = the 'head' (frontend) is decoupled from the body (backend). Build any UI on top." }
-        },
-        { day: 27, title: "Performance & Monitoring", desc: "Keeping things fast", tags: ["practical"], duration: "30 min",
-          content: `<h2>Performance Metrics</h2><p><strong>Core Web Vitals:</strong><br>LCP (Largest Contentful Paint) < 2.5s<br>FID (First Input Delay) < 100ms<br>CLS (Cumulative Layout Shift) < 0.1</p><h3>Monitoring Tools</h3><p>Google PageSpeed Insights, Lighthouse, New Relic, DataDog</p><div class="info-box success"><div class="info-box-title">💡 Quick Wins</div><p>Compress images, enable caching, use CDN, lazy load below-fold content.</p></div>`,
-          quiz: { question: "LCP score of 4.5 seconds. This is:", options: [{letter:"A",text:"Excellent",correct:false},{letter:"B",text:"Poor - should be under 2.5s",correct:true},{letter:"C",text:"Average",correct:false},{letter:"D",text:"Doesn't matter",correct:false}], explanation: "LCP (Largest Contentful Paint) should be under 2.5 seconds. 4.5s is poor and hurts conversions and SEO." }
-        },
-        { day: 28, title: "Week 4 Review", desc: "Systems thinking", tags: ["review"], duration: "40 min",
-          content: `<h2>Connecting Everything</h2><p>You now understand how ecommerce systems work together:</p><div class="info-box"><div class="info-box-title">🔄 The Full Picture</div><p><strong>Frontend:</strong> HTML/CSS/JS renders in browser<br><strong>Backend:</strong> Processes requests, queries database<br><strong>APIs:</strong> Connect to payments, shipping, marketing<br><strong>Webhooks:</strong> Real-time updates between systems<br><strong>Infrastructure:</strong> Hosting, CDN, caching for performance</p></div><h3>Director Questions</h3><p>"What's our API rate limit with Amazon?"<br>"Do we have webhook retries if Klaviyo is down?"<br>"What's our LCP score on mobile?"</p>`,
-          quiz: { question: "Order placed but payment webhook failed. What happens?", options: [{letter:"A",text:"Money lost forever",correct:false},{letter:"B",text:"Order stuck until webhook retry/manual fix",correct:true},{letter:"C",text:"Automatic refund",correct:false},{letter:"D",text:"Nothing, it's fine",correct:false}], explanation: "Failed webhooks need retry logic or manual intervention. Otherwise orders get stuck in limbo." }
-        }
+        { day: 22, title: "Ecommerce Platform Architecture", desc: "Monolith vs microservices", tags: ["theory"], duration: "50 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 23, title: "Performance Monitoring & APM", desc: "New Relic, DataDog", tags: ["practical"], duration: "45 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 24, title: "Security Best Practices", desc: "OWASP Top 10", tags: ["practical"], duration: "50 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 25, title: "CI/CD & Deployment Pipelines", desc: "GitHub Actions, blue-green deployments", tags: ["practical"], duration: "50 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 26, title: "Incident Management & On-Call", desc: "Runbooks and post-mortems", tags: ["practical"], duration: "45 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 27, title: "Cost Optimisation & FinOps", desc: "Cloud cost management", tags: ["practical"], duration: "45 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 28, title: "Week 4 Review", desc: "Operations assessment", tags: ["review"], duration: "60 min", content: `<p>Week 4 placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
     ],
     bonus: [
-        { day: 29, title: "Technical Decision Making", desc: "Evaluating proposals", tags: ["strategy"], duration: "35 min",
-          content: `<h2>Director-Level Decisions</h2><h3>Evaluating Tech Proposals</h3><p><strong>Questions to ask:</strong><br>What problem does this solve?<br>What's the total cost of ownership?<br>What's the implementation timeline?<br>What are the risks and rollback plan?<br>How does this scale?</p><div class="scenario"><div class="scenario-header"><span>📍</span><span>Agency Proposal</span></div><p>"We recommend migrating to headless commerce."<br><br>Ask: What's the business case? What's the dev team ongoing cost? How does it affect our time-to-market for new features? What's the SEO migration plan?</p></div>`,
-          quiz: { question: "Agency proposes tech without business case. You should:", options: [{letter:"A",text:"Trust them, they're experts",correct:false},{letter:"B",text:"Ask what problem it solves and ROI",correct:true},{letter:"C",text:"Reject it outright",correct:false},{letter:"D",text:"Get a second agency",correct:false}], explanation: "Tech should solve business problems. Always ask for the business case and expected ROI." }
-        },
-        { day: 30, title: "Your Technical Roadmap", desc: "Next steps for growth", tags: ["strategy"], duration: "40 min",
-          content: `<h2>Congratulations!</h2><p>You've completed 30 days of technical fluency training.</p><h3>What You Can Now Do</h3><p>✓ Understand status codes and debug with dev tools<br>✓ Read basic HTML/CSS/JS and suggest fixes<br>✓ Evaluate hosting and infrastructure proposals<br>✓ Discuss APIs and integrations knowledgeably<br>✓ Ask the right questions in technical meetings<br>✓ Spot when you're being oversold or undersold</p><h3>Keep Learning</h3><p><strong>Practice:</strong> Inspect sites you use daily<br><strong>Build:</strong> Create a simple HTML/CSS page<br><strong>Read:</strong> Technical documentation for tools you use<br><strong>Network:</strong> Join ecommerce tech communities</p><div class="lesson-completion"><div class="completion-icon">🎓</div><h3 class="completion-title">Course Complete!</h3><p class="completion-text">You're now technically fluent. Go get that Director role.</p></div>`,
-          quiz: { question: "Most important thing for technical fluency?", options: [{letter:"A",text:"Memorise all code syntax",correct:false},{letter:"B",text:"Know what questions to ask",correct:true},{letter:"C",text:"Learn to code full-time",correct:false},{letter:"D",text:"Hire more developers",correct:false}], explanation: "You don't need to code. You need to ask the right questions and understand the answers." }
-        }
+        { day: 29, title: "Technical Leadership & Vendor Management", desc: "Managing agencies and technical hiring", tags: ["strategy"], duration: "45 min", content: `<p>Bonus week placeholder content</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] },
+        { day: 30, title: "Technical Roadmapping & Strategy", desc: "Building technical roadmaps", tags: ["strategy"], duration: "50 min", content: `<h2>Course Complete</h2><p>You now have the technical foundation for ecommerce director-level conversations.</p>`, questions: [{ q: "Sample question", options: ["A", "B", "C", "D"], correct: 1, explanation: "Sample explanation" }] }
     ]
 };
 
-// App functionality
-let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+// Application Code
+let completedDays = JSON.parse(localStorage.getItem('advCompletedDays') || '[]');
 let currentDay = null;
+let currentQuizIndex = 0;
+let quizAnswers = [];
+let quizScore = 0;
 
 function init() {
     renderDashboard();
@@ -537,7 +346,6 @@ function renderDashboard() {
         { id: 'week4Grid', data: courseData.week4 },
         { id: 'bonusGrid', data: courseData.bonus }
     ];
-    
     weeks.forEach(week => {
         const grid = document.getElementById(week.id);
         if (grid && week.data) {
@@ -550,24 +358,9 @@ function createDayCard(day) {
     const isCompleted = completedDays.includes(day.day);
     const isUnlocked = day.day === 1 || completedDays.includes(day.day - 1) || isCompleted;
     const isCurrent = isUnlocked && !isCompleted;
-    
-    let statusClass = '';
-    let statusIcon = '🔒';
-    
-    if (isCompleted) {
-        statusClass = 'completed';
-        statusIcon = '✓';
-    } else if (isCurrent) {
-        statusClass = 'current';
-        statusIcon = '→';
-    } else if (!isUnlocked) {
-        statusClass = 'locked';
-    } else {
-        statusIcon = '';
-    }
-    
+    let statusClass = isCompleted ? 'completed' : (isCurrent ? 'current' : (!isUnlocked ? 'locked' : ''));
+    let statusIcon = isCompleted ? '✓' : (isCurrent ? '→' : (!isUnlocked ? '🔒' : ''));
     const tags = day.tags.map(t => `<span class="tag ${t}">${t}</span>`).join('');
-    
     return `
         <div class="day-card ${statusClass}" onclick="${isUnlocked ? `openLesson(${day.day})` : ''}">
             <div class="day-header">
@@ -589,80 +382,157 @@ function findDay(dayNum) {
 function openLesson(dayNum) {
     const day = findDay(dayNum);
     if (!day) return;
-    
     currentDay = dayNum;
+    currentQuizIndex = 0;
+    quizAnswers = [];
+    quizScore = 0;
     document.getElementById('dashboardView').style.display = 'none';
     const lessonView = document.getElementById('lessonView');
     lessonView.classList.add('active');
-    
-    let quizHtml = '';
-    if (day.quiz) {
-        const optionsHtml = day.quiz.options.map(opt => `
-            <div class="quiz-option" onclick="selectOption(this, ${opt.correct})">
-                <span class="option-letter">${opt.letter}</span>
-                <span>${opt.text}</span>
-            </div>
-        `).join('');
-        
-        quizHtml = `
-            <div class="quiz">
-                <h3 class="quiz-question">${day.quiz.question}</h3>
-                <div class="quiz-options">${optionsHtml}</div>
-                <div class="quiz-feedback" id="quizFeedback">${day.quiz.explanation}</div>
-            </div>
-        `;
-    }
-    
+
     lessonView.innerHTML = `
         <div class="lesson-header">
             <button class="back-btn" onclick="closeLesson()">← Back to Dashboard</button>
             <h1 class="lesson-title">Day ${day.day}: ${day.title}</h1>
             <div class="lesson-meta">
                 <span>⏱ ${day.duration}</span>
-                <span>${day.tags.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(' • ')}</span>
+                <span>📝 ${day.questions ? day.questions.length : 0} questions</span>
             </div>
         </div>
-        <div class="lesson-content">
-            ${day.content}
-            ${quizHtml}
-        </div>
-        <div class="btn-group">
-            <button class="btn btn-primary" onclick="completeDay(${day.day})">
-                ${completedDays.includes(day.day) ? '✓ Completed - Review Again' : 'Mark Complete & Continue'}
-            </button>
+        <div class="lesson-content">${day.content}</div>
+        <div id="quizContainer"></div>
+        <div class="btn-group" id="lessonActions">
+            <button class="btn btn-primary" onclick="startQuiz()">Start Quiz (${day.questions ? day.questions.length : 0} Questions)</button>
             <button class="btn btn-secondary" onclick="closeLesson()">Back to Dashboard</button>
         </div>
     `;
-    
+    window.scrollTo(0, 0);
+}
+
+function startQuiz() {
+    const day = findDay(currentDay);
+    if (!day || !day.questions || day.questions.length === 0) {
+        completeDay(currentDay);
+        return;
+    }
+    document.getElementById('lessonActions').style.display = 'none';
+    currentQuizIndex = 0;
+    quizAnswers = new Array(day.questions.length).fill(null);
+    renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+    const day = findDay(currentDay);
+    const questions = day.questions;
+    const q = questions[currentQuizIndex];
+    const container = document.getElementById('quizContainer');
+
+    const optionsHtml = q.options.map((opt, i) => `
+        <div class="quiz-option" onclick="selectQuizOption(${i})">
+            <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+            <span>${opt}</span>
+        </div>
+    `).join('');
+
+    container.innerHTML = `
+        <div class="quiz-section">
+            <div class="quiz-header">Quiz: Day ${currentDay}</div>
+            <div class="quiz-progress">Question ${currentQuizIndex + 1} of ${questions.length}</div>
+            <div class="quiz-question">${q.q}</div>
+            <div class="quiz-options" id="quizOptions">${optionsHtml}</div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+            <div class="quiz-nav">
+                <button class="btn btn-secondary btn-small" onclick="prevQuestion()" ${currentQuizIndex === 0 ? 'disabled' : ''}>← Previous</button>
+                <button class="btn btn-primary btn-small" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+            </div>
+        </div>
+    `;
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+function selectQuizOption(index) {
+    const day = findDay(currentDay);
+    const q = day.questions[currentQuizIndex];
+    const options = document.querySelectorAll('#quizOptions .quiz-option');
+    const feedback = document.getElementById('quizFeedback');
+
+    options.forEach((opt, i) => {
+        opt.classList.remove('selected', 'correct', 'incorrect');
+        opt.style.pointerEvents = 'none';
+        if (i === q.correct) opt.classList.add('correct');
+        if (i === index && i !== q.correct) opt.classList.add('incorrect');
+        if (i === index) opt.classList.add('selected');
+    });
+
+    quizAnswers[currentQuizIndex] = index;
+    const isCorrect = index === q.correct;
+    if (isCorrect) quizScore++;
+
+    feedback.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong><br>${q.explanation}`;
+    feedback.className = `quiz-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('nextBtn').textContent = currentQuizIndex === day.questions.length - 1 ? 'See Results' : 'Next →';
+}
+
+function nextQuestion() {
+    const day = findDay(currentDay);
+    if (currentQuizIndex < day.questions.length - 1) {
+        currentQuizIndex++;
+        renderQuizQuestion();
+    } else {
+        showQuizResults();
+    }
+}
+
+function prevQuestion() {
+    if (currentQuizIndex > 0) {
+        currentQuizIndex--;
+        renderQuizQuestion();
+    }
+}
+
+function showQuizResults() {
+    const day = findDay(currentDay);
+    const total = day.questions.length;
+    const percent = Math.round((quizScore / total) * 100);
+    const passed = percent >= 70;
+
+    document.getElementById('quizContainer').innerHTML = `
+        <div class="quiz-score">
+            <div class="score-value">${quizScore}/${total}</div>
+            <div class="score-label">${percent}% - ${passed ? 'Passed!' : 'Review and retry'}</div>
+        </div>
+        <div class="btn-group" style="justify-content: center;">
+            ${passed ? `<button class="btn btn-primary" onclick="completeDay(${currentDay})">Complete Day ${currentDay}</button>` : ''}
+            <button class="btn btn-secondary" onclick="retryQuiz()">Retry Quiz</button>
+            <button class="btn btn-secondary" onclick="closeLesson()">Back to Dashboard</button>
+        </div>
+    `;
+}
+
+function retryQuiz() {
+    currentQuizIndex = 0;
+    quizAnswers = [];
+    quizScore = 0;
+    document.getElementById('lessonActions').style.display = 'flex';
+    document.getElementById('quizContainer').innerHTML = '';
     window.scrollTo(0, 0);
 }
 
 function closeLesson() {
     document.getElementById('dashboardView').style.display = 'block';
     document.getElementById('lessonView').classList.remove('active');
+    document.getElementById('lessonView').innerHTML = '';
     renderDashboard();
     updateProgress();
-}
-
-function selectOption(element, isCorrect) {
-    const options = element.parentNode.querySelectorAll('.quiz-option');
-    options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
-    
-    element.classList.add('selected');
-    element.classList.add(isCorrect ? 'correct' : 'incorrect');
-    
-    const feedback = document.getElementById('quizFeedback');
-    feedback.classList.add('show');
-    feedback.classList.remove('correct', 'incorrect');
-    feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
 }
 
 function completeDay(dayNum) {
     if (!completedDays.includes(dayNum)) {
         completedDays.push(dayNum);
-        localStorage.setItem('completedDays', JSON.stringify(completedDays));
+        localStorage.setItem('advCompletedDays', JSON.stringify(completedDays));
     }
-    
     const nextDay = dayNum + 1;
     if (nextDay <= 30 && findDay(nextDay)) {
         openLesson(nextDay);
@@ -674,42 +544,31 @@ function completeDay(dayNum) {
 function updateProgress() {
     const total = 30;
     const completed = completedDays.length;
-    const percentage = (completed / total) * 100;
-    
-    document.getElementById('progressFill').style.width = percentage + '%';
+    document.getElementById('progressFill').style.width = (completed / total * 100) + '%';
     document.getElementById('completedCount').textContent = completed;
-    
-    // Calculate streak
-    let streak = 0;
+    let streak = parseInt(localStorage.getItem('advStreak') || '0');
     const today = new Date().toDateString();
-    const lastActive = localStorage.getItem('lastActive');
-    if (lastActive === today) {
-        streak = parseInt(localStorage.getItem('streak') || '0');
-    } else if (completed > 0) {
+    const lastActive = localStorage.getItem('advLastActive');
+    if (lastActive !== today && completed > 0) {
         const yesterday = new Date(Date.now() - 86400000).toDateString();
-        if (lastActive === yesterday) {
-            streak = parseInt(localStorage.getItem('streak') || '0') + 1;
-        } else {
-            streak = 1;
-        }
-        localStorage.setItem('streak', streak);
-        localStorage.setItem('lastActive', today);
+        streak = lastActive === yesterday ? streak + 1 : 1;
+        localStorage.setItem('advStreak', streak);
+        localStorage.setItem('advLastActive', today);
     }
     document.getElementById('streakCount').textContent = streak;
 }
 
 function resetProgress() {
     if (confirm('Reset all progress? This cannot be undone.')) {
-        localStorage.removeItem('completedDays');
-        localStorage.removeItem('streak');
-        localStorage.removeItem('lastActive');
+        localStorage.removeItem('advCompletedDays');
+        localStorage.removeItem('advStreak');
+        localStorage.removeItem('advLastActive');
         completedDays = [];
         renderDashboard();
         updateProgress();
     }
 }
 
-// Initialize on load
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
