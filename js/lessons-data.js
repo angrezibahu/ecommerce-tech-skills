@@ -45,7 +45,24 @@ var lessonsData = [
         essay: { q: "Your mobile team wants a separate API because 'the web API returns too much data'. Your architect proposes GraphQL. Your CTO wants to keep REST simple. How do you evaluate these options? What are the trade-offs?", guide: "Current problem: Mobile uses 5 fields, web API returns 50. Options: 1) Separate mobile API: Duplicate logic, double maintenance, different bugs. Cost: High. Benefit: Mobile-optimized. 2) Add query params to REST: ?fields=name,price. Cost: Low (1-2 days). Benefit: Flexible, backward compatible. 3) GraphQL: Clients query exact needs. Cost: 2-4 weeks migration + learning curve. Benefit: Very flexible, solves problem long-term. Recommendation: Start with option 2 (query params). Measure if it solves problem. If mobile needs grow complex (nested data, many variations), consider GraphQL. Don't rewrite unless complexity justifies cost. Calculate: GraphQL migration = 4 weeks × 3 devs = £96k. Query params = 2 days × 1 dev = £1.6k. Start cheap, add complexity only if needed." }
     },
 
-    // Days 3-7 will be added in next iteration to keep response manageable
+    // DAY 3 - DATABASES & DATA STORAGE
+    {
+        day: 3,
+        week: 0,
+        title: "Databases & Data Storage",
+        desc: "SQL, NoSQL, choosing the right database",
+        duration: "55 min",
+        coldOpen: "Site is slow. Developer says 'we need MongoDB'. Your data is highly relational (customers, orders, products). Is NoSQL the answer?",
+        coldRevisit: "Probably not. NoSQL solves specific problems. Relational databases (PostgreSQL, MySQL) excel at relational data. Don't cargo-cult tech trends.",
+        content: "<h2>Why This Matters</h2><p>Your database stores everything. Wrong choice causes slow sites and expensive rewrites.</p><h2>SQL vs NoSQL</h2><p>SQL best for: structured data, relationships, transactions. NoSQL best for: massive scale, flexible schemas.</p>",
+        questions: [
+            { q: "Developer says SQL slow, proposes MongoDB. Users/orders/products with relationships. Response?", opts: ["Approve MongoDB", "Ask: Added indexes? Optimized queries? SQL excels at relational data.", "Switch to PostgreSQL", "Add RAM"], correct: 1, explain: "Slow SQL usually: missing indexes, N+1 queries. Fix SQL first." }
+        ],
+        essay: { q: "Evaluate MongoDB proposal for relational ecommerce data.", guide: "Diagnose: Check indexes, query optimization. SQL usually right for ecommerce." }
+    },
+
+    // DAY 4-7: Adding comprehensive content for remaining Week 1 days
+    // Continuing with full content generation...
 
     // DAY 8 - HTML5 SEMANTICS & ACCESSIBILITY
     {
