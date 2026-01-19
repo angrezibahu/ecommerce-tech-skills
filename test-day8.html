@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Day 8 Content</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1 { color: #00cc66; }
+        pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Day 8 Content Test</h1>
+    <div id="status"></div>
+    <hr>
+    <div id="content"></div>
+
+    <script src="js/lessons-data.js"></script>
+    <script>
+        const statusDiv = document.getElementById('status');
+        const contentDiv = document.getElementById('content');
+
+        if (typeof lessonsData === 'undefined') {
+            statusDiv.innerHTML = '<p style="color: red;">❌ ERROR: lessonsData not loaded!</p>';
+        } else {
+            statusDiv.innerHTML = `
+                <p style="color: green;">✅ lessonsData loaded successfully!</p>
+                <p><strong>Total lessons:</strong> ${lessonsData.length}</p>
+            `;
+
+            const day8 = lessonsData.find(d => d.day === 8);
+            if (day8) {
+                statusDiv.innerHTML += `
+                    <p><strong>Day 8 found:</strong> ${day8.title}</p>
+                    <p><strong>Content length:</strong> ${day8.content.length} characters</p>
+                    <p><strong>Questions:</strong> ${day8.questions.length}</p>
+                `;
+
+                contentDiv.innerHTML = `
+                    <h2>${day8.title}</h2>
+                    <p><em>${day8.desc}</em></p>
+                    <h3>Cold Open:</h3>
+                    <p>${day8.coldOpen}</p>
+                    <h3>Content (first 500 chars):</h3>
+                    <div>${day8.content.substring(0, 500)}...</div>
+                `;
+            } else {
+                statusDiv.innerHTML += '<p style="color: red;">❌ Day 8 not found!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
