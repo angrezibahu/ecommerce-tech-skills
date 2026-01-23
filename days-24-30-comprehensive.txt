@@ -1,0 +1,17 @@
+This file contains comprehensive content for Days 24-30 that will be integrated into lessons-data.js
+
+The content will be added via Edit tool to replace the brief versions currently in the file.
+
+Days to expand:
+- Day 24: Security Best Practices (XSS, CSRF, SQL injection)
+- Day 25: CI/CD & Deployment
+- Day 26: Incident Management
+- Day 27: Cloud Cost Optimization
+- Day 28: Week 3 Review
+- Day 29: Technical Leadership
+- Day 30: Technical Roadmapping
+
+Each needs ~1500+ words with:
+- Comprehensive content sections
+- 5 detailed questions
+- Detailed essay question
