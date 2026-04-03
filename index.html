@@ -1,249 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Fluency for Ecommerce Leaders</title>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg-dark: #0d1117; --bg-card: #161b22; --bg-code: #1c2128; --text-primary: #e6edf3; --text-secondary: #8b949e; --accent: #58a6ff; --accent-dim: #1f6feb; --success: #3fb950; --warning: #d29922; --error: #f85149; --border: #30363d; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Atkinson Hyperlegible', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.7; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; padding: 40px 20px; border-bottom: 1px solid var(--border); margin-bottom: 30px; }
-        .header h1 { font-size: 1.8rem; margin-bottom: 10px; letter-spacing: 2px; }
-        .progress-bar { width: 100%; height: 8px; background: var(--bg-card); border-radius: 4px; margin: 20px 0; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--success)); border-radius: 4px; transition: width 0.3s; }
-        .week-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 20px; }
-        .week-header { padding: 20px; cursor: pointer; display: flex; align-items: center; gap: 15px; }
-        .week-header:hover { background: rgba(88,166,255,0.05); border-radius: 12px; }
-        .week-number { min-width: 50px; height: 50px; background: var(--accent-dim); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; }
-        .week-info h2 { font-size: 1.1rem; margin-bottom: 5px; }
-        .week-info p { color: var(--text-secondary); font-size: 0.9rem; }
-        .week-days { padding: 0 20px 20px; display: none; }
-        .week-days.open { display: block; }
-        .day-item { display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: 8px; cursor: pointer; border-left: 3px solid transparent; margin-bottom: 5px; }
-        .day-item:hover { background: rgba(88,166,255,0.08); }
-        .day-item.completed { border-left-color: var(--success); background: rgba(63,185,80,0.05); }
-        .day-num { min-width: 36px; height: 36px; background: var(--bg-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
-        .day-item.completed .day-num { background: var(--success); color: var(--bg-dark); }
-        .day-title { flex: 1; }
-        .day-title h3 { font-size: 1rem; margin-bottom: 3px; }
-        .day-title p { color: var(--text-secondary); font-size: 0.85rem; }
-        .day-meta { color: var(--text-secondary); font-size: 0.8rem; }
-        .lesson-view { display: none; position: fixed; inset: 0; background: var(--bg-dark); overflow-y: auto; z-index: 100; }
-        .lesson-view.active { display: block; }
-        .lesson-header { position: sticky; top: 0; background: var(--bg-dark); border-bottom: 1px solid var(--border); padding: 15px 20px; display: flex; align-items: center; gap: 20px; z-index: 10; }
-        .back-btn { background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: inherit; }
-        .back-btn:hover { background: var(--bg-card); }
-        .lesson-content { max-width: 800px; margin: 0 auto; padding: 30px 20px 100px; }
-        .lesson-content h2 { color: var(--accent); font-size: 1.4rem; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-        .lesson-content h2:first-child { margin-top: 0; }
-        .lesson-content h3 { font-size: 1.15rem; margin: 30px 0 15px; }
-        .lesson-content h4 { font-size: 1rem; margin: 20px 0 10px; color: var(--text-secondary); }
-        .lesson-content p { margin-bottom: 15px; }
-        .lesson-content ul, .lesson-content ol { margin: 15px 0 15px 25px; }
-        .lesson-content li { margin-bottom: 8px; }
-        .lesson-content strong { color: var(--accent); }
-        .lesson-content code { background: var(--bg-code); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
-        pre { background: var(--bg-code); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin: 20px 0; overflow-x: auto; font-size: 0.85rem; line-height: 1.5; }
-        .info-box { background: rgba(88,166,255,0.1); border-left: 4px solid var(--accent); padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .warning-box { background: rgba(210,153,34,0.1); border-left: 4px solid var(--warning); padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .info-title { font-weight: bold; margin-bottom: 10px; color: var(--accent); }
-        .warning-title { font-weight: bold; margin-bottom: 10px; color: var(--warning); }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
-        th, td { padding: 12px; text-align: left; border: 1px solid var(--border); }
-        th { background: var(--bg-card); color: var(--accent); }
-        .cold-open { background: linear-gradient(135deg, rgba(88,166,255,0.1), rgba(139,148,158,0.05)); border: 1px solid var(--accent-dim); border-radius: 12px; padding: 25px; margin-bottom: 30px; }
-        .cold-open h3 { color: var(--accent); margin-bottom: 15px; }
-        .cold-open textarea { width: 100%; min-height: 80px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 6px; padding: 15px; color: var(--text-primary); font-family: inherit; margin-top: 15px; resize: vertical; }
-        .exercise { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 25px 0; }
-        .exercise h4 { color: var(--success); margin-bottom: 15px; }
-        .quiz-section { margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--border); }
-        .quiz-q { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 25px; margin-bottom: 20px; }
-        .quiz-q-num { color: var(--accent); font-weight: bold; margin-bottom: 10px; }
-        .quiz-q-text { margin-bottom: 15px; font-size: 1.05rem; }
-        .quiz-opt { padding: 12px 15px; margin: 8px 0; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-        .quiz-opt:hover { border-color: var(--accent); }
-        .quiz-opt.correct { border-color: var(--success); background: rgba(63,185,80,0.15); }
-        .quiz-opt.wrong { border-color: var(--error); background: rgba(248,81,73,0.15); }
-        .quiz-feedback { margin-top: 15px; padding: 15px; border-radius: 6px; display: none; line-height: 1.6; }
-        .quiz-feedback.show { display: block; }
-        .essay-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 25px; margin-top: 30px; }
-        .essay-box h3 { color: var(--accent); margin-bottom: 15px; }
-        .essay-box textarea { width: 100%; min-height: 200px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 6px; padding: 15px; color: var(--text-primary); font-family: inherit; resize: vertical; }
-        .essay-guide { margin-top: 15px; padding: 15px; background: var(--bg-dark); border-radius: 6px; font-size: 0.9rem; color: var(--text-secondary); }
-        .complete-btn { display: block; margin: 40px auto; background: var(--success); color: var(--bg-dark); border: none; padding: 15px 40px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; font-family: inherit; }
-        .complete-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(63,185,80,0.3); }
-        .reset-btn { display: block; margin: 30px auto; background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 10px 20px; border-radius: 6px; cursor: pointer; font-family: inherit; }
-        .reset-btn:hover { border-color: var(--error); color: var(--error); }
-        @media (max-width: 600px) {
-            .week-header { flex-direction: column; text-align: center; }
-            .day-item { flex-wrap: wrap; }
-            .lesson-header { flex-direction: column; gap: 10px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Fluency for Ecommerce Leaders</title>
+
+  <!-- Content Security Policy: no unsafe-inline scripts; all JS in external files -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src 'self' https://fonts.gstatic.com;
+                 img-src 'self' data: blob:;
+                 connect-src 'none';
+                 object-src 'none';
+                 base-uri 'self'">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
 </head>
 <body>
-<div class="container" id="dashboard">
-    <div class="header">
-        <h1>TECH FLUENCY: LEGEND LEVEL</h1>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <p style="color:var(--text-secondary)"><span id="completedCount">0</span>/30 Complete</p>
+
+<!-- ══════════════════════════════════
+     DASHBOARD (landing)
+══════════════════════════════════ -->
+<div id="dashboard">
+  <header class="site-header" role="banner">
+    <h1>Tech Fluency for Ecommerce Leaders</h1>
+    <p>Active learning. Real decisions. 6 modules, 24 units, 6 problem sets.</p>
+
+    <div class="overall-progress" role="region" aria-label="Overall progress">
+      <label id="progressLabel">0 / 30 complete</label>
+      <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-labelledby="progressLabel">
+        <div class="progress-fill" id="overallFill" style="width:0%"></div>
+      </div>
     </div>
-    <h1 style="text-align:center;margin-bottom:10px;font-size:1.8rem">Technical Fluency for Ecommerce Leaders</h1>
-    <p style="text-align:center;color:var(--text-secondary);margin-bottom:40px">Deep technical knowledge. 1500+ words per lesson. Real understanding.</p>
-    <div id="weekCards"></div>
-    <button class="reset-btn" onclick="if(confirm('Reset all progress?')){localStorage.clear();location.reload()}">Reset Progress</button>
-</div>
-<div class="lesson-view" id="lessonView">
-    <div class="lesson-header">
-        <button class="back-btn" onclick="closeLesson()">← Back</button>
-        <div><h2 id="lessonTitle" style="font-size:1.2rem"></h2><span id="lessonDay" style="color:var(--text-secondary)"></span></div>
+
+    <button class="continue-btn" id="continueBtn" style="display:none" aria-label="Continue where you left off">
+      Continue where you left off →
+    </button>
+  </header>
+
+  <main>
+    <div class="module-grid" id="moduleGrid" role="list" aria-label="Course modules">
+      <!-- Module cards rendered by app.js -->
     </div>
-    <div class="lesson-content" id="lessonContent"></div>
+  </main>
+
+  <footer style="text-align:center;padding:40px 20px">
+    <button id="resetBtn"
+            style="background:none;border:1px solid #2a2a2a;color:#888;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Space Mono',monospace;font-size:.75rem"
+            aria-label="Reset all progress">
+      Reset Progress
+    </button>
+  </footer>
 </div>
+
+<!-- ══════════════════════════════════
+     APP SHELL (sidebar + unit/PS view)
+══════════════════════════════════ -->
+<div id="app-shell" role="application" aria-label="Course content">
+  <nav class="sidebar" id="sidebar" role="navigation" aria-label="Module and unit navigation">
+    <!-- Rendered by app.js -->
+  </nav>
+
+  <div id="contentArea" style="flex:1;overflow-y:auto">
+    <!-- Rendered by app.js -->
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SCRIPTS (external only — required by CSP)
+══════════════════════════════════ -->
+<!-- Mermaid.js for architecture diagrams -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+
+<!-- Lesson content (existing data — trusted, bundled) -->
 <script src="js/lessons-data.js"></script>
-<script>
-var weeks = [
-    { num: "W1", title: "Infrastructure & Architecture", desc: "How web systems work at scale" },
-    { num: "W2", title: "Frontend Engineering", desc: "HTML, CSS, JavaScript and modern patterns" },
-    { num: "W3", title: "Backend & Integrations", desc: "Servers, databases, APIs and payments" },
-    { num: "W4", title: "Operations & Security", desc: "DevOps, monitoring, and security" },
-    { num: "+", title: "Leadership & Strategy", desc: "Technical decision making" }
-];
 
-// Load lessons from external file
-var days = (typeof lessonsData !== 'undefined') ? lessonsData : [];
+<!-- Module structure & curriculum -->
+<script src="js/modules-data.js"></script>
 
-// Render dashboard
-function render() {
-    var completed = JSON.parse(localStorage.getItem("completed") || "[]");
-    document.getElementById("completedCount").textContent = completed.length;
-    document.getElementById("progressFill").style.width = (completed.length / 30 * 100) + "%";
+<!-- Application logic -->
+<script src="js/app.js"></script>
 
-    var html = "";
-    weeks.forEach(function(week, wi) {
-        var weekDays = days.filter(function(d) { return d.week === wi; });
-        var isOpen = wi === 0 ? "open" : "";
-        html += '<div class="week-card">';
-        html += '<div class="week-header" onclick="this.nextElementSibling.classList.toggle(\'open\')">';
-        html += '<div class="week-number">' + week.num + '</div>';
-        html += '<div class="week-info"><h2>' + week.title + '</h2><p>' + week.desc + '</p></div>';
-        html += '</div>';
-        html += '<div class="week-days ' + isOpen + '">';
-        weekDays.forEach(function(d) {
-            var isCompleted = completed.indexOf(d.day) !== -1;
-            html += '<div class="day-item ' + (isCompleted ? "completed" : "") + '" onclick="openLesson(' + d.day + ')">';
-            html += '<div class="day-num">' + d.day + '</div>';
-            html += '<div class="day-title"><h3>' + d.title + '</h3><p>' + d.desc + '</p></div>';
-            html += '<div class="day-meta">📖 ' + d.duration + '</div>';
-            html += '</div>';
-        });
-        html += '</div></div>';
-    });
-    document.getElementById("weekCards").innerHTML = html;
-}
-
-// Open lesson
-function openLesson(dayNum) {
-    var day = days.find(function(d) { return d.day === dayNum; });
-    if (!day) return;
-
-    document.getElementById("lessonTitle").textContent = day.title;
-    document.getElementById("lessonDay").textContent = "Day " + day.day + " · " + day.duration;
-
-    var content = "";
-
-    if (day.coldOpen) {
-        content += '<div class="cold-open">';
-        content += '<h3>🎯 Before You Start</h3>';
-        content += '<p>' + day.coldOpen + '</p>';
-        content += '<textarea placeholder="What is your initial thinking?"></textarea>';
-        content += '</div>';
-    }
-
-    content += day.content;
-
-    if (day.coldRevisit) {
-        content += '<div class="info-box" style="margin-top:40px">';
-        content += '<div class="info-title">🔄 Revisit Your Initial Thinking</div>';
-        content += '<p>' + day.coldRevisit + '</p>';
-        content += '</div>';
-    }
-
-    if (day.questions && day.questions.length > 0) {
-        content += '<div class="quiz-section"><h2>📝 Knowledge Check</h2>';
-        day.questions.forEach(function(q, qi) {
-            content += '<div class="quiz-q">';
-            content += '<div class="quiz-q-num">Question ' + (qi + 1) + '</div>';
-            content += '<div class="quiz-q-text">' + q.q + '</div>';
-            q.opts.forEach(function(opt, oi) {
-                content += '<div class="quiz-opt" data-idx="' + oi + '" data-correct="' + q.correct + '" data-explain="' + q.explain.replace(/"/g, '&quot;') + '" onclick="checkAnswer(this)">' + opt + '</div>';
-            });
-            content += '<div class="quiz-feedback"></div>';
-            content += '</div>';
-        });
-        content += '</div>';
-    }
-
-    if (day.essay) {
-        content += '<div class="essay-box">';
-        content += '<h3>✍️ Reflection Question</h3>';
-        content += '<p>' + day.essay.q + '</p>';
-        content += '<textarea placeholder="Write your response here..."></textarea>';
-        content += '<div class="essay-guide"><strong>Guidance:</strong> ' + day.essay.guide + '</div>';
-        content += '</div>';
-    }
-
-    content += '<button class="complete-btn" onclick="completeDay(' + day.day + ')">✓ Mark Day ' + day.day + ' Complete</button>';
-
-    document.getElementById("lessonContent").innerHTML = content;
-    document.getElementById("lessonView").classList.add("active");
-    document.getElementById("lessonView").scrollTop = 0;
-}
-
-function checkAnswer(el) {
-    var parent = el.parentElement;
-    var opts = parent.querySelectorAll(".quiz-opt");
-    var feedback = parent.querySelector(".quiz-feedback");
-    var idx = parseInt(el.getAttribute("data-idx"));
-    var correct = parseInt(el.getAttribute("data-correct"));
-    var explain = el.getAttribute("data-explain");
-
-    opts.forEach(function(o) { o.classList.remove("correct", "wrong"); });
-
-    if (idx === correct) {
-        el.classList.add("correct");
-        feedback.className = "quiz-feedback show";
-        feedback.style.background = "rgba(63,185,80,0.15)";
-        feedback.style.color = "var(--success)";
-        feedback.innerHTML = "<strong>Correct!</strong> " + explain;
-    } else {
-        el.classList.add("wrong");
-        opts[correct].classList.add("correct");
-        feedback.className = "quiz-feedback show";
-        feedback.style.background = "rgba(248,81,73,0.15)";
-        feedback.style.color = "var(--error)";
-        feedback.innerHTML = "<strong>Not quite.</strong> " + explain;
-    }
-}
-
-function completeDay(dayNum) {
-    var completed = JSON.parse(localStorage.getItem("completed") || "[]");
-    if (completed.indexOf(dayNum) === -1) {
-        completed.push(dayNum);
-        localStorage.setItem("completed", JSON.stringify(completed));
-    }
-    closeLesson();
-    render();
-}
-
-function closeLesson() {
-    document.getElementById("lessonView").classList.remove("active");
-}
-
-render();
-</script>
 </body>
 </html>

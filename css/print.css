@@ -1,0 +1,15 @@
+/* Print stylesheet for unit export */
+@media print {
+  .sidebar, .lesson-nav, .back-btn, .complete-btn,
+  .assessment-actions, .nav-arrows, .breadcrumb,
+  .module-nav, header .progress-section { display: none !important; }
+
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .unit-content { max-width: 100%; margin: 0; padding: 0; }
+  h1, h2, h3 { page-break-after: avoid; }
+  pre, blockquote, table { page-break-inside: avoid; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+  .info-box, .warning-box { border: 1px solid #999; padding: 10pt; }
+  .quiz-feedback { display: block !important; }
+  .mermaid svg { max-width: 100%; }
+}
