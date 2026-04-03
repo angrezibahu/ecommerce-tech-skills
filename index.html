@@ -77,6 +77,9 @@
         .complete-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(63,185,80,0.3); }
         .reset-btn { display: block; margin: 30px auto; background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 10px 20px; border-radius: 6px; cursor: pointer; font-family: inherit; }
         .reset-btn:hover { border-color: var(--error); color: var(--error); }
+        .your-thinking { background: rgba(88,166,255,0.08); border-left: 3px solid var(--accent-dim); border-radius: 0 6px 6px 0; padding: 12px 15px; margin-bottom: 15px; font-size: 0.95rem; white-space: pre-wrap; word-break: break-word; }
+        .your-thinking strong { display: block; margin-bottom: 6px; font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .quiz-score { display: inline-block; background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid var(--accent-dim); border-radius: 10px; padding: 1px 8px; font-size: 0.75rem; font-weight: bold; margin-left: 8px; vertical-align: middle; }
         @media (max-width: 600px) {
             .week-header { flex-direction: column; text-align: center; }
             .day-item { flex-wrap: wrap; }
@@ -134,15 +137,24 @@ function render() {
         html += '<div class="week-days ' + isOpen + '">';
         weekDays.forEach(function(d) {
             var isCompleted = completed.indexOf(d.day) !== -1;
+            var quizData = JSON.parse(localStorage.getItem("quiz_" + d.day) || "null");
+            var scoreTag = "";
+            if (quizData && quizData.total > 0 && Object.keys(quizData.answers || {}).length > 0) {
+                scoreTag = ' <span class="quiz-score">' + quizData.score + "/" + quizData.total + "</span>";
+            }
             html += '<div class="day-item ' + (isCompleted ? "completed" : "") + '" onclick="openLesson(' + d.day + ')">';
             html += '<div class="day-num">' + d.day + '</div>';
             html += '<div class="day-title"><h3>' + d.title + '</h3><p>' + d.desc + '</p></div>';
-            html += '<div class="day-meta">📖 ' + d.duration + '</div>';
+            html += '<div class="day-meta">📖 ' + d.duration + scoreTag + '</div>';
             html += '</div>';
         });
         html += '</div></div>';
     });
     document.getElementById("weekCards").innerHTML = html;
+}
+
+function escapeHtml(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 // Open lesson
@@ -153,13 +165,14 @@ function openLesson(dayNum) {
     document.getElementById("lessonTitle").textContent = day.title;
     document.getElementById("lessonDay").textContent = "Day " + day.day + " · " + day.duration;
 
+    var savedColdOpen = localStorage.getItem("coldOpen_" + dayNum) || "";
     var content = "";
 
     if (day.coldOpen) {
         content += '<div class="cold-open">';
         content += '<h3>🎯 Before You Start</h3>';
         content += '<p>' + day.coldOpen + '</p>';
-        content += '<textarea placeholder="What is your initial thinking?"></textarea>';
+        content += '<textarea id="cold-open-ta" placeholder="What is your initial thinking?"></textarea>';
         content += '</div>';
     }
 
@@ -168,6 +181,9 @@ function openLesson(dayNum) {
     if (day.coldRevisit) {
         content += '<div class="info-box" style="margin-top:40px">';
         content += '<div class="info-title">🔄 Revisit Your Initial Thinking</div>';
+        if (savedColdOpen) {
+            content += '<div class="your-thinking"><strong>Your initial thinking:</strong>' + escapeHtml(savedColdOpen) + '</div>';
+        }
         content += '<p>' + day.coldRevisit + '</p>';
         content += '</div>';
     }
@@ -175,7 +191,7 @@ function openLesson(dayNum) {
     if (day.questions && day.questions.length > 0) {
         content += '<div class="quiz-section"><h2>📝 Knowledge Check</h2>';
         day.questions.forEach(function(q, qi) {
-            content += '<div class="quiz-q">';
+            content += '<div class="quiz-q" data-qi="' + qi + '" data-day="' + dayNum + '">';
             content += '<div class="quiz-q-num">Question ' + (qi + 1) + '</div>';
             content += '<div class="quiz-q-text">' + q.q + '</div>';
             q.opts.forEach(function(opt, oi) {
@@ -191,7 +207,8 @@ function openLesson(dayNum) {
         content += '<div class="essay-box">';
         content += '<h3>✍️ Reflection Question</h3>';
         content += '<p>' + day.essay.q + '</p>';
-        content += '<textarea placeholder="Write your response here..."></textarea>';
+        content += '<textarea id="essay-ta" placeholder="Write your response here..."></textarea>';
+        content += '<div id="essay-save-status" style="font-size:0.8rem;color:var(--text-secondary);text-align:right;height:1.2em;margin-top:4px"></div>';
         content += '<div class="essay-guide"><strong>Guidance:</strong> ' + day.essay.guide + '</div>';
         content += '</div>';
     }
@@ -201,6 +218,64 @@ function openLesson(dayNum) {
     document.getElementById("lessonContent").innerHTML = content;
     document.getElementById("lessonView").classList.add("active");
     document.getElementById("lessonView").scrollTop = 0;
+
+    // Cold open: restore saved value and wire up persistence
+    var coldTa = document.getElementById("cold-open-ta");
+    if (coldTa) {
+        if (savedColdOpen) coldTa.value = savedColdOpen;
+        coldTa.addEventListener("input", function() {
+            localStorage.setItem("coldOpen_" + dayNum, this.value);
+        });
+    }
+
+    // Essay: restore draft and wire up debounced auto-save
+    var essayTa = document.getElementById("essay-ta");
+    if (essayTa) {
+        var savedEssay = localStorage.getItem("essay_" + dayNum) || "";
+        if (savedEssay) essayTa.value = savedEssay;
+        var essayTimer = null;
+        essayTa.addEventListener("input", function() {
+            clearTimeout(essayTimer);
+            var val = this.value;
+            essayTimer = setTimeout(function() {
+                localStorage.setItem("essay_" + dayNum, val);
+                var statusEl = document.getElementById("essay-save-status");
+                if (statusEl) {
+                    statusEl.textContent = "Draft saved";
+                    setTimeout(function() { if (statusEl) statusEl.textContent = ""; }, 2000);
+                }
+            }, 500);
+        });
+    }
+
+    // Quiz: restore previously saved answers
+    var quizData = JSON.parse(localStorage.getItem("quiz_" + dayNum) || "null");
+    if (quizData && quizData.answers) {
+        document.querySelectorAll(".quiz-q").forEach(function(qEl) {
+            var qi = parseInt(qEl.getAttribute("data-qi"));
+            var savedIdx = quizData.answers[qi];
+            if (savedIdx === undefined || savedIdx === -1) return;
+            var opts = qEl.querySelectorAll(".quiz-opt");
+            var correct = parseInt(opts[0].getAttribute("data-correct"));
+            var explain = opts[savedIdx] ? opts[savedIdx].getAttribute("data-explain") : "";
+            var feedback = qEl.querySelector(".quiz-feedback");
+            opts.forEach(function(o) { o.classList.remove("correct", "wrong"); });
+            if (savedIdx === correct) {
+                opts[savedIdx].classList.add("correct");
+                feedback.className = "quiz-feedback show";
+                feedback.style.background = "rgba(63,185,80,0.15)";
+                feedback.style.color = "var(--success)";
+                feedback.innerHTML = "<strong>Correct!</strong> " + explain;
+            } else {
+                opts[savedIdx].classList.add("wrong");
+                opts[correct].classList.add("correct");
+                feedback.className = "quiz-feedback show";
+                feedback.style.background = "rgba(248,81,73,0.15)";
+                feedback.style.color = "var(--error)";
+                feedback.innerHTML = "<strong>Not quite.</strong> " + explain;
+            }
+        });
+    }
 }
 
 function checkAnswer(el) {
@@ -226,6 +301,24 @@ function checkAnswer(el) {
         feedback.style.background = "rgba(248,81,73,0.15)";
         feedback.style.color = "var(--error)";
         feedback.innerHTML = "<strong>Not quite.</strong> " + explain;
+    }
+
+    // Persist quiz answer and recompute score
+    var dayNum = parseInt(parent.getAttribute("data-day"));
+    var qi = parseInt(parent.getAttribute("data-qi"));
+    if (!isNaN(dayNum) && !isNaN(qi)) {
+        var dayObj = days.find(function(d) { return d.day === dayNum; });
+        if (dayObj && dayObj.questions) {
+            var stored = JSON.parse(localStorage.getItem("quiz_" + dayNum) || "null") || { answers: {}, score: 0, total: dayObj.questions.length };
+            stored.total = dayObj.questions.length;
+            stored.answers[qi] = idx;
+            var score = 0;
+            for (var key in stored.answers) {
+                if (stored.answers[key] === dayObj.questions[parseInt(key)].correct) score++;
+            }
+            stored.score = score;
+            localStorage.setItem("quiz_" + dayNum, JSON.stringify(stored));
+        }
     }
 }
 
