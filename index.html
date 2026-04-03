@@ -82,6 +82,74 @@
             .day-item { flex-wrap: wrap; }
             .lesson-header { flex-direction: column; gap: 10px; }
         }
+
+        /* ── Decision Labs ─────────────────────────────────────────────── */
+        .decision-lab-card { background: linear-gradient(135deg, rgba(88,166,255,0.07), rgba(139,148,158,0.04)); border: 1px solid var(--accent-dim); border-radius: 12px; margin: 12px 0 20px; padding: 22px 25px; cursor: pointer; display: flex; align-items: center; gap: 18px; transition: all 0.2s; }
+        .decision-lab-card:hover { border-color: var(--accent); background: linear-gradient(135deg, rgba(88,166,255,0.12), rgba(139,148,158,0.07)); transform: translateY(-1px); }
+        .decision-lab-card.completed { border-color: var(--success); background: linear-gradient(135deg, rgba(63,185,80,0.07), rgba(88,166,255,0.04)); }
+        .decision-lab-icon { min-width: 48px; height: 48px; background: var(--accent-dim); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+        .decision-lab-card.completed .decision-lab-icon { background: rgba(63,185,80,0.3); }
+        .decision-lab-info { flex: 1; }
+        .decision-lab-badge { display: inline-block; background: var(--accent-dim); color: #a8d8ff; font-size: 0.65rem; font-weight: bold; letter-spacing: 1.5px; padding: 2px 7px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+        .decision-lab-card.completed .decision-lab-badge { background: rgba(63,185,80,0.2); color: var(--success); }
+        .decision-lab-info h3 { font-size: 1rem; margin-bottom: 4px; }
+        .decision-lab-info p { color: var(--text-secondary); font-size: 0.82rem; }
+
+        /* ── Teach-back ────────────────────────────────────────────────── */
+        .teachback-item { display: flex; align-items: center; gap: 15px; padding: 14px 15px; border-radius: 8px; cursor: pointer; border-left: 3px solid rgba(63,185,80,0.4); margin-bottom: 5px; background: rgba(63,185,80,0.04); transition: all 0.2s; }
+        .teachback-item:hover { background: rgba(63,185,80,0.1); border-left-color: var(--success); }
+        .teachback-item.completed { border-left-color: var(--success); background: rgba(63,185,80,0.08); }
+        .teachback-num { min-width: 36px; height: 36px; background: rgba(63,185,80,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .teachback-item.completed .teachback-num { background: var(--success); }
+        .teachback-title { flex: 1; }
+        .teachback-title h3 { font-size: 0.95rem; margin-bottom: 3px; color: var(--success); }
+        .teachback-title p { color: var(--text-secondary); font-size: 0.82rem; }
+
+        /* ── Decision Lab lesson content ───────────────────────────────── */
+        .lab-scenario { background: rgba(88,166,255,0.06); border: 1px solid var(--accent-dim); border-radius: 12px; padding: 25px; margin-bottom: 30px; }
+        .lab-scenario h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
+        .lab-tasks-header { color: var(--warning); font-size: 1.2rem; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+        .lab-task { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--warning); border-radius: 0 8px 8px 0; padding: 20px; margin-bottom: 15px; }
+        .lab-task-label { font-size: 0.72rem; font-weight: bold; color: var(--warning); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+        .lab-task p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        /* ── Teach-back lesson content ─────────────────────────────────── */
+        .teachback-box { background: linear-gradient(135deg, rgba(63,185,80,0.08), rgba(88,166,255,0.04)); border: 1px solid rgba(63,185,80,0.4); border-radius: 12px; padding: 30px; margin-bottom: 30px; }
+        .teachback-box h3 { color: var(--success); margin-bottom: 8px; }
+        .teachback-box .tb-why { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+        .teachback-box .tb-hint { margin-top: 15px; padding: 15px; background: var(--bg-dark); border-radius: 6px; font-size: 0.88rem; color: var(--text-secondary); }
+        .teachback-box .tb-hint strong { color: var(--success); }
+
+        /* ── Learning Journal ──────────────────────────────────────────── */
+        .journal-btn { background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 0.82rem; letter-spacing: 0.5px; transition: all 0.2s; }
+        .journal-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .journal-view { display: none; position: fixed; inset: 0; background: var(--bg-dark); overflow-y: auto; z-index: 200; }
+        .journal-view.active { display: block; }
+        .journal-header { position: sticky; top: 0; background: var(--bg-dark); border-bottom: 1px solid var(--border); padding: 15px 20px; display: flex; align-items: center; gap: 20px; z-index: 10; }
+        .journal-content { max-width: 800px; margin: 0 auto; padding: 30px 20px 100px; }
+        .journal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 25px 0 35px; }
+        @media (max-width: 700px) { .journal-stats { grid-template-columns: repeat(2, 1fr); } }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 15px; text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: bold; color: var(--accent); line-height: 1; }
+        .stat-label { font-size: 0.78rem; color: var(--text-secondary); margin-top: 6px; }
+        .journal-section { margin: 30px 0; }
+        .journal-section-header { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px 10px 0 0; padding: 14px 20px; display: flex; align-items: center; gap: 10px; }
+        .journal-section-header h3 { font-size: 1rem; color: var(--accent); flex: 1; }
+        .journal-section-header .week-score { font-size: 0.8rem; color: var(--text-secondary); }
+        .journal-entry { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 20px; background: var(--bg-card); }
+        .journal-entry:last-child { border-radius: 0 0 10px 10px; }
+        .journal-entry-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+        .journal-entry-title { font-weight: bold; font-size: 0.88rem; }
+        .journal-entry-meta { font-size: 0.75rem; color: var(--text-secondary); }
+        .journal-response { font-size: 0.88rem; background: var(--bg-dark); border-radius: 6px; padding: 12px 14px; white-space: pre-wrap; word-break: break-word; line-height: 1.6; margin-top: 6px; color: var(--text-primary); }
+        .journal-response.empty { color: var(--text-secondary); font-style: italic; }
+        .journal-entry.has-content { border-left-color: var(--success); }
+        .journal-lab-entry { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 20px; background: rgba(88,166,255,0.04); }
+        .journal-lab-entry:last-child { border-radius: 0 0 10px 10px; }
+        .journal-lab-entry.has-content { border-left-color: var(--accent); }
+        .export-btn { display: block; margin: 30px auto 10px; background: var(--accent-dim); color: #fff; border: none; padding: 12px 30px; font-size: 0.95rem; font-weight: bold; border-radius: 8px; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+        .export-btn:hover { background: var(--accent); transform: translateY(-1px); }
+        @media (max-width: 600px) { .journal-stats { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -89,12 +157,12 @@
     <div class="header">
         <h1>TECH FLUENCY: LEGEND LEVEL</h1>
         <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <p style="color:var(--text-secondary)"><span id="completedCount">0</span>/30 Complete</p>
+        <p style="color:var(--text-secondary)"><span id="completedCount">0</span>/30 lessons &nbsp;·&nbsp; <span id="labsCount">0</span>/4 labs &nbsp;·&nbsp; <span id="tbCount">0</span>/5 teach-backs</p>
+        <button class="journal-btn" onclick="openJournal()" style="margin-top:15px">📓 Learning Journal &amp; Export</button>
     </div>
     <h1 style="text-align:center;margin-bottom:10px;font-size:1.8rem">Technical Fluency for Ecommerce Leaders</h1>
     <p style="text-align:center;color:var(--text-secondary);margin-bottom:40px">Deep technical knowledge. 1500+ words per lesson. Real understanding.</p>
     <div id="weekCards"></div>
-    <button class="reset-btn" onclick="if(confirm('Reset all progress?')){localStorage.clear();location.reload()}">Reset Progress</button>
 </div>
 <div class="lesson-view" id="lessonView">
     <div class="lesson-header">
@@ -103,35 +171,95 @@
     </div>
     <div class="lesson-content" id="lessonContent"></div>
 </div>
+
+<div class="journal-view" id="journalView">
+    <div class="journal-header">
+        <button class="back-btn" onclick="closeJournal()">← Back</button>
+        <div><h2 style="font-size:1.2rem">📓 Learning Journal</h2><span style="color:var(--text-secondary);font-size:0.85rem">Your complete audit trail of learning</span></div>
+    </div>
+    <div class="journal-content" id="journalContent"></div>
+</div>
+
 <script src="js/lessons-data.js"></script>
+<script src="js/decision-labs-data.js"></script>
 <script>
+// ── Week definitions with teach-back prompts ───────────────────────────────
 var weeks = [
-    { num: "W1", title: "Infrastructure & Architecture", desc: "How web systems work at scale" },
-    { num: "W2", title: "Frontend Engineering", desc: "HTML, CSS, JavaScript and modern patterns" },
-    { num: "W3", title: "Backend & Integrations", desc: "Servers, databases, APIs and payments" },
-    { num: "W4", title: "Operations & Security", desc: "DevOps, monitoring, and security" },
-    { num: "+", title: "Leadership & Strategy", desc: "Technical decision making" }
+    {
+        num: "W1", title: "Infrastructure & Architecture", desc: "How web systems work at scale",
+        teachBack: {
+            prompt: "Brief your CEO on infrastructure — in one paragraph, explain what 'technical infrastructure' means for an ecommerce business and why it matters for growth.",
+            hint: "Cover: what happens when a customer visits your site, why geography creates latency (and what solves it), what prevents a site crashing under Black Friday load, and one concrete question a CEO should be asking their tech team about infrastructure right now."
+        }
+    },
+    {
+        num: "W2", title: "Frontend Engineering", desc: "HTML, CSS, JavaScript and modern patterns",
+        teachBack: {
+            prompt: "Brief your CEO on frontend performance — in one paragraph, explain what 'Core Web Vitals' are and why a slow frontend is a direct revenue problem.",
+            hint: "Cover: the three Core Web Vitals in plain English, what a 1-second delay actually costs in conversion terms, why accessibility compliance is a legal and commercial risk (not just a UX nice-to-have), and one metric you'd put on a monthly board dashboard."
+        }
+    },
+    {
+        num: "W3", title: "Backend & Integrations", desc: "Servers, databases, APIs and payments",
+        teachBack: {
+            prompt: "Brief your CEO on backend complexity — in one paragraph, explain what happens technically between a customer clicking 'Place Order' and the order appearing in your warehouse system.",
+            hint: "Cover: how many systems communicate in that single transaction, what a webhook failure looks like to a customer, why payment integration is a trust and compliance issue (not just a tech issue), and the first thing you'd audit if conversion suddenly dropped 10%."
+        }
+    },
+    {
+        num: "W4", title: "Operations & Security", desc: "DevOps, monitoring, and security",
+        teachBack: {
+            prompt: "Brief your CEO on operational maturity — in one paragraph, explain how you'd assess whether your tech team is ahead of or behind your business growth curve.",
+            hint: "Cover: what a DORA metric is and why it matters, the difference between reactive alerting and proactive monitoring, what a security incident costs vs what prevents it (give real order-of-magnitude numbers), and the single most important question to ask your CTO before a major trading event."
+        }
+    },
+    {
+        num: "+", title: "Leadership & Strategy", desc: "Technical decision making",
+        teachBack: {
+            prompt: "Final synthesis — in one paragraph, state the most important thing you've learned about leading technology in an ecommerce business. This is your graduation statement.",
+            hint: "Draw on all five weeks. Don't summarise the content — synthesise the meta-lesson. What belief have you updated? What will you do differently in your first conversation with your engineering team next week?"
+        }
+    }
 ];
 
-// Load lessons from external file
+// ── Data ──────────────────────────────────────────────────────────────────
 var days = (typeof lessonsData !== 'undefined') ? lessonsData : [];
+var labs = (typeof decisionLabsData !== 'undefined') ? decisionLabsData : [];
 
-// Render dashboard
+// ── State ─────────────────────────────────────────────────────────────────
+var currentDayNum = null;
+var quizAnswers = {}; // { qIndex: isCorrect }
+
+// ── Persistence helpers ───────────────────────────────────────────────────
+function save(key, val) { localStorage.setItem(key, val); }
+function load(key, def) { return localStorage.getItem(key) || (def !== undefined ? def : ""); }
+function loadCompleted() { return JSON.parse(load("completed", "[]") || "[]"); }
+
+// ── Render dashboard ──────────────────────────────────────────────────────
 function render() {
-    var completed = JSON.parse(localStorage.getItem("completed") || "[]");
+    var completed = loadCompleted();
+    var labsDone = labs.filter(function(l) { return load("dl_" + l.id); }).length;
+    var tbDone = weeks.filter(function(w, wi) { return load("tb_" + wi); }).length;
+
     document.getElementById("completedCount").textContent = completed.length;
+    document.getElementById("labsCount").textContent = labsDone;
+    document.getElementById("tbCount").textContent = tbDone;
     document.getElementById("progressFill").style.width = (completed.length / 30 * 100) + "%";
 
     var html = "";
     weeks.forEach(function(week, wi) {
         var weekDays = days.filter(function(d) { return d.week === wi; });
         var isOpen = wi === 0 ? "open" : "";
+        var tbDone = !!load("tb_" + wi);
+
         html += '<div class="week-card">';
         html += '<div class="week-header" onclick="this.nextElementSibling.classList.toggle(\'open\')">';
         html += '<div class="week-number">' + week.num + '</div>';
         html += '<div class="week-info"><h2>' + week.title + '</h2><p>' + week.desc + '</p></div>';
         html += '</div>';
         html += '<div class="week-days ' + isOpen + '">';
+
+        // Lesson days
         weekDays.forEach(function(d) {
             var isCompleted = completed.indexOf(d.day) !== -1;
             html += '<div class="day-item ' + (isCompleted ? "completed" : "") + '" onclick="openLesson(' + d.day + ')">';
@@ -140,31 +268,61 @@ function render() {
             html += '<div class="day-meta">📖 ' + d.duration + '</div>';
             html += '</div>';
         });
+
+        // Teach-back activity
+        html += '<div class="teachback-item ' + (tbDone ? "completed" : "") + '" onclick="openTeachBack(' + wi + ')">';
+        html += '<div class="teachback-num">' + (tbDone ? "✓" : "✍️") + '</div>';
+        html += '<div class="teachback-title"><h3>Teach-Back: Brief Your CEO</h3>';
+        html += '<p>Synthesise this week in one paragraph — as if briefing your CEO</p></div>';
+        html += '<div class="day-meta">🎓 15 min</div>';
+        html += '</div>';
+
         html += '</div></div>';
+
+        // Decision lab after this week (if any)
+        var lab = labs.find(function(l) { return l.afterWeek === wi; });
+        if (lab) {
+            var labDone = !!load("dl_" + lab.id);
+            html += '<div class="decision-lab-card ' + (labDone ? "completed" : "") + '" onclick="openDecisionLab(' + lab.id + ')">';
+            html += '<div class="decision-lab-icon">' + (labDone ? "✓" : "🧪") + '</div>';
+            html += '<div class="decision-lab-info">';
+            html += '<div class="decision-lab-badge">Decision Lab ' + lab.id + '</div>';
+            html += '<h3>' + lab.title + '</h3>';
+            html += '<p>' + lab.tagline + ' &nbsp;·&nbsp; ' + lab.duration + '</p>';
+            html += '</div></div>';
+        }
     });
+
     document.getElementById("weekCards").innerHTML = html;
 }
 
-// Open lesson
+// ── Open a regular lesson ─────────────────────────────────────────────────
 function openLesson(dayNum) {
     var day = days.find(function(d) { return d.day === dayNum; });
     if (!day) return;
 
+    currentDayNum = dayNum;
+    quizAnswers = {};
+
     document.getElementById("lessonTitle").textContent = day.title;
     document.getElementById("lessonDay").textContent = "Day " + day.day + " · " + day.duration;
 
+    var savedCO = load("co_" + dayNum);
+    var savedEssay = load("essay_" + dayNum);
     var content = "";
 
+    // Cold open
     if (day.coldOpen) {
         content += '<div class="cold-open">';
         content += '<h3>🎯 Before You Start</h3>';
         content += '<p>' + day.coldOpen + '</p>';
-        content += '<textarea placeholder="What is your initial thinking?"></textarea>';
+        content += '<textarea placeholder="What is your initial thinking?" oninput="save(\'co_' + dayNum + '\',this.value)">' + esc(savedCO) + '</textarea>';
         content += '</div>';
     }
 
     content += day.content;
 
+    // Cold revisit
     if (day.coldRevisit) {
         content += '<div class="info-box" style="margin-top:40px">';
         content += '<div class="info-title">🔄 Revisit Your Initial Thinking</div>';
@@ -172,6 +330,7 @@ function openLesson(dayNum) {
         content += '</div>';
     }
 
+    // Quiz
     if (day.questions && day.questions.length > 0) {
         content += '<div class="quiz-section"><h2>📝 Knowledge Check</h2>';
         day.questions.forEach(function(q, qi) {
@@ -179,7 +338,7 @@ function openLesson(dayNum) {
             content += '<div class="quiz-q-num">Question ' + (qi + 1) + '</div>';
             content += '<div class="quiz-q-text">' + q.q + '</div>';
             q.opts.forEach(function(opt, oi) {
-                content += '<div class="quiz-opt" data-idx="' + oi + '" data-correct="' + q.correct + '" data-explain="' + q.explain.replace(/"/g, '&quot;') + '" onclick="checkAnswer(this)">' + opt + '</div>';
+                content += '<div class="quiz-opt" data-idx="' + oi + '" data-correct="' + q.correct + '" data-qidx="' + qi + '" data-explain="' + q.explain.replace(/"/g, '&quot;') + '" onclick="checkAnswer(this)">' + opt + '</div>';
             });
             content += '<div class="quiz-feedback"></div>';
             content += '</div>';
@@ -187,11 +346,12 @@ function openLesson(dayNum) {
         content += '</div>';
     }
 
+    // Essay / reflection
     if (day.essay) {
         content += '<div class="essay-box">';
         content += '<h3>✍️ Reflection Question</h3>';
         content += '<p>' + day.essay.q + '</p>';
-        content += '<textarea placeholder="Write your response here..."></textarea>';
+        content += '<textarea placeholder="Write your response here..." oninput="save(\'essay_' + dayNum + '\',this.value)">' + esc(savedEssay) + '</textarea>';
         content += '<div class="essay-guide"><strong>Guidance:</strong> ' + day.essay.guide + '</div>';
         content += '</div>';
     }
@@ -203,15 +363,107 @@ function openLesson(dayNum) {
     document.getElementById("lessonView").scrollTop = 0;
 }
 
+// ── Open a Decision Lab ───────────────────────────────────────────────────
+function openDecisionLab(labId) {
+    var lab = labs.find(function(l) { return l.id === labId; });
+    if (!lab) return;
+
+    currentDayNum = null;
+    quizAnswers = {};
+
+    document.getElementById("lessonTitle").textContent = lab.title;
+    document.getElementById("lessonDay").textContent = "Decision Lab " + lab.id + " · " + lab.duration;
+
+    var savedResponse = load("dl_" + labId);
+    var content = "";
+
+    // Lab intro badge
+    content += '<div style="margin-bottom:20px">';
+    content += '<span class="decision-lab-badge" style="font-size:0.75rem;padding:4px 10px">🧪 Decision Lab ' + lab.id + '</span>';
+    content += '<p style="margin-top:12px;color:var(--text-secondary);font-size:0.9rem">' + lab.tagline + '</p>';
+    content += '</div>';
+
+    // Scenario
+    content += lab.scenario;
+
+    // Thinking tasks
+    content += '<h2 class="lab-tasks-header">💬 Think It Through</h2>';
+    content += '<p style="color:var(--text-secondary);margin-bottom:20px;font-size:0.9rem">Work through each task before writing your recommendation. There are no single right answers — the goal is rigorous synthesis.</p>';
+    lab.tasks.forEach(function(task) {
+        content += '<div class="lab-task">';
+        content += '<div class="lab-task-label">Task ' + task.num + ' — ' + task.label + '</div>';
+        content += '<p>' + task.prompt + '</p>';
+        content += '</div>';
+    });
+
+    // Essay response
+    content += '<div class="essay-box" style="margin-top:40px">';
+    content += '<h3>📋 Your Recommendation</h3>';
+    content += '<p>' + lab.essay.q + '</p>';
+    content += '<textarea style="min-height:250px" placeholder="Write your recommendation here..." oninput="save(\'dl_' + labId + '\',this.value)">' + esc(savedResponse) + '</textarea>';
+    content += '<div class="essay-guide"><strong>What good looks like:</strong> ' + lab.essay.guide + '</div>';
+    content += '</div>';
+
+    content += '<button class="complete-btn" onclick="completeLabView(' + labId + ')">✓ Mark Decision Lab Complete</button>';
+
+    document.getElementById("lessonContent").innerHTML = content;
+    document.getElementById("lessonView").classList.add("active");
+    document.getElementById("lessonView").scrollTop = 0;
+}
+
+// ── Open a Teach-Back ─────────────────────────────────────────────────────
+function openTeachBack(weekIdx) {
+    var week = weeks[weekIdx];
+    if (!week || !week.teachBack) return;
+
+    currentDayNum = null;
+    quizAnswers = {};
+
+    document.getElementById("lessonTitle").textContent = "Teach-Back: " + week.title;
+    document.getElementById("lessonDay").textContent = week.num + " · Brief Your CEO · 15 min";
+
+    var savedTB = load("tb_" + weekIdx);
+    var content = "";
+
+    content += '<div class="teachback-box">';
+    content += '<h3>🎓 Teach-Back Exercise</h3>';
+    content += '<p class="tb-why">The highest form of learning is being able to explain a concept clearly to someone else. Write one paragraph — as if you are briefing your CEO before a board meeting. No jargon. No hedging. Confident, clear, and commercially grounded.</p>';
+    content += '<p style="font-size:1.05rem;line-height:1.7;margin:20px 0 5px"><strong>' + week.teachBack.prompt + '</strong></p>';
+    content += '<div class="tb-hint"><strong>What to include:</strong> ' + week.teachBack.hint + '</div>';
+    content += '</div>';
+
+    content += '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:25px;margin-top:10px">';
+    content += '<h3 style="color:var(--accent);margin-bottom:15px">✍️ Your CEO Brief</h3>';
+    content += '<p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:15px">Aim for 100–150 words. Write for a non-technical executive who will make investment decisions based on what you write.</p>';
+    content += '<textarea style="min-height:180px" placeholder="Write your CEO brief here..." oninput="save(\'tb_' + weekIdx + '\',this.value)">' + esc(savedTB) + '</textarea>';
+    content += '</div>';
+
+    content += '<div class="info-box" style="margin-top:25px">';
+    content += '<div class="info-title">💡 Why This Matters</div>';
+    content += '<p>This exercise forces Bloom\'s higher-order thinking: synthesis and evaluation, not just recall. If you can\'t explain it simply, you haven\'t fully understood it. Your teach-backs are saved to your Learning Journal as evidence of internalised learning.</p>';
+    content += '</div>';
+
+    content += '<button class="complete-btn" onclick="completeTeachBack(' + weekIdx + ')">✓ Save Teach-Back</button>';
+
+    document.getElementById("lessonContent").innerHTML = content;
+    document.getElementById("lessonView").classList.add("active");
+    document.getElementById("lessonView").scrollTop = 0;
+}
+
+// ── Answer checking (with score tracking) ────────────────────────────────
 function checkAnswer(el) {
     var parent = el.parentElement;
     var opts = parent.querySelectorAll(".quiz-opt");
     var feedback = parent.querySelector(".quiz-feedback");
     var idx = parseInt(el.getAttribute("data-idx"));
     var correct = parseInt(el.getAttribute("data-correct"));
+    var qidx = el.getAttribute("data-qidx");
     var explain = el.getAttribute("data-explain");
 
-    opts.forEach(function(o) { o.classList.remove("correct", "wrong"); });
+    // Ignore if already answered
+    if (parent.querySelector(".correct") || parent.querySelector(".wrong")) return;
+
+    opts.forEach(function(o) { o.style.pointerEvents = "none"; });
 
     if (idx === correct) {
         el.classList.add("correct");
@@ -219,6 +471,7 @@ function checkAnswer(el) {
         feedback.style.background = "rgba(63,185,80,0.15)";
         feedback.style.color = "var(--success)";
         feedback.innerHTML = "<strong>Correct!</strong> " + explain;
+        quizAnswers[qidx] = true;
     } else {
         el.classList.add("wrong");
         opts[correct].classList.add("correct");
@@ -226,14 +479,47 @@ function checkAnswer(el) {
         feedback.style.background = "rgba(248,81,73,0.15)";
         feedback.style.color = "var(--error)";
         feedback.innerHTML = "<strong>Not quite.</strong> " + explain;
+        quizAnswers[qidx] = false;
+    }
+
+    // Persist running score
+    if (currentDayNum) {
+        var answered = Object.keys(quizAnswers).length;
+        var numCorrect = Object.values(quizAnswers).filter(function(v) { return v; }).length;
+        save("qs_" + currentDayNum, numCorrect + "/" + answered);
     }
 }
 
+// ── Completion handlers ───────────────────────────────────────────────────
 function completeDay(dayNum) {
-    var completed = JSON.parse(localStorage.getItem("completed") || "[]");
+    // Save final quiz score
+    var day = days.find(function(d) { return d.day === dayNum; });
+    if (day && day.questions && day.questions.length > 0) {
+        var total = day.questions.length;
+        var numCorrect = Object.values(quizAnswers).filter(function(v) { return v; }).length;
+        save("qs_" + dayNum, numCorrect + "/" + total);
+    }
+    var completed = loadCompleted();
     if (completed.indexOf(dayNum) === -1) {
         completed.push(dayNum);
-        localStorage.setItem("completed", JSON.stringify(completed));
+        save("completed", JSON.stringify(completed));
+    }
+    closeLesson();
+    render();
+}
+
+function completeLabView(labId) {
+    // Ensure something was written
+    if (!load("dl_" + labId)) {
+        save("dl_" + labId, " "); // mark as visited even if blank
+    }
+    closeLesson();
+    render();
+}
+
+function completeTeachBack(weekIdx) {
+    if (!load("tb_" + weekIdx)) {
+        save("tb_" + weekIdx, " ");
     }
     closeLesson();
     render();
@@ -241,6 +527,210 @@ function completeDay(dayNum) {
 
 function closeLesson() {
     document.getElementById("lessonView").classList.remove("active");
+    currentDayNum = null;
+    quizAnswers = {};
+}
+
+// ── Learning Journal ──────────────────────────────────────────────────────
+function openJournal() {
+    renderJournal();
+    document.getElementById("journalView").classList.add("active");
+    document.getElementById("journalView").scrollTop = 0;
+}
+
+function closeJournal() {
+    document.getElementById("journalView").classList.remove("active");
+}
+
+function renderJournal() {
+    var completed = loadCompleted();
+    var totalEssays = 0, writtenEssays = 0;
+    var totalQuizQ = 0, correctQuizQ = 0;
+
+    // Count stats
+    days.forEach(function(d) {
+        if (d.essay) { totalEssays++; if (load("essay_" + d.day).trim()) writtenEssays++; }
+        var qs = load("qs_" + d.day);
+        if (qs) {
+            var parts = qs.split("/");
+            correctQuizQ += parseInt(parts[0]) || 0;
+            totalQuizQ += parseInt(parts[1]) || 0;
+        }
+    });
+
+    var labsWritten = labs.filter(function(l) { return load("dl_" + l.id).trim(); }).length;
+    var tbWritten = weeks.filter(function(w, wi) { return load("tb_" + wi).trim(); }).length;
+
+    var quizPct = totalQuizQ > 0 ? Math.round(correctQuizQ / totalQuizQ * 100) + "%" : "—";
+
+    var html = "";
+
+    // Stats
+    html += '<h2 style="margin-bottom:20px">Your Learning Audit Trail</h2>';
+    html += '<p style="color:var(--text-secondary);margin-bottom:5px">Every response you\'ve written is saved here. This is the artefact that proves learning happened.</p>';
+    html += '<div class="journal-stats">';
+    html += '<div class="stat-card"><div class="stat-number">' + completed.length + '/30</div><div class="stat-label">Lessons Complete</div></div>';
+    html += '<div class="stat-card"><div class="stat-number">' + quizPct + '</div><div class="stat-label">Quiz Accuracy</div></div>';
+    html += '<div class="stat-card"><div class="stat-number">' + writtenEssays + '/' + totalEssays + '</div><div class="stat-label">Reflections Written</div></div>';
+    html += '<div class="stat-card"><div class="stat-number">' + tbWritten + '/5</div><div class="stat-label">CEO Briefs Written</div></div>';
+    html += '<div class="stat-card"><div class="stat-number">' + labsWritten + '/4</div><div class="stat-label">Decision Labs Done</div></div>';
+    html += '<div class="stat-card"><div class="stat-number">' + (correctQuizQ + '/' + totalQuizQ) + '</div><div class="stat-label">Quiz Questions Correct</div></div>';
+    html += '</div>';
+
+    // Per-week sections
+    weeks.forEach(function(week, wi) {
+        var weekDays = days.filter(function(d) { return d.week === wi; });
+        var tbText = load("tb_" + wi).trim();
+
+        html += '<div class="journal-section">';
+        html += '<div class="journal-section-header">';
+        html += '<h3>' + week.num + ' — ' + week.title + '</h3>';
+        html += '</div>';
+
+        // Teach-back
+        html += '<div class="journal-entry ' + (tbText ? "has-content" : "") + '">';
+        html += '<div class="journal-entry-head">';
+        html += '<span class="journal-entry-title">🎓 Teach-Back: CEO Brief</span>';
+        html += '<span class="journal-entry-meta">' + (tbText ? "Written" : "Not yet written") + '</span>';
+        html += '</div>';
+        if (tbText) {
+            html += '<div class="journal-response">' + escHtml(tbText) + '</div>';
+        } else {
+            html += '<div class="journal-response empty">No teach-back written yet for this week.</div>';
+        }
+        html += '</div>';
+
+        // Each day
+        weekDays.forEach(function(d) {
+            var isCompleted = completed.indexOf(d.day) !== -1;
+            var coText = load("co_" + d.day).trim();
+            var essayText = load("essay_" + d.day).trim();
+            var quizScore = load("qs_" + d.day);
+            var hasContent = coText || essayText;
+
+            html += '<div class="journal-entry ' + (hasContent ? "has-content" : "") + '">';
+            html += '<div class="journal-entry-head">';
+            html += '<span class="journal-entry-title">Day ' + d.day + ': ' + d.title + '</span>';
+            html += '<span class="journal-entry-meta">';
+            if (isCompleted) html += '✓ Complete';
+            if (quizScore) html += ' &nbsp;·&nbsp; Quiz: ' + quizScore;
+            html += '</span>';
+            html += '</div>';
+
+            if (coText) {
+                html += '<div style="font-size:0.78rem;color:var(--text-secondary);margin:8px 0 3px;font-weight:bold">COLD OPEN REFLECTION</div>';
+                html += '<div class="journal-response">' + escHtml(coText) + '</div>';
+            }
+            if (essayText) {
+                html += '<div style="font-size:0.78rem;color:var(--text-secondary);margin:8px 0 3px;font-weight:bold">REFLECTION ESSAY</div>';
+                html += '<div class="journal-response">' + escHtml(essayText) + '</div>';
+            }
+            if (!coText && !essayText) {
+                html += '<div class="journal-response empty">No responses written for this lesson.</div>';
+            }
+            html += '</div>';
+        });
+        html += '</div>';
+
+        // Decision lab for this week
+        var lab = labs.find(function(l) { return l.afterWeek === wi; });
+        if (lab) {
+            var dlText = load("dl_" + lab.id).trim();
+            html += '<div class="journal-section">';
+            html += '<div class="journal-section-header" style="background:rgba(88,166,255,0.08)">';
+            html += '<h3 style="color:var(--accent)">🧪 Decision Lab ' + lab.id + ': ' + lab.title + '</h3>';
+            html += '</div>';
+            html += '<div class="journal-lab-entry ' + (dlText ? "has-content" : "") + '">';
+            html += '<div class="journal-entry-head">';
+            html += '<span class="journal-entry-title">Recommendation / Response</span>';
+            html += '<span class="journal-entry-meta">' + (dlText ? "Written" : "Not yet attempted") + '</span>';
+            html += '</div>';
+            if (dlText) {
+                html += '<div class="journal-response">' + escHtml(dlText) + '</div>';
+            } else {
+                html += '<div class="journal-response empty">Decision lab not yet attempted.</div>';
+            }
+            html += '</div></div>';
+        }
+    });
+
+    html += '<button class="export-btn" onclick="exportJournal()">⬇️ Export Journal as HTML</button>';
+    html += '<button class="reset-btn" onclick="if(confirm(\'Reset all progress and responses?\')) { localStorage.clear(); location.reload(); }">Reset All Progress</button>';
+
+    document.getElementById("journalContent").innerHTML = html;
+}
+
+// ── Export journal as standalone HTML ─────────────────────────────────────
+function exportJournal() {
+    var completed = loadCompleted();
+    var now = new Date().toLocaleDateString("en-GB", { year:"numeric", month:"long", day:"numeric" });
+
+    var body = "<h1>Tech Fluency Learning Journal</h1><p style='color:#666'>Exported: " + now + "</p><hr>";
+
+    weeks.forEach(function(week, wi) {
+        var weekDays = days.filter(function(d) { return d.week === wi; });
+        body += "<h2>" + week.num + " — " + week.title + "</h2>";
+
+        // Teach-back
+        var tbText = load("tb_" + wi).trim();
+        body += "<h3>🎓 Teach-Back: CEO Brief</h3>";
+        body += tbText ? "<blockquote>" + escHtml(tbText) + "</blockquote>" : "<p><em>Not written.</em></p>";
+
+        weekDays.forEach(function(d) {
+            var coText = load("co_" + d.day).trim();
+            var essayText = load("essay_" + d.day).trim();
+            var quizScore = load("qs_" + d.day);
+            var isCompleted = completed.indexOf(d.day) !== -1;
+
+            body += "<h4>Day " + d.day + ": " + d.title;
+            body += " <small>(" + (isCompleted ? "✓ Complete" : "Incomplete");
+            if (quizScore) body += " · Quiz: " + quizScore;
+            body += ")</small></h4>";
+
+            if (coText) body += "<p><strong>Cold Open:</strong><br>" + escHtml(coText) + "</p>";
+            if (essayText) body += "<p><strong>Reflection Essay:</strong><br>" + escHtml(essayText) + "</p>";
+            if (!coText && !essayText) body += "<p><em>No responses recorded.</em></p>";
+        });
+
+        // Decision lab
+        var lab = labs.find(function(l) { return l.afterWeek === wi; });
+        if (lab) {
+            var dlText = load("dl_" + lab.id).trim();
+            body += "<h3>🧪 Decision Lab " + lab.id + ": " + lab.title + "</h3>";
+            body += dlText ? "<blockquote>" + escHtml(dlText) + "</blockquote>" : "<p><em>Not attempted.</em></p>";
+        }
+        body += "<hr>";
+    });
+
+    var html = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Learning Journal — Tech Fluency for Ecommerce Leaders</title>" +
+        "<style>body{font-family:Georgia,serif;max-width:820px;margin:40px auto;padding:0 20px;color:#222;line-height:1.8}" +
+        "h1{font-size:1.8rem;border-bottom:3px solid #333;padding-bottom:10px}" +
+        "h2{font-size:1.3rem;margin-top:40px;color:#1a5fa8;border-bottom:1px solid #ccc;padding-bottom:6px}" +
+        "h3{font-size:1.05rem;margin-top:25px;color:#333}" +
+        "h4{font-size:0.95rem;margin-top:20px;color:#555}" +
+        "blockquote{background:#f9f9f9;border-left:4px solid #1a5fa8;margin:15px 0;padding:12px 18px;white-space:pre-wrap;word-break:break-word}" +
+        "small{color:#888}hr{border:none;border-top:1px solid #eee;margin:30px 0}" +
+        "</style></head><body>" + body + "</body></html>";
+
+    var blob = new Blob([html], { type: "text/html" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "tech-fluency-learning-journal.html";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// ── Utility: escape for textarea value ────────────────────────────────────
+function esc(str) {
+    return (str || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+// ── Utility: escape for HTML display ──────────────────────────────────────
+function escHtml(str) {
+    return (str || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
 render();
