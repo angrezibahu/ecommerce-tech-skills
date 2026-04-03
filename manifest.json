@@ -1,0 +1,17 @@
+{
+  "name": "Tech Fluency for Ecommerce Leaders",
+  "short_name": "Tech Fluency",
+  "description": "30-day technical education for ecommerce leaders — deep lessons, quizzes, and essays.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d1117'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='monospace' fill='%2358a6ff'>TF</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

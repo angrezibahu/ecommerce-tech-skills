@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Fluency for Ecommerce Leaders</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d1117">
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --bg-dark: #0d1117; --bg-card: #161b22; --bg-code: #1c2128; --text-primary: #e6edf3; --text-secondary: #8b949e; --accent: #58a6ff; --accent-dim: #1f6feb; --success: #3fb950; --warning: #d29922; --error: #f85149; --border: #30363d; }
@@ -77,6 +79,12 @@
         .complete-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(63,185,80,0.3); }
         .reset-btn { display: block; margin: 30px auto; background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 10px 20px; border-radius: 6px; cursor: pointer; font-family: inherit; }
         .reset-btn:hover { border-color: var(--error); color: var(--error); }
+        /* Loading spinner shown while a lesson file is fetching */
+        .lesson-loading { text-align: center; padding: 80px 20px; color: var(--text-secondary); font-size: 1rem; }
+        .lesson-loading::after { content: ''; display: inline-block; width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin-left: 12px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        /* Offline badge */
+        #offline-badge { display: none; position: fixed; bottom: 16px; right: 16px; background: var(--warning); color: #000; font-size: 0.8rem; font-weight: bold; padding: 6px 12px; border-radius: 20px; z-index: 200; }
         @media (max-width: 600px) {
             .week-header { flex-direction: column; text-align: center; }
             .day-item { flex-wrap: wrap; }
@@ -85,6 +93,9 @@
     </style>
 </head>
 <body>
+
+<div id="offline-badge">Offline</div>
+
 <div class="container" id="dashboard">
     <div class="header">
         <h1>TECH FLUENCY: LEGEND LEVEL</h1>
@@ -94,8 +105,9 @@
     <h1 style="text-align:center;margin-bottom:10px;font-size:1.8rem">Technical Fluency for Ecommerce Leaders</h1>
     <p style="text-align:center;color:var(--text-secondary);margin-bottom:40px">Deep technical knowledge. 1500+ words per lesson. Real understanding.</p>
     <div id="weekCards"></div>
-    <button class="reset-btn" onclick="if(confirm('Reset all progress?')){localStorage.clear();location.reload()}">Reset Progress</button>
+    <button class="reset-btn" id="resetBtn">Reset Progress</button>
 </div>
+
 <div class="lesson-view" id="lessonView">
     <div class="lesson-header">
         <button class="back-btn" onclick="closeLesson()">← Back</button>
@@ -103,38 +115,148 @@
     </div>
     <div class="lesson-content" id="lessonContent"></div>
 </div>
-<script src="js/lessons-data.js"></script>
+
+<!-- Lesson metadata: day, week, title, desc, duration only (~4 KB) -->
+<script src="js/lessons-manifest.js"></script>
 <script>
+// ============================================================
+// IndexedDB — persistent progress storage
+// Falls back silently to localStorage if IDB is unavailable.
+// ============================================================
+var DB = (function () {
+    var _db = null;
+
+    function init() {
+        return new Promise(function (resolve) {
+            if (_db) return resolve(_db);
+            if (!window.indexedDB) return resolve(null);
+            var req = indexedDB.open('techfluency', 1);
+            req.onupgradeneeded = function (e) {
+                e.target.result.createObjectStore('progress', { keyPath: 'key' });
+            };
+            req.onsuccess = function (e) { _db = e.target.result; resolve(_db); };
+            req.onerror   = function ()  { resolve(null); };
+        });
+    }
+
+    function get(key) {
+        return init().then(function (db) {
+            if (!db) {
+                var v = localStorage.getItem(key);
+                return v ? JSON.parse(v) : null;
+            }
+            return new Promise(function (resolve) {
+                var req = db.transaction('progress', 'readonly')
+                            .objectStore('progress').get(key);
+                req.onsuccess = function () { resolve(req.result ? req.result.value : null); };
+                req.onerror   = function () { resolve(null); };
+            });
+        });
+    }
+
+    function set(key, value) {
+        return init().then(function (db) {
+            if (!db) { localStorage.setItem(key, JSON.stringify(value)); return; }
+            return new Promise(function (resolve) {
+                var tx = db.transaction('progress', 'readwrite');
+                tx.objectStore('progress').put({ key: key, value: value });
+                tx.oncomplete = resolve;
+                tx.onerror    = function () { resolve(); };
+            });
+        });
+    }
+
+    function clear() {
+        return init().then(function (db) {
+            if (!db) { localStorage.clear(); return; }
+            return new Promise(function (resolve) {
+                var tx = db.transaction('progress', 'readwrite');
+                tx.objectStore('progress').clear();
+                tx.oncomplete = resolve;
+            });
+        });
+    }
+
+    // One-time migration from localStorage → IndexedDB
+    function migrate() {
+        if (!window.indexedDB) return Promise.resolve();
+        var raw = localStorage.getItem('completed');
+        if (!raw) return Promise.resolve();
+        return set('completed', JSON.parse(raw)).then(function () {
+            localStorage.removeItem('completed');
+        });
+    }
+
+    return { get: get, set: set, clear: clear, migrate: migrate };
+}());
+
+// ============================================================
+// Lazy lesson loader
+// Injects a <script> tag for js/lessons/day-N.js on demand.
+// Each such file runs: window.__lessonCache[N] = { ...lesson };
+// ============================================================
+window.__lessonCache = {};
+var __lessonPending  = {};   // dayNum → array of callbacks waiting
+
+function loadLesson(dayNum, callback) {
+    if (window.__lessonCache[dayNum]) return callback(window.__lessonCache[dayNum]);
+
+    // Already loading — queue the callback
+    if (__lessonPending[dayNum]) {
+        __lessonPending[dayNum].push(callback);
+        return;
+    }
+
+    __lessonPending[dayNum] = [callback];
+
+    var script  = document.createElement('script');
+    script.src  = 'js/lessons/day-' + dayNum + '.js';
+    script.onload = function () {
+        var lesson = window.__lessonCache[dayNum] || null;
+        var cbs = __lessonPending[dayNum] || [];
+        delete __lessonPending[dayNum];
+        cbs.forEach(function (cb) { cb(lesson); });
+    };
+    script.onerror = function () {
+        var cbs = __lessonPending[dayNum] || [];
+        delete __lessonPending[dayNum];
+        cbs.forEach(function (cb) { cb(null); });
+    };
+    document.head.appendChild(script);
+}
+
+// ============================================================
+// Dashboard
+// ============================================================
 var weeks = [
     { num: "W1", title: "Infrastructure & Architecture", desc: "How web systems work at scale" },
-    { num: "W2", title: "Frontend Engineering", desc: "HTML, CSS, JavaScript and modern patterns" },
-    { num: "W3", title: "Backend & Integrations", desc: "Servers, databases, APIs and payments" },
-    { num: "W4", title: "Operations & Security", desc: "DevOps, monitoring, and security" },
-    { num: "+", title: "Leadership & Strategy", desc: "Technical decision making" }
+    { num: "W2", title: "Frontend Engineering",          desc: "HTML, CSS, JavaScript and modern patterns" },
+    { num: "W3", title: "Backend & Integrations",        desc: "Servers, databases, APIs and payments" },
+    { num: "W4", title: "Operations & Security",         desc: "DevOps, monitoring, and security" },
+    { num: "+",  title: "Leadership & Strategy",         desc: "Technical decision making" }
 ];
 
-// Load lessons from external file
-var days = (typeof lessonsData !== 'undefined') ? lessonsData : [];
+// lessonsManifest is loaded from js/lessons-manifest.js
+var days = (typeof lessonsManifest !== 'undefined') ? lessonsManifest : [];
 
-// Render dashboard
-function render() {
-    var completed = JSON.parse(localStorage.getItem("completed") || "[]");
-    document.getElementById("completedCount").textContent = completed.length;
-    document.getElementById("progressFill").style.width = (completed.length / 30 * 100) + "%";
+function render(completed) {
+    completed = completed || [];
+    document.getElementById('completedCount').textContent = completed.length;
+    document.getElementById('progressFill').style.width = (completed.length / 30 * 100) + '%';
 
-    var html = "";
-    weeks.forEach(function(week, wi) {
-        var weekDays = days.filter(function(d) { return d.week === wi; });
-        var isOpen = wi === 0 ? "open" : "";
+    var html = '';
+    weeks.forEach(function (week, wi) {
+        var weekDays = days.filter(function (d) { return d.week === wi; });
+        var isOpen   = wi === 0 ? 'open' : '';
         html += '<div class="week-card">';
         html += '<div class="week-header" onclick="this.nextElementSibling.classList.toggle(\'open\')">';
         html += '<div class="week-number">' + week.num + '</div>';
         html += '<div class="week-info"><h2>' + week.title + '</h2><p>' + week.desc + '</p></div>';
         html += '</div>';
         html += '<div class="week-days ' + isOpen + '">';
-        weekDays.forEach(function(d) {
-            var isCompleted = completed.indexOf(d.day) !== -1;
-            html += '<div class="day-item ' + (isCompleted ? "completed" : "") + '" onclick="openLesson(' + d.day + ')">';
+        weekDays.forEach(function (d) {
+            var done = completed.indexOf(d.day) !== -1;
+            html += '<div class="day-item ' + (done ? 'completed' : '') + '" onclick="openLesson(' + d.day + ')">';
             html += '<div class="day-num">' + d.day + '</div>';
             html += '<div class="day-title"><h3>' + d.title + '</h3><p>' + d.desc + '</p></div>';
             html += '<div class="day-meta">📖 ' + d.duration + '</div>';
@@ -142,18 +264,37 @@ function render() {
         });
         html += '</div></div>';
     });
-    document.getElementById("weekCards").innerHTML = html;
+    document.getElementById('weekCards').innerHTML = html;
 }
 
-// Open lesson
+// ============================================================
+// Lesson view
+// ============================================================
 function openLesson(dayNum) {
-    var day = days.find(function(d) { return d.day === dayNum; });
-    if (!day) return;
+    // Show the lesson pane immediately with a loading indicator
+    var view = document.getElementById('lessonView');
+    document.getElementById('lessonTitle').textContent = 'Loading…';
+    document.getElementById('lessonDay').textContent   = 'Day ' + dayNum;
+    document.getElementById('lessonContent').innerHTML =
+        '<div class="lesson-loading">Loading lesson</div>';
+    view.classList.add('active');
+    view.scrollTop = 0;
 
-    document.getElementById("lessonTitle").textContent = day.title;
-    document.getElementById("lessonDay").textContent = "Day " + day.day + " · " + day.duration;
+    loadLesson(dayNum, function (day) {
+        if (!day) {
+            document.getElementById('lessonContent').innerHTML =
+                '<div class="lesson-loading" style="color:var(--error)">Could not load lesson. Are you offline and is this lesson not yet cached?</div>';
+            return;
+        }
+        renderLesson(day);
+    });
+}
 
-    var content = "";
+function renderLesson(day) {
+    document.getElementById('lessonTitle').textContent = day.title;
+    document.getElementById('lessonDay').textContent   = 'Day ' + day.day + ' · ' + day.duration;
+
+    var content = '';
 
     if (day.coldOpen) {
         content += '<div class="cold-open">';
@@ -174,12 +315,14 @@ function openLesson(dayNum) {
 
     if (day.questions && day.questions.length > 0) {
         content += '<div class="quiz-section"><h2>📝 Knowledge Check</h2>';
-        day.questions.forEach(function(q, qi) {
+        day.questions.forEach(function (q, qi) {
             content += '<div class="quiz-q">';
             content += '<div class="quiz-q-num">Question ' + (qi + 1) + '</div>';
             content += '<div class="quiz-q-text">' + q.q + '</div>';
-            q.opts.forEach(function(opt, oi) {
-                content += '<div class="quiz-opt" data-idx="' + oi + '" data-correct="' + q.correct + '" data-explain="' + q.explain.replace(/"/g, '&quot;') + '" onclick="checkAnswer(this)">' + opt + '</div>';
+            q.opts.forEach(function (opt, oi) {
+                content += '<div class="quiz-opt" data-idx="' + oi + '" data-correct="' + q.correct +
+                           '" data-explain="' + q.explain.replace(/"/g, '&quot;') +
+                           '" onclick="checkAnswer(this)">' + opt + '</div>';
             });
             content += '<div class="quiz-feedback"></div>';
             content += '</div>';
@@ -198,52 +341,85 @@ function openLesson(dayNum) {
 
     content += '<button class="complete-btn" onclick="completeDay(' + day.day + ')">✓ Mark Day ' + day.day + ' Complete</button>';
 
-    document.getElementById("lessonContent").innerHTML = content;
-    document.getElementById("lessonView").classList.add("active");
-    document.getElementById("lessonView").scrollTop = 0;
+    document.getElementById('lessonContent').innerHTML = content;
 }
 
 function checkAnswer(el) {
-    var parent = el.parentElement;
-    var opts = parent.querySelectorAll(".quiz-opt");
-    var feedback = parent.querySelector(".quiz-feedback");
-    var idx = parseInt(el.getAttribute("data-idx"));
-    var correct = parseInt(el.getAttribute("data-correct"));
-    var explain = el.getAttribute("data-explain");
+    var parent   = el.parentElement;
+    var opts     = parent.querySelectorAll('.quiz-opt');
+    var feedback = parent.querySelector('.quiz-feedback');
+    var idx      = parseInt(el.getAttribute('data-idx'));
+    var correct  = parseInt(el.getAttribute('data-correct'));
+    var explain  = el.getAttribute('data-explain');
 
-    opts.forEach(function(o) { o.classList.remove("correct", "wrong"); });
+    opts.forEach(function (o) { o.classList.remove('correct', 'wrong'); });
 
     if (idx === correct) {
-        el.classList.add("correct");
-        feedback.className = "quiz-feedback show";
-        feedback.style.background = "rgba(63,185,80,0.15)";
-        feedback.style.color = "var(--success)";
-        feedback.innerHTML = "<strong>Correct!</strong> " + explain;
+        el.classList.add('correct');
+        feedback.className = 'quiz-feedback show';
+        feedback.style.background = 'rgba(63,185,80,0.15)';
+        feedback.style.color = 'var(--success)';
+        feedback.innerHTML = '<strong>Correct!</strong> ' + explain;
     } else {
-        el.classList.add("wrong");
-        opts[correct].classList.add("correct");
-        feedback.className = "quiz-feedback show";
-        feedback.style.background = "rgba(248,81,73,0.15)";
-        feedback.style.color = "var(--error)";
-        feedback.innerHTML = "<strong>Not quite.</strong> " + explain;
+        el.classList.add('wrong');
+        opts[correct].classList.add('correct');
+        feedback.className = 'quiz-feedback show';
+        feedback.style.background = 'rgba(248,81,73,0.15)';
+        feedback.style.color = 'var(--error)';
+        feedback.innerHTML = '<strong>Not quite.</strong> ' + explain;
     }
 }
 
 function completeDay(dayNum) {
-    var completed = JSON.parse(localStorage.getItem("completed") || "[]");
-    if (completed.indexOf(dayNum) === -1) {
-        completed.push(dayNum);
-        localStorage.setItem("completed", JSON.stringify(completed));
-    }
-    closeLesson();
-    render();
+    DB.get('completed').then(function (list) {
+        list = list || [];
+        if (list.indexOf(dayNum) === -1) list.push(dayNum);
+        return DB.set('completed', list).then(function () { return list; });
+    }).then(function (list) {
+        closeLesson();
+        render(list);
+    });
 }
 
 function closeLesson() {
-    document.getElementById("lessonView").classList.remove("active");
+    document.getElementById('lessonView').classList.remove('active');
 }
 
-render();
+document.getElementById('resetBtn').addEventListener('click', function () {
+    if (!confirm('Reset all progress?')) return;
+    DB.clear().then(function () { render([]); });
+});
+
+// ============================================================
+// Boot sequence
+// ============================================================
+DB.migrate().then(function () {
+    return DB.get('completed');
+}).then(function (completed) {
+    render(completed || []);
+});
+
+// ============================================================
+// Service Worker registration
+// ============================================================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function (err) {
+            console.warn('SW registration failed:', err);
+        });
+    });
+}
+
+// ============================================================
+// Offline badge
+// ============================================================
+function updateOnlineStatus() {
+    document.getElementById('offline-badge').style.display =
+        navigator.onLine ? 'none' : 'block';
+}
+window.addEventListener('online',  updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+updateOnlineStatus();
 </script>
 </body>
 </html>
